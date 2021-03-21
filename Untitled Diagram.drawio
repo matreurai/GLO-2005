@@ -1,1 +1,151 @@
-<mxfile host="app.diagrams.net" modified="2021-03-21T15:08:24.893Z" agent="5.0 (Windows)" etag="YBy5aOT4a3SZysHyOer_" version="14.4.9" type="github"><diagram id="9QeInMhMW2BYkm9Gor-B" name="Page-1">7Zxdb6M4FIZ/TdTZi674CGlzmY/Z6UrtqLNpZy9XLjiJNQYzxkyT+fV7DIY0NWnTOol7YalK8cEk2I+POX450Asn6eoLR/nyhiWY9gIvWfXCaS8IfN8L4J+0rGvLwLuoDQtOElVpY5iR31gZPWUtSYKLrYqCMSpIvm2MWZbhWGzZEOfscbvanNHtX83RAmuGWYyobv2XJGJZWy8jb2O/wmSxFG2D1Z4UNZWVoViihD0+MYWfe+GEMybqrXQ1wVR2XtMv9XF/7djbnhjHmdjngP/uRt/Op+Nhhu+uvtOfIQ6K+3P1Lb8QLVWDZwIJUgjyEwz1eYt10xnFI0kpyqA0nrNMzNQeD8rxktDkGq1ZKU+mECj+0ZTGS8bJb6iPKOzywQC7uVCsg8FWjZk8Un0nxwXUuW1a6D8z3aDVVsVrVIjmbBilKC/IQ3V+8sAU8QXJxkwIlqpKiJJFBtsxfBfmTZvqs/L7UFZ9g7nAq52d7rcowQcwS7Hga6iiDrhQ8NfbxcfNUPKHyrZ8OowuBmoIq+G7aL95Qxg2FOQ3AA904Ov0gUE/gY/KD4qkN/F1Dh0FPoWIPgygO0RFkbMfeMIog86bZqweF4TSZ6YiRzHJFtd4LlvX31j+UQ2WJgbdPKeVfyxJkuBMYmUwFtFDO8ZyRjJRdUg0hj/ot4n3Z9SL4JwmUPY3ZfiT1bmYsAxOE5GKFoYB8ojlINlCHeyLercH6fwV8GCwH/DQOxLvUOM9QTkBRyMF+DnLYN+YlbwgvUnYG11yR9uAdmSbdl+j/Z3RMpV+DbMlScvU4X0/3kvbeC81vN9KlAkiKucdwi4sHTomPC6pcm+H+724fd827+Fud/6UYJ4RzAvYDvpXfzjQBqD7tkH7elg2yiEmlW59Ubo43DgOD/3tQHywZyAeDI4ViPt6ZOYicTMnDz52KO7r0dlXcAJH+xi0rYfifqTR/nsqdSEH1xiu9UC8iQyfwL3lZNUE4AKnuQzM6gv4UEqijva7aduPw/2LXbirq3VOS0l7iSDKgl8XAsvOcsgNkNuPyPW1dgfyB1Q44ochfmGdeMdqG1Fc8mZW7wX9yWjqKJvE4J5tys3duJco388cZBPIoXXI+m3NW+gZPMclsHL3Nc31lKj/qp7S3vje0lPCo93Y1CU0p6cYufmuIbBbT+lEfjwv1/UUt8I+ENwO+eTEcHV51K2wj0W7Q085MW1dLHt+ZzNnRVEXEsXcITdA3iWqnJj5Tg2t4uvJK/YZipfILayNQHdIKScGratnX6BD5PT9qRdE7ta1Ed4O3eTEeHWlbErm83qShsbFVbqCcu0crdsZXf5s4KkdMSs5TPhuMBiF5B3yymkHQ6jLK/eCVMmGlcbiFt6HTShu8xpe1VqCYy28Q11sqZZh5QvcnVNrPvNx8xZCXVlReQtnjvFhGFvPVgj15fYNE41ylqOicMstE8DWMxZCXSwbJXCZk1yr4IsTJ6IYIbafphDqKsottIm5pH8jrtZzEUJdKfnqoJpBtZ5uEOqqiFwZX8IvOLIm4bL1FINQF0RmeOWoGlG1nlMQ6ulBd8v6ocnUsTVb4Npm2yQzbN+K+EVozdfNyGZ8h9b5dkhU2ZzxtPsZSadK6uBfSQdq8n8aWXJf0ep4Lzro64qGe9rm3S7ef3Mu0Ik9XJc3ZjiudUkvOUOxgOm8TSZwpN9N2rpS2ddFjikSVZLfGbSMt8khXlHBr/L/YFqMl46+MX3rMmZfl0KmuIg5yd3bDgzZ2tcv+x2PWeHqmarKdUeCV75MMpcAdgDc1mXNSF91vbCidkH5W4PyMHgWlO/70oPjBeXRjlyBpIQP4eSUvRw7+uD5AlGwa+XlKB+MsvU4POpI0GeUxA6rCVbrAXakL6QnrKTtQprz9k2B5zlcjx1tA9r2Q+5IX00/wV3N18DT+bQR5SNG2lDcvEG42vfkPczh5/8B</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-03-21T15:15:50.928Z" agent="5.0 (Windows)" etag="yHZ2dixgYSJ9tIREXsxZ" version="14.4.9" type="github">
+  <diagram id="9QeInMhMW2BYkm9Gor-B" name="Page-1">
+    <mxGraphModel dx="1296" dy="714" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-1" value="Statistique" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="95" y="66" width="160" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-2" value="Symbole de la cryptomonnaie" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;fontStyle=4" parent="_TAQ-DB9neTHVlq3e2sU-1" vertex="1">
+          <mxGeometry y="26" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-3" value="Capitalisation Boursière" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-1" vertex="1">
+          <mxGeometry y="56" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-4" value="Volume Maximum" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-1" vertex="1">
+          <mxGeometry y="86" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-8" value="Quantité en circulation" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-1" vertex="1">
+          <mxGeometry y="116" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-9" value="Volume (derniers 24H)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-1" vertex="1">
+          <mxGeometry y="146" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-12" value="Aperçu" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="310" y="60" width="160" height="266" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-15" value="ID monnaie" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;fontStyle=4" parent="_TAQ-DB9neTHVlq3e2sU-12" vertex="1">
+          <mxGeometry y="26" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-13" value="Symbole de la cryptomonnaie" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;fontStyle=0" parent="_TAQ-DB9neTHVlq3e2sU-12" vertex="1">
+          <mxGeometry y="56" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-14" value="Nom de la cryptomonnaie" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-12" vertex="1">
+          <mxGeometry y="86" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-16" value="Prix en temps réel" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-12" vertex="1">
+          <mxGeometry y="116" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-17" value="Prix le plus haut atteint" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-12" vertex="1">
+          <mxGeometry y="146" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-18" value="Prix le plus bas atteint" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-12" vertex="1">
+          <mxGeometry y="176" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-19" value="Valeur en $CAD" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-12" vertex="1">
+          <mxGeometry y="206" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-20" value="Valeur en $US" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-12" vertex="1">
+          <mxGeometry y="236" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-21" value="Portefeuille" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="540" y="60" width="180" height="236" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-24" value="ID monnaie" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;fontStyle=4" parent="_TAQ-DB9neTHVlq3e2sU-21" vertex="1">
+          <mxGeometry y="26" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-22" value="Symbole de la cryptomonnaie" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-21" vertex="1">
+          <mxGeometry y="56" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-23" value="Prix en temps réel" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-21" vertex="1">
+          <mxGeometry y="86" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-25" value="Quantité possédée" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-21" vertex="1">
+          <mxGeometry y="116" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-26" value="Prix à l&#39;achat" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-21" vertex="1">
+          <mxGeometry y="146" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-27" value="Gains (%)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-21" vertex="1">
+          <mxGeometry y="176" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-28" value="Différence (Prix payé / Prix courant)" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-21" vertex="1">
+          <mxGeometry y="206" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-30" value="Utilisateur" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="112" y="261" width="130" height="326" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-31" value="ID utilisateur" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;fontStyle=4" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="26" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-32" value="Nom d&#39;utilisateur" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="56" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-33" value="Mot de passe" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="86" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-34" value="Adresse courriel" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="116" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-35" value="Prenom" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="146" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-36" value="Nom" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="176" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-37" value="Âge" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="206" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-38" value="Sexe" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="236" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-39" value="Thème" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="266" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-40" value="Privilège" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-30" vertex="1">
+          <mxGeometry y="296" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-41" value="Information" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="560" y="326" width="160" height="206" as="geometry" />
+        </mxCell>
+        <mxCell id="SpcJRN1x7gGNwQGPlM9r-1" value="Symbole de la cryptomonnaie" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;fontStyle=4" vertex="1" parent="_TAQ-DB9neTHVlq3e2sU-41">
+          <mxGeometry y="26" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-43" value="Nom de la cryptomonnaie" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-41" vertex="1">
+          <mxGeometry y="56" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-44" value="Secteur d&#39;activité" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-41" vertex="1">
+          <mxGeometry y="86" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-45" value="Date d&#39;entrée sur le marché" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-41" vertex="1">
+          <mxGeometry y="116" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-46" value="Description" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-41" vertex="1">
+          <mxGeometry y="146" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-47" value="Peut être minée" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-41" vertex="1">
+          <mxGeometry y="176" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-50" value="Thème" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="320" y="360" width="120" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-51" value="ID du thème" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;fontStyle=4" parent="_TAQ-DB9neTHVlq3e2sU-50" vertex="1">
+          <mxGeometry y="26" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-52" value="Nom du thème" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-50" vertex="1">
+          <mxGeometry y="56" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-53" value="Police" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-50" vertex="1">
+          <mxGeometry y="86" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-54" value="Couleur d&#39;arrière-plan" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-50" vertex="1">
+          <mxGeometry y="116" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="_TAQ-DB9neTHVlq3e2sU-55" value="Couleur du texte" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" parent="_TAQ-DB9neTHVlq3e2sU-50" vertex="1">
+          <mxGeometry y="146" width="120" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
