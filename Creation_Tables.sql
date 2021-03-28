@@ -161,12 +161,12 @@ INSERT INTO `t_apercu`(ID_apercu, apercu_symbole, apercu_nom, apercu_prix_reel, 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /* --Peuplement de la table Statistique-- */
 INSERT INTO `t_theme`(ID_theme, theme_nom, theme_police, theme_couleur_arriere_plan, theme_couleur_texte) VALUES
-(),
-();
+(0, Clair),
+(1, Sombre);
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /* --Peuplement de la table Statistique-- */
 INSERT INTO `t_utilisateur`(ID_utilisateur, utilisateur_nom_utilisateur, utilisateur_mdp, utilisateur_courriel, utilisateur_prenom, utilisateur_nom, utilisateur_age, utilisateur_sexe, utilisateur_theme, utilisateur_privilege, utilisateur_date_creation) VALUES
 (0, "matreurai", "123456", "saaub15@ulaval.ca", "Samuel", "Aubert", 27, 'H', 0, 1, now()),
-(1, "cactusman", "123456", "@ulaval.ca", "Christopher", "Godin", 27, 'H', 0, 1, now()),
-(2, "jarvis", "123456", "@ulaval.ca", "David", "Bolduc", 28, 'H', 0, 1, now());
+(1, "cactusman", "123456", "chgod54@ulaval.ca", "Christopher", "Godin", 22, 'H', 0, 1, now()),
+(2, "jarvis", "123456", "dabol66@ulaval.ca", "David", "Bolduc", 28, 'H', 0, 1, now());
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
