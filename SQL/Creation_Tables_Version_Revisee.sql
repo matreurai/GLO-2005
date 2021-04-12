@@ -1,7 +1,7 @@
 /* --Creation de la base de donnees GLO-2005 -- */
 CREATE DATABASE `GLO-2005-Projet`;
 USE `GLO-2005-Projet`;
---------------------------------------------------
+/*--------------------------------------------------*/
 
 /* --Creation de la table Projet-- */
 CREATE TABLE IF NOT EXISTS `t_projet`
@@ -21,7 +21,7 @@ ALTER TABLE `t_projet` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
--------------------------------------------------------------------------------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* --Creation de la table Cryptomonnaie-- */
 CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
@@ -47,7 +47,7 @@ ALTER TABLE `t_cryptomonnaie` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 CREATE INDEX `idx_projet` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
-------------------------------------------------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------------------------------------------------*/
 
 /* --Creation de la table Titre-- */
 CREATE TABLE IF NOT EXISTS `t_titre`
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `t_titre`
 ALTER TABLE `t_titre` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
----------------------------------------------------------------------------------------------------------------------
+/*---------------------------------------------------------------------------------------------------------------------*/
 
 /* --Creation de la table Portfolio-- */
 CREATE TABLE IF NOT EXISTS `t_portfolio`
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `t_portfolio`
 ALTER TABLE `t_portfolio` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
--------------------------------------------------------------------------------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* --Creation de la table Alerte-- */
 CREATE TABLE IF NOT EXISTS `t_alerte`
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `t_alerte`
 ALTER TABLE `t_alerte` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
--------------------------------------------------------------------------------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* --Creation de la table Utilisateur-- */
 CREATE TABLE IF NOT EXISTS `t_utilisateur`
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `t_utilisateur`
 ALTER TABLE `t_utilisateur` ENGINE InnoDB 
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-----------------------------------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------------------------------------------------*/
 
 /* -------------------------------------------------------------------------------------------------------------------------- 
                 -- EXEMPLE --
