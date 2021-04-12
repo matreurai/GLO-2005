@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS `t_projet`
     `projet_start_date` DATE,
     `projet_forage_possible` BOOLEAN,
 
-    PRIMARY KEY(`projet_ticker`)
+    PRIMARY KEY(`projet_ticker`),
+    UNIQUE(`projet_ticker`)
 );
 
 ALTER TABLE `t_projet` ENGINE InnoDB
@@ -52,14 +53,17 @@ CREATE INDEX `idx_projet` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
 /* --Creation de la table Titre-- */
 CREATE TABLE IF NOT EXISTS `t_titre`
 (
-    `titre_ticker` VARCHAR(9) NOT NULL,
-    `titre_qte` INT,
+    `titre_crypto_id` SMALLINT NOT NULL,
+    `titre_portfolio_id` SMALLINT,
+    `titre_qte` INT DEFAULT 1,
     `titre_prix_paye` DECIMAL(13,4),
     `titre_valeur_courante` DECIMAL(13,4),
-    `titre_profits` DECIMAL(13,4),
+    `titre_prix_moyen_paye` DECIMAL(13,4),
     `titre_ratio_%` FLOAT,
 
-    FOREIGN KEY(`titre_ticker`) REFERENCES `t_projet`(`projet_ticker`)
+    PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
+    FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
+    FOREIGN KEY(`titre_portfolio_id`) REFERENCES `t_portfolio`(`portfolio_id`)
 );
 
 ALTER TABLE `t_titre` ENGINE InnoDB
@@ -90,16 +94,16 @@ COLLATE utf8mb4_unicode_ci;
 /* --Creation de la table Alerte-- */
 CREATE TABLE IF NOT EXISTS `t_alerte`
 (
-    `alerte_id`          TINYINT NOT NULL AUTO_INCREMENT,
-    `alerte_user`        SMALLINT,
-    `alerte_ticker`      VARCHAR(25),
+    `alerte_id` TINYINT NOT NULL AUTO_INCREMENT,
+    `alerte_user` SMALLINT,
+    `alerte_ticker` VARCHAR(25),
     `alerte_below_price` DECIMAL(13, 4),
     `alerte_above_price` DECIMAL(13, 4),
-    `alerte_end_date`    DATE,
+    `alerte_end_date` DATE,
 
     PRIMARY KEY (`alerte_id`),
-    FOREIGN KEY (`alerte_ticker`) REFERENCES `t_projet` (projet_ticker),
-    FOREIGN KEY (`alerte_user`) REFERENCES `t_utilisateur` (utilisateur_id)
+    FOREIGN KEY (`alerte_ticker`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_ticker`),
+    FOREIGN KEY (`alerte_user`) REFERENCES `t_utilisateur`(`utilisateur_id`)
 );
 
 ALTER TABLE `t_alerte` ENGINE InnoDB
