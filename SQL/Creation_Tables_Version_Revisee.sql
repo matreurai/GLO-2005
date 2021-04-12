@@ -90,14 +90,16 @@ COLLATE utf8mb4_unicode_ci;
 /* --Creation de la table Alerte-- */
 CREATE TABLE IF NOT EXISTS `t_alerte`
 (
-    `alerte_id` TINYINT NOT NULL AUTO_INCREMENT,
-    `alerte_ticker` VARCHAR(25),
-    `alerte_below_price` DECIMAL(13,4),
-    `alerte_above_price` DECIMAL(13,4),
-    `alerte_end_date` DATE,
+    `alerte_id`          TINYINT NOT NULL AUTO_INCREMENT,
+    `alerte_user`        SMALLINT,
+    `alerte_ticker`      VARCHAR(25),
+    `alerte_below_price` DECIMAL(13, 4),
+    `alerte_above_price` DECIMAL(13, 4),
+    `alerte_end_date`    DATE,
 
-    PRIMARY KEY(`alerte_id`),
-    FOREIGN KEY(`alerte_ticker`) REFERENCES `t_projet`(projet_ticker)
+    PRIMARY KEY (`alerte_id`),
+    FOREIGN KEY (`alerte_ticker`) REFERENCES `t_projet` (projet_ticker),
+    FOREIGN KEY (`alerte_user`) REFERENCES `t_utilisateur` (utilisateur_id)
 );
 
 ALTER TABLE `t_alerte` ENGINE InnoDB
