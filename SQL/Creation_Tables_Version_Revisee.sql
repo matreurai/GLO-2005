@@ -1,6 +1,6 @@
 /* --Creation de la base de donnees GLO-2005 -- */
 CREATE DATABASE `GLO-2005-Projet`;
-USE `GLO-2005`;
+USE `GLO-2005-Projet`;
 --------------------------------------------------
 
 /* --Creation de la table Projet-- */
@@ -29,10 +29,10 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
     `cryptomonnaie_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `cryptomonnaie_ticker` VARCHAR(9) NOT NULL,
     `cryptomonnaie_nom_du_coin` VARCHAR(20),
-    `cryptomonnaie_prix_actuel` FLOAT NOT NULL,
-    `cryptomonnaie_prix_haut` FLOAT,
-    `cryptomonnaie_prix_bas` FLOAT,
-    `cryptomonnaie_Valeur_cad` FLOAT,
+    `cryptomonnaie_prix_actuel` DECIMAL(13,4) NOT NULL,
+    `cryptomonnaie_prix_haut` DECIMAL(13,4),
+    `cryptomonnaie_prix_bas` DECIMAL(13,4),
+    `cryptomonnaie_Valeur_cad` DECIMAL(13,4),
     `cryptomonnaie_market_cap` BIGINT,
     `cryptomonnaie_max_supply` BIGINT,
     `cryptomonnaie_qte_circulation` BIGINT,
@@ -54,9 +54,9 @@ CREATE TABLE IF NOT EXISTS `t_titre`
 (
     `titre_ticker` VARCHAR(9) NOT NULL,
     `titre_qte` INT,
-    `titre_prix_paye` FLOAT,
-    `titre_valeur_courante` FLOAT,
-    `titre_profits` FLOAT,
+    `titre_prix_paye` DECIMAL(13,4),
+    `titre_valeur_courante` DECIMAL(13,4),
+    `titre_profits` DECIMAL(13,4),
     `titre_ratio_%` FLOAT,
 
     FOREIGN KEY(`titre_ticker`) REFERENCES `t_projet`(`projet_ticker`)
@@ -71,13 +71,15 @@ COLLATE utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS `t_portfolio`
 (
     `portfolio_id` SMALLINT NOT NULL,
-    `portfolio_balance` FLOAT,
-    `portfolio_profit_total` FLOAT,
-    `portfolio_cout_total` FLOAT,
+    `portfolio_user` SMALLINT NOT NULL,
+    `portfolio_balance` DECIMAL(13,4),
+    `portfolio_profit_total` DECIMAL(13,4),
+    `portfolio_cout_total` DECIMAL(13,4),
     `portfolio_qte_coin_diff` SMALLINT,
     `portfolio_ratio_%` FLOAT,
 
-    PRIMARY KEY(`portfolio_id`)
+    PRIMARY KEY(`portfolio_id`),
+    FOREIGN KEY(portfolio_user) REFERENCES `t_utilisateur`(`utilisateur_id`)
 );
 
 ALTER TABLE `t_portfolio` ENGINE InnoDB
@@ -89,10 +91,10 @@ COLLATE utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS `t_alerte`
 (
     `alerte_id` TINYINT NOT NULL AUTO_INCREMENT,
-    `alerte_ticker` VARCHAR(25) NOT NULL,
-    `alerte_below_price` VARCHAR(20) NOT NULL,
-    `alerte_above_price` VARCHAR(7) NOT NULL,
-    `alerte_end_date` VARCHAR(7) NOT NULL,
+    `alerte_ticker` VARCHAR(25),
+    `alerte_below_price` DECIMAL(13,4),
+    `alerte_above_price` DECIMAL(13,4),
+    `alerte_end_date` DATE,
 
     PRIMARY KEY(`alerte_id`),
     FOREIGN KEY(`alerte_ticker`) REFERENCES `t_projet`(projet_ticker)
