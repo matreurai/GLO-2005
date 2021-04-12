@@ -1,7 +1,7 @@
 /* --Creation de la base de donnees GLO-2005 -- */
 CREATE DATABASE `GLO-2005-Projet`;
 USE `GLO-2005`;
--------------------------------------------------
+--------------------------------------------------
 
 /* --Creation de la table Projet-- */
 CREATE TABLE IF NOT EXISTS `t_projet`
