@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
     <!-- Inclusion Fichier CSS Custom-->
-    <link rel="stylesheet" href="../CSS/Profile.css">
+    <link rel="stylesheet" href="../CSS/Alerts.css">
 
     <title>Crypt-O-Watch | Your Crypto Wallet</title>
     <link rel="icon" href="../Images/logo.PNG" type="image/icon type">
@@ -67,67 +67,69 @@
       </div>
     </nav>
 
-    
-    <!-- Form de My Profile -->
-    <div id="containerFormProfile" class="container shadow-lg p-4 my-4" style="background-color: white;">  
-      <div>
-        <h2 class="pt-2 text-start mb-0" style="color: #e9c46a;">My Profile</h2>
-        <p id="overview" class="pt-0 pb-4 mb-4 text-start">Overview</p>
+    <!-- Main Contain -->
+    <div id="containerFormSignUp" class="container shadow-lg pb-4 my-4" style="background-color: white;">  
+      <header class="row mb-4" id="containerFormSignUpHeader">
+        <h2 class="pt-4 text-center mb-0">My Alerts</h2>
+        <p id="welcome" class="pt-0 pb-2 mb-4 text-center">Don't miss out!</p>
+      </header>
+      <div class="content">
+        <form id="manage_alerts_acc_form" method="post" action="">
+          <input type="hidden" name="unique_id" value="#">
+          <input type="hidden" name="action" value="manage_alerts_acc">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" class="text-center">Coin</th>
+                <th scope="col" class="text-center">Above </th>
+                <th scope="col" class="text-center">Below </th>
+                <th scope="col" class="text-center">Valid Until </th>
+                <th scope="col" class="text-end">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" colspan="1">1</th>
+                <td colspan="" class="text-center">ADA</td>
+                <td colspan="" class="text-center">2.30$</td>
+                <td colspan="" class="text-center">1.30$</td>
+                <td colspan="" class="text-center">2021-08-29</td>
+                <td class="text-end">
+                  <a href="#">Delete</a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" colspan="1">2</th>
+                <td colspan="" class="text-center">VET</td>
+                <td colspan="" class="text-center">0.30$</td>
+                <td colspan="" class="text-center">0.10$</td>
+                <td colspan="" class="text-center">2021-08-29</td>
+                <td class="text-end">
+                  <a href="#">Delete</a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" colspan="1">3</th>
+                <td colspan="" class="text-center">PHB</td>
+                <td colspan="" class="text-center">0.50$</td>
+                <td colspan="" class="text-center">0.30$</td>
+                <td colspan="" class="text-center">2021-08-29</td>
+                <td class="text-end">
+                  <a href="#">Delete</a>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="18" align="middle"><button id="add_alert" type="button" class="btn btn-warning" >Create an Alert</button></td>
+                </tr>
+            </tbody>
+          </table>
+        </form>
+        
       </div>
-      <div>
-        <table class="table table-hover">
-          <tbody>
-            <tr>
-              <th scope="row" colspan="1">Username</th>
-              <td colspan="2" class="text-begin">Username</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Email</th>
-              <td colspan="2" class="text-begin">Email</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Password</th>
-              <td colspan="2" class="text-begin">*****************</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">First Name</th>
-              <td colspan="2" class="text-begin">First Name</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Last Name</th>
-              <td colspan="2" class="text-begin">Name</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Phone</th>
-              <td colspan="2" class="text-begin">(514)-123-4567</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Account Creation Date</th>
-              <td colspan="2"></td>
-              <td class="text-end">2021-04-12</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>  
     </div>
+
+
 
       <!-- Menu du bas | Menu-->
       <div class="footer">
@@ -135,13 +137,13 @@
       </div>
 
 
-
+    
     <!-- JavaScript -->   
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     
-  
+       
   </body>
 </html>
