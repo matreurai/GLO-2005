@@ -50,46 +50,30 @@ COLLATE utf8mb4_unicode_ci;
 CREATE INDEX `idx_projet` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-/* --Creation de la table Titre-- */
-CREATE TABLE IF NOT EXISTS `t_titre`
+/* --Creation de la table Utilisateur-- */
+CREATE TABLE IF NOT EXISTS `t_utilisateur`
 (
-    `titre_crypto_id` SMALLINT NOT NULL,
-    `titre_portfolio_id` SMALLINT,
-    `titre_qte` INT DEFAULT 1,
-    `titre_prix_paye` DECIMAL(13,4),
-    `titre_valeur_courante` DECIMAL(13,4),
-    `titre_prix_moyen_paye` DECIMAL(13,4),
-    `titre_ratio_%` FLOAT,
+    `utilisateur_id` SMALLINT NOT NULL AUTO_INCREMENT,
+    `utilisateur_username` VARCHAR(20) NOT NULL,
+    `utilisateur_password` VARCHAR(20) NOT NULL,
+    `utilisateur_email` VARCHAR(40) NOT NULL,
+    `utilisateur_phone` VARCHAR(20),
+    `utilisateur_prenom` VARCHAR(30),
+    `utilisateur_nom` VARCHAR(40),
+    `utilisateur_age` TINYINT,
+    `utilisateur_sexe` VARCHAR(15),
+    `utilisateur_date_creation` DATE NOT NULL,
 
-    PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
-    FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
-    FOREIGN KEY(`titre_portfolio_id`) REFERENCES `t_portfolio`(`portfolio_id`)
+    PRIMARY KEY(`utilisateur_id`),
+    UNIQUE(`utilisateur_username`),
+    UNIQUE(`utilisateur_email`),
+    UNIQUE(`utilisateur_phone`)
 );
 
-ALTER TABLE `t_titre` ENGINE InnoDB
+ALTER TABLE `t_utilisateur` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-/*---------------------------------------------------------------------------------------------------------------------*/
-
-/* --Creation de la table Portfolio-- */
-CREATE TABLE IF NOT EXISTS `t_portfolio`
-(
-    `portfolio_id` SMALLINT NOT NULL,
-    `portfolio_user` SMALLINT NOT NULL,
-    `portfolio_balance` DECIMAL(13,4),
-    `portfolio_profit_total` DECIMAL(13,4),
-    `portfolio_cout_total` DECIMAL(13,4),
-    `portfolio_qte_coin_diff` SMALLINT,
-    `portfolio_ratio_%` FLOAT,
-
-    PRIMARY KEY(`portfolio_id`),
-    FOREIGN KEY(portfolio_user) REFERENCES `t_utilisateur`(`utilisateur_id`)
-);
-
-ALTER TABLE `t_portfolio` ENGINE InnoDB
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
-/*-------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------*/
 
 /* --Creation de la table Alerte-- */
 CREATE TABLE IF NOT EXISTS `t_alerte`
@@ -111,30 +95,45 @@ CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
-/* --Creation de la table Utilisateur-- */
-CREATE TABLE IF NOT EXISTS `t_utilisateur`
+/* --Creation de la table Portfolio-- */
+CREATE TABLE IF NOT EXISTS `t_portfolio`
 (
-    `utilisateur_id` SMALLINT NOT NULL AUTO_INCREMENT,
-    `utilisateur_username` VARCHAR(20) NOT NULL,
-    `utilisateur_password` VARCHAR(20) NOT NULL,
-    `utilisateur_email` VARCHAR(40) NOT NULL,
-    `utilisateur_phone` VARCHAR(20),
-    `utilisateur_prenom` VARCHAR(30),
-    `utilisateur_nom` VARCHAR(40),
-    `utilisateur_age` TINYINT,
-    `utilisateur_sexe` VARCHAR(15),
-    `utilisateur_date_creation` DATE NOT NULL,
+    `portfolio_id` SMALLINT NOT NULL,
+    `portfolio_user` SMALLINT NOT NULL,
+    `portfolio_balance` DECIMAL(13,4),
+    `portfolio_profit_total` DECIMAL(13,4),
+    `portfolio_cout_total` DECIMAL(13,4),
+    `portfolio_qte_coin_diff` SMALLINT,
+    `portfolio_ratio_%` FLOAT,
 
-    PRIMARY KEY(`utilisateur_id`),
-    UNIQUE(`utilisateur_username`),
-    UNIQUE(`utilisateur_email`),
-    UNIQUE(`utilisateur_phone`)
+    PRIMARY KEY(`portfolio_id`),
+    FOREIGN KEY(portfolio_user) REFERENCES `t_utilisateur`(`utilisateur_id`)
 );
 
-ALTER TABLE `t_utilisateur` ENGINE InnoDB 
+ALTER TABLE `t_portfolio` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-/*----------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------------*/
+
+/* --Creation de la table Titre-- */
+CREATE TABLE IF NOT EXISTS `t_titre`
+(
+    `titre_crypto_id` SMALLINT NOT NULL,
+    `titre_portfolio_id` SMALLINT,
+    `titre_qte` INT DEFAULT 1,
+    `titre_valeur_courante` DECIMAL(13,4),
+    `titre_prix_moyen_paye` DECIMAL(13,4),
+    `titre_ratio_%` FLOAT,
+
+    PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
+    FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
+    FOREIGN KEY(`titre_portfolio_id`) REFERENCES `t_portfolio`(`portfolio_id`)
+);
+
+ALTER TABLE `t_titre` ENGINE InnoDB
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+/*---------------------------------------------------------------------------------------------------------------------*/
 
 /* -------------------------------------------------------------------------------------------------------------------------- 
                 -- EXEMPLE --
