@@ -3,60 +3,43 @@
 # David Bolduc
 #-------------------------------
 
-import requests
 import json
 import http.client
-import API.connect_SQL
-from flask import Flask ,
+from flask import Flask ,render_template , request
 from flask_mysqldb import MySQL
+import MySQLdb
+from API.time_stamp import *
 
+# Init App
 app = Flask(__name__)
+# Init Server
+db = MySQLdb.connect("localhost","root","eAXt)cdncT%Wv5}RVb!_,f]S","GLO-2005-Projet")
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'GLO-2005-projet'
+# Def du cursor
+cur = db.cursor()
 
-mysql = MySQL(app)
+#Route de la page home
+@app.route('/Home')
+# time stamp
 
-@approute('/')
-def index():
-      return render_template('home.html')
+def mise_a_jour():
+      return None
 
 if __name__ == '__main__':
       app.run(debug=True)
 
-
-url = "https://api.binance.com/wapi/v3/systemStatus.html"
-
-payload={}
-headers = {
-  'Content-Type': 'application/json'
-}
-
-response = requests.request("GET", url, headers=headers, data=payload)
-
-print(response.text)
-
-
-
-conn = http.client.HTTPSConnection("api.binance.com")
-payload = ''
-headers = {
-  'Content-Type': 'application/json'
-}
-conn.request("GET", "/api/v3/ticker/24hr?symbol=BTCUSDT", payload, headers)
-res = conn.getresponse()
-data = res.read()
-print(data.decode("utf-8"))
-
-url = "https://api.binance.com/api/v3/exchangeInfo"
-
-payload={}
-headers = {
-  'Content-Type': 'application/json'
-}
-
-response = requests.request("GET", url, headers=headers, data=payload)
-
-print(response.text)
+def exchange_dict ():
+  conn = http.client.HTTPSConnection("api.binance.com")
+  payload = ''
+  headers = {
+    'Content-Type': 'application/json'
+  }
+  conn.request("GET", "/api/v3/exchangeInfo", payload, headers)
+  res = conn.getresponse()
+  data = res.read()
+  transfor = data.decode("utf-8")
+  exchange_dict = json.loads(transfor)
+  print (type(exchange_dict['symbols']))
+  
+  for stocks in exchange_dict['symbols']:
+    return (stocks['symbol'])
