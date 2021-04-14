@@ -167,7 +167,7 @@
                     <button class="btn btn-sm btn-outline-secondary m-2 d-none d-lg-inline" type="button">Zones</button>
                 </div>
                 <div class=" d-inline-flex">
-                    <input id="search_bar" class="form-control me-2 text-start" type="search" placeholder="&#128269;" aria-label="Search">
+                    <input id="search_bar" class="form-control me-2 text-start" type="search" placeholder="&#128269;" aria-label="Search" maxlength="10">
                 </div>
                 </nav>
                 <table id="table_des_stocks" class="table table-hover table-light table-striped justify-content-center">
@@ -433,10 +433,10 @@
 
         <div id="container_login_info" class="container">
           <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <input type="text" placeholder="Enter Username" name="uname" required minlength="4" maxlength="20">
 
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <input type="password" placeholder="Enter Password" name="psw" required minlength="8" maxlength="20">
             
           <button id="button_login" type="submit">Login</button>
           <label>
