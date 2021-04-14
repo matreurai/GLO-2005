@@ -1,29 +1,16 @@
 /* -- Les différentes polices -- */
 /*
-    font-family: 'Aladin', cursive;
-
     font-family: 'Goldman', cursive;
-
-    font-family: 'Gugi', cursive;
-
-    font-family: 'Michroma', sans-serif;
-
-    font-family: 'Oswald', sans-serif;
-
     font-family: 'Roboto', sans-serif;
 */
 /* -- La palette couleurs -- */
 /* 
+white
 #ebebeb
-#1D353E
-#23404B
-#264653
 #3D3D3D
 #1f1f1f
-#2a9d8f
 #e9c46a
-#f4a261
-#e76f51
+#e2b33c
 */
 /* Background Général */
 body {
@@ -49,7 +36,7 @@ body {
 	color: #e9c46a;
 }
 /* Main Contenu de la page */
-/* Three columns side by side */
+/* 3 colonnes cote à cote */
 .column {
 	float: left;
 	width: 33.3%;
@@ -57,7 +44,7 @@ body {
 	padding: 0 8px;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
+/* Permet d'afficher les colonnes une en dessous des autres pour les plus petits écrans */
 @media screen and (max-width: 650px) {
 	.column {
 		width: 100%;
@@ -65,18 +52,15 @@ body {
 	}
 }
 
-/* Add some shadows to create a card effect */
+/* Effet d'ombrage */
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Some left and right padding inside the container */
 #carte_contact {
 	padding: 0 16px;
 	background-color: white;
 }
-
-/* Clear floats */
 .container::after,
 .row::after {
 	content: "";
@@ -161,7 +145,7 @@ span.psw {
 	padding-top: 16px;
 }
 
-/* The Modal (background) */
+/* Modal (background) */
 .modal {
 	display: none; /* Caché par Defaut */
 	position: fixed; /* Position Fixe */
@@ -170,13 +154,13 @@ span.psw {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto; /* Enable scroll if needed */
+	overflow: auto; /* Autorise l'utilisateur à scroller si nécessaire */
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.4);
 	padding-top: 60px;
 }
 
-/* Modal Content/Box */
+/* Modal Contenu */
 .modal-content {
 	background-color: #1f1f1f;
 	margin: 5% auto 15% auto; /* 5% du haut, 15% du bas et centré */
@@ -235,7 +219,7 @@ span.psw {
 	-webkit-animation: animatezoom 0.6s;
 	animation: animatezoom 0.6s;
 }
-
+/* Pour le browser Safari */
 @-webkit-keyframes animatezoom {
 	from {
 		-webkit-transform: scale(0);

@@ -1,29 +1,16 @@
 /* -- Les différentes polices -- */
 /*
-    font-family: 'Aladin', cursive;
-
     font-family: 'Goldman', cursive;
-
-    font-family: 'Gugi', cursive;
-
-    font-family: 'Michroma', sans-serif;
-
-    font-family: 'Oswald', sans-serif;
-
     font-family: 'Roboto', sans-serif;
 */
 /* -- La palette couleurs -- */
 /* 
+white
 #ebebeb
-#1D353E
-#23404B
-#264653
 #3D3D3D
 #1f1f1f
-#2a9d8f
 #e9c46a
-#f4a261
-#e76f51
+#e2b33c
 */
 /* Background Général */
 body {
@@ -180,7 +167,7 @@ span.psw {
 	padding-top: 16px;
 }
 
-/* The Modal (background) */
+/*  Modal (background) */
 .modal {
 	display: none; /* Caché par Defaut */
 	position: fixed; /* Position Fixe */
@@ -189,13 +176,13 @@ span.psw {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto; /* Enable scroll if needed */
+	overflow: auto; /* Autorise l'utilisateur à scroller si nécessaire */
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.4);
 	padding-top: 60px;
 }
 
-/* Modal Content/Box */
+/* Modal Contenu */
 .modal-content {
 	background-color: #1f1f1f;
 	margin: 5% auto 15% auto; /* 5% du haut, 15% du bas et centré */
@@ -254,7 +241,7 @@ span.psw {
 	-webkit-animation: animatezoom 0.6s;
 	animation: animatezoom 0.6s;
 }
-
+/* Pour le browser Safari */
 @-webkit-keyframes animatezoom {
 	from {
 		-webkit-transform: scale(0);
@@ -263,7 +250,6 @@ span.psw {
 		-webkit-transform: scale(1);
 	}
 }
-
 @keyframes animatezoom {
 	from {
 		transform: scale(0);
@@ -288,7 +274,7 @@ span.psw {
 #engage_bas h2 {
 	color: #e9c46a;
 }
-
+/* Pour le Menu du bas */
 #menu_bas_join_now_button {
 	background-color: #e2b33c;
 	color: #1f1f1f;

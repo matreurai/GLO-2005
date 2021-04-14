@@ -7,7 +7,7 @@
     
     <!-- Polices de texte -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!-- Aladin, Goldman, Gugi, Michroma, Oswald  -->
+    <!-- Roboto, Goldman -->
     <link href="https://fonts.googleapis.com/css2?family=Aladin&family=Goldman&family=Gugi&family=Michroma&family=Oswald:wght@200&family=Roboto&display=swap" rel="stylesheet"> 
 
 
@@ -24,6 +24,7 @@
   </head>
   
   <body id="page_body" class="">
+
     <!-- Barre de Navigation -->
     <section class="">
       <div>
@@ -61,7 +62,7 @@
       </div>
     </nav>
 
-    <!-- Sign Up Form -->
+    <!-- Section SignUp -->
   <div id="containerFormSignUp" class="container shadow-lg p-4 my-4" style="background-color: white;">  
     <form>
       <div>
@@ -144,10 +145,10 @@
     
     <!-- Fonction permettant de fermer la fenetre login en cliquant en dehors du cadre -->
     <script>
-      // Get the modal
+      // Interaction avec element HTML pour le Modal
       var modal = document.getElementById('id01');
       
-      // When the user clicks anywhere outside of the modal, close it
+      // Evenement specifique - Quand l'utilisateur clique en dehors de la fenetre, fermer la fenetre
       window.onclick = function(event) {
           if (event.target == modal) {
               modal.style.display = "none";

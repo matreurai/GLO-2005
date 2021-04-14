@@ -7,7 +7,7 @@
     
     <!-- Polices de texte -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!-- Aladin, Goldman, Gugi, Michroma, Oswald  -->
+    <!-- Roboto, Goldman -->
     <link href="https://fonts.googleapis.com/css2?family=Aladin&family=Goldman&family=Gugi&family=Michroma&family=Oswald:wght@200&family=Roboto&display=swap" rel="stylesheet"> 
 
 
@@ -124,7 +124,7 @@
     </section>
 
        
-    <!-- Affichage de la ligne de texte de pub -->
+    <!-- Affichage de la ligne de texte défilante de pub -->
       <div class="row col text-center pt-4">
         <div class="tcontainer px-0 mx-0">
           <div class="ticker-wrap">
@@ -382,7 +382,7 @@
       </p>
     </div>
 
-    <!-- Menu du bas | Call to arm-->
+    <!-- Menu du bas | Call -->
     <div class="footer">
       <div id="engage_bas" class="text-center p-4">
         <h2 class="p-4">Be Your Own Bank</h2>
@@ -456,32 +456,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    
-    <!-- Fonction permettant de fermer la fenetre login en cliquant en dehors du cadre -->
-    <script>
-      // Get the modal
-      var modal = document.getElementById('id01');
-      
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-    </script>
+
 
     <!-- Fonction permettant de fermer la fenetre login en cliquant en dehors du cadre -->
     <script>
-      // Get the modal
+      // Interaction avec element HTML pour le Modal
       var modal = document.getElementById('id01');
       
-      // When the user clicks anywhere outside of the modal, close it
+      // Evenement specifique - Quand l'utilisateur clique en dehors de la fenetre, fermer la fenetre
       window.onclick = function(event) {
           if (event.target == modal) {
               modal.style.display = "none";
           }
       }
     </script>
-    </script>   
+   
   </body>
 </html>
