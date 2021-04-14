@@ -1,0 +1,122 @@
+/* -- Les différentes polices -- */
+/*
+    font-family: 'Aladin', cursive;
+
+    font-family: 'Goldman', cursive;
+
+    font-family: 'Gugi', cursive;
+
+    font-family: 'Michroma', sans-serif;
+
+    font-family: 'Oswald', sans-serif;
+
+    font-family: 'Roboto', sans-serif;
+*/
+/* -- La palette couleurs -- */
+/* 
+#ebebeb
+#1D353E
+#23404B
+#264653
+#3D3D3D
+#1f1f1f
+#2a9d8f
+#e9c46a
+#f4a261
+#e76f51
+*/
+/* Background Général */
+body {
+	background-color: #ebebeb;
+	font-family: 'Roboto', sans-serif;
+}
+
+/* Logo de la Navbar en haut à gauche */
+#mainNavbar {
+	background-color: #1f1f1f;
+}
+#mainNavbar .navbar-brand {
+	font-family: 'Goldman', cursive;
+	color: #e9c46a;
+	font-size: 2em;
+}
+#mainNavbar .nav-link {
+	color: white;
+}
+#mainNavbar .nav-link:hover {
+	color: #e9c46a;
+}
+
+#HomeQuoteDown {
+	color: #1f1f1f;
+	font-family: 'Goldman', cursive;
+}
+#QuoteBox {
+	background-color: transparent;
+}
+
+/* Formulaire de My Profile */
+@media screen and (max-width: 450px) {
+	#containerFormProfile {
+		width: 95%;
+	}
+}
+@media screen and (min-width: 768px) {
+	#containerFormProfile {
+		width: 70%;
+	}
+}
+@media screen and (min-width: 1024px) {
+	#containerFormProfile {
+		width: 50%;
+	}
+}
+#button_signUp {
+	background-color: #e2b33c;
+	color: #1f1f1f;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+#button_signUp:hover {
+	opacity: 0.8;
+	color: #ebebeb;
+}
+#button_alreadyRegister {
+	background-color: #e2b33c;
+	color: #999999;
+	padding: 2px 2px;
+	margin: 1px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+#button_alreadyRegister:hover {
+	opacity: 0.8;
+	color: #e2b33c;
+}
+#overview {
+	color: #999999;
+}
+#terms_of_service {
+	text-decoration: none;
+	color: #e2b33c;
+}
+#terms_of_service:hover {
+	text-decoration: underline;
+	color: #e9c46a;
+}
+#caseAgree:checked {
+	background-color: #e9c46a;
+}
+
+/* --------------------------------------------------------------------------- */
+
+#copyrights {
+	color: #1f1f1f;
+	background-color: transparent;
+}

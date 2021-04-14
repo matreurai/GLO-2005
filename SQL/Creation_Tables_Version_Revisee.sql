@@ -60,8 +60,6 @@ CREATE TABLE IF NOT EXISTS `t_utilisateur`
     `utilisateur_phone` VARCHAR(20),
     `utilisateur_prenom` VARCHAR(30),
     `utilisateur_nom` VARCHAR(40),
-    `utilisateur_age` TINYINT,
-    `utilisateur_sexe` VARCHAR(15),
     `utilisateur_date_creation` DATE NOT NULL,
 
     PRIMARY KEY(`utilisateur_id`),
