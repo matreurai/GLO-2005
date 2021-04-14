@@ -1,8 +1,3 @@
-#-------------------------------
-# Test API Binance
-# David Bolduc
-#-------------------------------
-
 from flask import Flask, jsonify, request, render_template
 
 

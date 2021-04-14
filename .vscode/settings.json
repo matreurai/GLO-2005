@@ -9,7 +9,7 @@
             "port": 3306,
             "driver": "MySQL",
             "name": "Glo-2005-TP",
-            "database": "projet_glo",
+            "database": "GLO-2005-Projet",
             "username": "root",
             "password": "eAXt)cdncT%Wv5}RVb!_,f]S"
         }
