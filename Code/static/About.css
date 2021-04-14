@@ -46,17 +46,17 @@ body {
 	background-size: cover;
 }
 .big_image_1 {
-	background-image: url("../Images/hans-eiskonen-wn57cSQ7VzI-unsplash.jpg");
+	background-image: url("../static/hans-eiskonen-wn57cSQ7VzI-unsplash.jpg");
 	min-height: 400px;
 }
 
 .big_image_2 {
-	background-image: url("../Images/man-3126802_960_720.jpg");
+	background-image: url("../static/man-3126802_960_720.jpg");
 	min-height: 400px;
 }
 
 .big_image_3 {
-	background-image: url("../Images/cryptocurrency-3435863_960_720.jpg");
+	background-image: url("../static/cryptocurrency-3435863_960_720.jpg");
 	min-height: 400px;
 }
 
