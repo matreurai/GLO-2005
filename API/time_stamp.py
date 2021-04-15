@@ -22,5 +22,4 @@ def timestampe_15min():
         nextTime = currentTime_timestamp + 900  # 15min = 900 seconds
         return (str(datetime.fromtimestamp(nextTime).strftime("%Y-%m-%d %H:%M:%S")))
         # time.sleep(900)  # call the api every 15 minutes
-
 # print ('now:', timestampe_now(), 'later:', timestampe_15min())
