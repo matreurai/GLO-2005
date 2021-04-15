@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `t_utilisateur`
 (
     `utilisateur_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `utilisateur_username` VARCHAR(20) NOT NULL,
-    `utilisateur_password` VARCHAR(20) NOT NULL,
+    `utilisateur_password` VARCHAR(128) NOT NULL,
     `utilisateur_email` VARCHAR(40) NOT NULL,
     `utilisateur_phone` VARCHAR(20),
     `utilisateur_prenom` VARCHAR(30),
@@ -132,47 +132,3 @@ ALTER TABLE `t_titre` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 /*---------------------------------------------------------------------------------------------------------------------*/
-
-/* -------------------------------------------------------------------------------------------------------------------------- 
-                -- EXEMPLE --
- --Peuplement de la table NOMDELATABLE-- 
-
-INSERT INTO `t_NOMDELATABLE`(attribut1, attribut2, attribut3, etc) VALUES
-(valeur1, valeur2, valeur3, etc),
-(valeur1, valeur2, valeur3, etc),
-(valeur1, valeur2, valeur3, etc),
-(valeur1, valeur2, valeur3, etc),
-(valeur1, valeur2, valeur3, etc),
-(valeur1, valeur2, valeur3, etc),
-(valeur1, valeur2, valeur3, etc);
-
- -------------------------------------------------------------------------------------------------------------------------- */
-
-/* --Peuplement de la table Statistique-- */
-INSERT INTO `t_statistique`(symbole_statistique, statistique_capitalisation_boursiere, statistique_volume_max, statistique_quantite_circulation, statistique_volume_24h) VALUES
-(),
-();
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/* --Peuplement de la table Statistique-- */
-INSERT INTO `t_information`(nom_information, information_symbole, information_secteur_activite, information_date_entree_marche, information_description, information_minee) VALUES
-(),
-();
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/* --Peuplement de la table Statistique-- */
-INSERT INTO `t_portefeuille`(ID_portefeuille, portefeuille_symbole, portefeuille_quantite_possedee, portefeuille_prix_achat, portefeuille_gains, portefeuille_diff_achat_courant) VALUES
-(),
-();
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/* --Peuplement de la table Statistique-- */
-INSERT INTO `t_apercu`(ID_apercu, apercu_symbole, apercu_nom, apercu_prix_reel, apercu_prix_haut, apercu_prix_bas, apercu_valeur_cad, apercu_valeur_us) VALUES
-(),
-();
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/* --Peuplement de la table Statistique-- */
-INSERT INTO `t_utilisateur`(ID_utilisateur, utilisateur_nom_utilisateur, utilisateur_mdp, utilisateur_courriel, utilisateur_prenom, utilisateur_nom, utilisateur_age, utilisateur_sexe, utilisateur_theme, utilisateur_privilege, utilisateur_date_creation) VALUES
-(0, "matreurai", "123456", "saaub15@ulaval.ca", "Samuel", "Aubert", 27, 'H', 0, 1, now()),
-(1, "cactusman", "123456", "chgod54@ulaval.ca", "Christopher", "Godin", 22, 'H', 0, 1, now()),
-(2, "jarvis", "123456", "dabol66@ulaval.ca", "David", "Bolduc", 28, 'H', 0, 1, now());
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
