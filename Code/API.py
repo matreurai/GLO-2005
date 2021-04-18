@@ -5,16 +5,17 @@
 import mysql.connector
 import json
 import http.client
-from flask import Flask ,render_template , request
+from flask import Flask ,render_template, request, session
 import MySQLdb
 from datetime import date
 from werkzeug.security import generate_password_hash, check_password_hash
+import hashlib
 
 # Init App
 app = Flask(__name__)
 # Init Server
 db = MySQLdb.connect("localhost","root","christopher","glo-2005-projet")
-
+app.secret_key = 'mucen3i2nmif3'
 # Def du cursor
 cur = db.cursor()
 
@@ -67,27 +68,21 @@ def page_signup():
 #Route du login
 @app.route("/login_form", methods=['POST'])
 def login():
-  courriel = request.form.get('uname')
-  passe = request.form.get('psw')
-  conn = mysql.connector.connect(host='localhost',
-                                 database='glo-2005-projet',
-                                 user='root',
-                                 password='christopher')
-  cmd='SELECT utilisateur_password FROM t_utilisateur WHERE utilisateur_username='+courriel+';'
-  cur=conn.cursor()
-  cur.execute(cmd)
-  passeVrai = cur.fetchone()
-  if (passeVrai!=None) and (passe==passeVrai[0]):
-    cmd='SELECT * FROM utilisateurs WHERE courriel='+courriel+';'
-    cur=conn.cursor()
-    cur.execute(cmd)
-    info = cur.fetchone()
-    global ProfileUtilisateur
-    ProfileUtilisateur["courriel"]=courriel
-    ProfileUtilisateur["nom"]=info[2]
-    ProfileUtilisateur["avatar"]=info[3]
-    return render_template('bienvenu.html', profile=ProfileUtilisateur)
-  return render_template('login.html', message="Informations invalides!")
+  username = request.form.get('uname')
+  password = hashlib.md5((request.form.get('psw')).encode('utf-8')).hexdigest()
+  cmd='SELECT * FROM t_utilisateur WHERE utilisateur_username = %s AND utilisateur_password = %s'
+  cur=db.cursor()
+  cur.execute(cmd,(username,password,))
+  account = cur.fetchone()
+
+  if account:
+    session['loggedin'] = True
+    session['id'] = account[0]
+    session['username'] = account[1]
+    msg = 'Logged in successfully !'
+  else:
+    msg = 'Incorrect username / password'
+  return render_template("home.html", msg=msg)
 
 #Route du sign up
 @app.route("/signup_form", methods=['POST'])
@@ -95,17 +90,13 @@ def signup():
   username = request.form.get('username')
   password = request.form.get('password')
   email = request.form.get('email')
-  conn = mysql.connector.connect(host='localhost',
-                                 database='glo-2005-projet',
-                                 user='root',
-                                 password='christopher')
-  cmd='INSERT INTO t_utilisateur (utilisateur_username, utilisateur_password, utilisateur_email, utilisateur_date_creation) ' \
-      'VALUES(\''+username+'\', \''+password+'\', \''+email+'\', \''+date.today().strftime("%Y-%m-%d")+'\');'
-  cur=conn.cursor()
-  cur.execute(cmd)
-  conn.commit()
-  return render_template('Home.html')
 
+  cmd=('INSERT INTO t_utilisateur (utilisateur_username, utilisateur_password, utilisateur_email, utilisateur_date_creation) ' \
+      'VALUES(%s,%s,%s,%s)')
+  cur=db.cursor()
+  cur.execute(cmd, (username, hashlib.md5(password.encode('utf-8')).hexdigest(), email, date.today().strftime("%Y-%m-%d"),))
+  db.commit()
+  return render_template('Home.html')
 
 
 def mise_a_jour():
@@ -130,22 +121,17 @@ def exchange_dict ():
   for stocks in exchange_dict['symbols']:
     return (stocks['symbol'])
 
-  #Call cette fonction de la méthode page_home() SEULEMENT si on veut hash tous les passwords de la DB (si c'est pas déjà fait)
-  def hash_allpasswords():
-    conn = mysql.connector.connect(host='localhost',
-                                   database='glo-2005-projet',
-                                   user='root',
-                                   password='christopher')
-
-    cmd = 'SELECT * FROM t_utilisateur'
-    cur = conn.cursor()
+#Call cette fonction de la méthode page_home() SEULEMENT si on veut hash tous les passwords de la DB (si c'est pas déjà fait)
+def hash_allpasswords():
+  cmd = 'SELECT * FROM t_utilisateur'
+  cur = db.cursor()
+  cur.execute(cmd)
+  info = cur.fetchall()
+  for i in info:
+    password = i[2]
+    hash_pass = generate_password_hash(password)
+    cmd = 'UPDATE t_utilisateur SET utilisateur_password=\'' + hash_pass + '\' WHERE utilisateur_id=\'' + str(
+      i[0]) + '\';'
+    cur = db.cursor()
     cur.execute(cmd)
-    info = cur.fetchall()
-    for i in info:
-      password = i[2]
-      hash_pass = generate_password_hash(password)
-      cmd = 'UPDATE t_utilisateur SET utilisateur_password=\'' + hash_pass + '\' WHERE utilisateur_id=\'' + str(
-        i[0]) + '\';'
-      cur = conn.cursor()
-      cur.execute(cmd)
-      conn.commit()
+    db.commit()
