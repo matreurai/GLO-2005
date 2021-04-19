@@ -1,0 +1,61 @@
+/* -- Les différentes polices -- */
+/*
+    font-family: 'Goldman', cursive;
+    font-family: 'Roboto', sans-serif;
+*/
+/* -- La palette couleurs -- */
+/* 
+white
+#ebebeb
+#3D3D3D
+#1f1f1f
+#e9c46a
+#e2b33c
+*/
+/* Background Général */
+body {
+	background-color: #ebebeb;
+	font-family: 'Roboto', sans-serif;
+}
+
+/* Logo de la Navbar en haut à gauche */
+#mainNavbar {
+	background-color: #1f1f1f;
+}
+#mainNavbar .navbar-brand {
+	font-family: 'Goldman', cursive;
+	color: #e9c46a;
+	font-size: 2em;
+}
+#mainNavbar .nav-link {
+	color: white;
+}
+#mainNavbar .nav-link:hover {
+	color: #e9c46a;
+}
+
+#HomeQuoteDown {
+	color: #1f1f1f;
+	font-family: 'Goldman', cursive;
+}
+#QuoteBox {
+	background-color: transparent;
+}
+/* Contenu des Alertes */
+#containerFormSignUpHeader {
+	background-color: #1f1f1f;
+	color: #e9c46a;
+}
+#add_alert {
+	background-color: #e9c46a;
+	border-color: #1f1f1f;
+	color: #1f1f1f;
+}
+#add_alert:hover {
+	background-color: #e2b33c;
+}
+/* ------------------------------------------ */
+#copyrights {
+	color: #1f1f1f;
+	background-color: transparent;
+}
