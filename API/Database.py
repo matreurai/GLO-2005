@@ -3,11 +3,14 @@ import pymysql.cursors
 # Connect to the database
 from pymysql.connections import Connection
 
+
 conn: Connection = pymysql.connect(host="localhost",
                                    user="root",
                                    password="eAXt)cdncT%Wv5}RVb!_,f]S",
                                    db="GLo-2005-Projet",
                                    cursorclass=pymysql.cursors.DictCursor)
+
+
 with conn:
     with conn.cursor() as t_proj:
         # Create a new record
@@ -22,7 +25,7 @@ with conn:
                  "cryptomonnaie_market_cap,cryptomonnaie_max_supply,cryptomonnaie_qte_circulation," \
                  "cryptomonnaie_volume_24h,cryptomonnaie_logo) " \
                  "VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s, %s,%s)"
-        t_crypto.execute(crypto, (1,'Bitcoin', 120.3, 120.3, 120.3, 120.3, 1234563, 123432, 12344564554533,
+        t_crypto.execute(crypto, (1, 'Bitcoin', 120.3, 120.3, 120.3, 120.3, 1234563, 123432, 12344564554533,
                                   123421123, 'lollll'))
 
     with conn.cursor() as t_util:

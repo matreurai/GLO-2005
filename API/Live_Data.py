@@ -39,5 +39,5 @@ bsm = BinanceSocketManager(client)
 conn_key = bsm.start_symbol_ticker_socket('ETHUSDT', btc_trade_history)
 bsm.start()
 
-bsm.stop_socket(conn_key)
-reactor.stop()
+# bsm.stop_socket(conn_key)
+# reactor.stop()

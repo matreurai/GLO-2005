@@ -26,7 +26,7 @@ def exchange_dict():
     exchange_dictionnaire = loads(transfor)
     print(type(exchange_dictionnaire['symbols']))
 
-    for stock in exchange_dictionnaire['symbols'] == :
+    for stock in exchange_dictionnaire['symbols'] :
         return stock['symbol']
 
 
