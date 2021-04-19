@@ -70,9 +70,9 @@ def page_signup():
 def login():
   username = request.form.get('uname')
   password = hashlib.md5((request.form.get('psw')).encode('utf-8')).hexdigest()
-  cmd='SELECT * FROM t_utilisateur WHERE utilisateur_username = %s AND utilisateur_password = %s'
+  cmd='SELECT * FROM t_utilisateur u1 INNER JOIN t_password p1 on p1.password_id_utilisateur = u1.utilisateur_id WHERE u1.utilisateur_username = %s'
   cur=db.cursor()
-  cur.execute(cmd,(username,password,))
+  cur.execute(cmd,(username,))
   account = cur.fetchone()
 
   if account:
@@ -88,13 +88,24 @@ def login():
 @app.route("/signup_form", methods=['POST'])
 def signup():
   username = request.form.get('username')
-  password = request.form.get('password')
+  password = hashlib.md5((request.form.get('password')).encode('utf-8')).hexdigest()
   email = request.form.get('email')
 
-  cmd=('INSERT INTO t_utilisateur (utilisateur_username, utilisateur_password, utilisateur_email, utilisateur_date_creation) ' \
-      'VALUES(%s,%s,%s,%s)')
+  cmd=('INSERT INTO t_utilisateur (utilisateur_username, utilisateur_email, utilisateur_date_creation) ' \
+      'VALUES(%s,%s,%s)')
   cur=db.cursor()
-  cur.execute(cmd, (username, hashlib.md5(password.encode('utf-8')).hexdigest(), email, date.today().strftime("%Y-%m-%d"),))
+  cur.execute(cmd, (username, email, date.today().strftime("%Y-%m-%d"),))
+
+  cmd = ('SELECT utilisateur_id FROM t_utilisateur where utilisateur_username = %s')
+  cur = db.cursor()
+  cur.execute(cmd, (username,))
+
+  user_id = cur.fetchone()
+
+  cmd = ('INSERT INTO t_password (password_id_utilisateur, password_password) ' \
+      'VALUES(%s,%s)')
+  cur = db.cursor()
+  cur.execute(cmd,(user_id, password,))
   db.commit()
   return render_template('Home.html')
 
@@ -123,14 +134,14 @@ def exchange_dict ():
 
 #Call cette fonction de la méthode page_home() SEULEMENT si on veut hash tous les passwords de la DB (si c'est pas déjà fait)
 def hash_allpasswords():
-  cmd = 'SELECT * FROM t_utilisateur'
+  cmd = 'SELECT * FROM t_password'
   cur = db.cursor()
   cur.execute(cmd)
   info = cur.fetchall()
   for i in info:
-    password = i[2]
-    hash_pass = generate_password_hash(password)
-    cmd = 'UPDATE t_utilisateur SET utilisateur_password=\'' + hash_pass + '\' WHERE utilisateur_id=\'' + str(
+    password = i[1]
+    hash_pass = hashlib.md5(password.encode('utf-8')).hexdigest()
+    cmd = 'UPDATE t_password SET password_password=\'' + hash_pass + '\' WHERE password_id_utilisateur=\'' + str(
       i[0]) + '\';'
     cur = db.cursor()
     cur.execute(cmd)
