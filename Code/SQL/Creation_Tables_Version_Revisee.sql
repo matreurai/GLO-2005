@@ -1,15 +1,24 @@
-/* --Creation de la base de donnees GLO-2005 -- */
+/* -- Script à rouler pour Restart de BD et Création -- */
+/* -- Creation de la base de donnees GLO-2005 -- */
+DROP DATABASE `GLO-2005-Projet`;
 CREATE DATABASE `GLO-2005-Projet`;
 USE `GLO-2005-Projet`;
+
+DROP TABLE IF EXISTS `t_projet`;
+DROP TABLE IF EXISTS `t_cryptomonnaie`;
+DROP TABLE IF EXISTS `t_utilisateur`;
+DROP TABLE IF EXISTS `t_password`;
+DROP TABLE IF EXISTS `t_alerte`;
+DROP TABLE IF EXISTS `t_portfolio`;
+DROP TABLE IF EXISTS `t_titre`;
 /*--------------------------------------------------*/
 
-/* --Creation de la table Projet-- */
+/* -- Creation de la table Projet -- */
 CREATE TABLE IF NOT EXISTS `t_projet`
 (
     `projet_ticker` VARCHAR(9) NOT NULL,
     `projet_logo` VARCHAR(50),
     `projet_nom_du_coin` VARCHAR(20) NOT NULL,
-    `projet_secteur_activite` VARCHAR(20),
     `projet_description` VARCHAR(300),
     `projet_start_date` DATE,
     `projet_forage_possible` BOOLEAN,
@@ -24,7 +33,7 @@ COLLATE utf8mb4_unicode_ci;
 CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
-/* --Creation de la table Cryptomonnaie-- */
+/* -- Creation de la table Cryptomonnaie -- */
 CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
 (
     `cryptomonnaie_id` SMALLINT NOT NULL AUTO_INCREMENT,
@@ -50,12 +59,11 @@ COLLATE utf8mb4_unicode_ci;
 CREATE INDEX `idx_projet` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
 /*------------------------------------------------------------------------------------------------------------------------*/
 
-/* --Creation de la table Utilisateur-- */
+/* -- Creation de la table Utilisateur -- */
 CREATE TABLE IF NOT EXISTS `t_utilisateur`
 (
     `utilisateur_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `utilisateur_username` VARCHAR(20) NOT NULL,
-    `utilisateur_password` VARCHAR(128) NOT NULL,
     `utilisateur_email` VARCHAR(40) NOT NULL,
     `utilisateur_phone` VARCHAR(20),
     `utilisateur_prenom` VARCHAR(30),
@@ -73,7 +81,21 @@ CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 /*----------------------------------------------------------------------------------------------------------------------*/
 
-/* --Creation de la table Alerte-- */
+/* -- Creation de la table Password -- */
+CREATE TABLE IF NOT EXISTS `t_password`
+(
+    `password_id_utilisateur` SMALLINT NOT NULL,
+    `password_password` VARCHAR(128) NOT NULL,
+
+    FOREIGN KEY(`password_id_utilisateur`) REFERENCES `t_utilisateur`(`utilisateur_id`)
+);
+
+ALTER TABLE `t_password` ENGINE InnoDB
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+/*----------------------------------------------------------------------------------------------------------------------*/
+
+/* -- Creation de la table Alerte -- */
 CREATE TABLE IF NOT EXISTS `t_alerte`
 (
     `alerte_id` TINYINT NOT NULL AUTO_INCREMENT,
@@ -93,7 +115,7 @@ CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
-/* --Creation de la table Portfolio-- */
+/* -- Creation de la table Portfolio -- */
 CREATE TABLE IF NOT EXISTS `t_portfolio`
 (
     `portfolio_id` SMALLINT NOT NULL,
@@ -113,7 +135,7 @@ CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
-/* --Creation de la table Titre-- */
+/* -- Creation de la table Titre -- */
 CREATE TABLE IF NOT EXISTS `t_titre`
 (
     `titre_crypto_id` SMALLINT NOT NULL,
@@ -132,3 +154,29 @@ ALTER TABLE `t_titre` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 /*---------------------------------------------------------------------------------------------------------------------*/
+
+/* -- Creation de la Procedure Create_User -- */
+DELIMITER %%
+CREATE PROCEDURE Create_User (IN id SMALLINT,
+                                IN username VARCHAR(20),
+                                IN email VARCHAR(40),
+                                IN phone VARCHAR(20),
+                                IN prenom VARCHAR(30),
+                                IN nom VARCHAR(40),
+                                IN date_creation DATE,
+                                IN password VARCHAR(128))
+    BEGIN
+        INSERT INTO `t_utilisateur` (utilisateur_id, utilisateur_username, utilisateur_email, utilisateur_phone, utilisateur_prenom, utilisateur_nom, utilisateur_date_creation)
+        VALUES                  (id,
+                                username,
+                                email,
+                                phone,
+                                prenom,
+                                nom,
+                                date_creation);
+        INSERT INTO `t_password` (password_id_utilisateur, password_password) VALUES (id, password);
+    END %%
+DELIMITER ;
+/*---------------------------------------------------------------------------------------------------------------------*/
+CALL Create_User(1,'rjovis0f','rjovis0@toplist.cz','(957) 2905099','Rem','Jovis','2020-12-17', 'PASSWORD123@');
+

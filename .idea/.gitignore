@@ -1,0 +1,12 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+<<<<<<< HEAD
+/../../../../../../../../../../../:\Users\sam_a\OneDrive\Documents\ULaval\Session_Hiver_2021\GLO-2005\Projet\GIT_DEPOT_GLO-2005\.idea/dataSources/
+=======
+/../../../../../../:\Users\gohab\PycharmProjects\GIT_DEPOT_GLO-2005\.idea/dataSources/
+>>>>>>> f8b083e607e5772571b07289f0bda047ba73ef29
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
