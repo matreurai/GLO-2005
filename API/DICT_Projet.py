@@ -1,16 +1,19 @@
+# -------------------------------
+# Test API Binance
+# David Bolduc
+# -------------------------------
 
-
-
-
-
-
-import json
+from json import loads
 import http.client
 
-#--- Entite projet
+
+# import requests
 
 
-def exchange_dict ():
+# --- Entite projet
+
+
+def exchange_dict():
     conn = http.client.HTTPSConnection("api.binance.com")
     payload = ''
     headers = {
@@ -20,8 +23,11 @@ def exchange_dict ():
     res = conn.getresponse()
     data = res.read()
     transfor = data.decode("utf-8")
-    exchange_dict = json.loads(transfor)
-    print (type(exchange_dict['symbols']))
-    
-    for stocks in exchange_dict['symbols']:
-        return (stocks['symbol'])
+    exchange_dictionnaire = loads(transfor)
+    print(type(exchange_dictionnaire['symbols']))
+
+    for stock in exchange_dictionnaire['symbols'] == :
+        return stock['symbol']
+
+
+print(exchange_dict())
