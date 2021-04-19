@@ -157,26 +157,19 @@ COLLATE utf8mb4_unicode_ci;
 
 /* -- Creation de la Gachette Add_Password -- */
 DELIMITER %%
-CREATE PROCEDURE Create_User (IN id SMALLINT,
-                                IN username VARCHAR(20),
+CREATE PROCEDURE Create_User (  IN username VARCHAR(20),
                                 IN email VARCHAR(40),
-                                IN phone VARCHAR(20),
-                                IN prenom VARCHAR(30),
-                                IN nom VARCHAR(40),
                                 IN date_creation DATE,
                                 IN password VARCHAR(128))
     BEGIN
-        INSERT INTO `t_utilisateur` (utilisateur_id, utilisateur_username, utilisateur_email, utilisateur_phone, utilisateur_prenom, utilisateur_nom, utilisateur_date_creation)
-        VALUES                  (id,
-                                username,
+        INSERT INTO `t_utilisateur` (utilisateur_username, utilisateur_email, utilisateur_date_creation)
+        VALUES                  (username,
                                 email,
-                                phone,
-                                prenom,
-                                nom,
                                 date_creation);
-        INSERT INTO `t_password` (password_id_utilisateur, password_password) VALUES (id, password);
+        SELECT @id := LAST_INSERT_ID() FROM `t_utilisateur`;
+        INSERT INTO `t_password` (password_id_utilisateur, password_password) VALUES (@id, password);
     END %%
 DELIMITER ;
 /*---------------------------------------------------------------------------------------------------------------------*/
-CALL Create_User(1,'rjovis0f','rjovis0@toplist.cz','(957) 2905099','Rem','Jovis','2020-12-17', 'PASSWORD123@');
+CALL Create_User('rjovis0f','rjovis0@toplist.cz','2020-12-17', 'PASSWORD123@');
 

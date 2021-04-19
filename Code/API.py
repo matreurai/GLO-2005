@@ -91,21 +91,13 @@ def signup():
   password = hashlib.md5((request.form.get('password')).encode('utf-8')).hexdigest()
   email = request.form.get('email')
 
-  cmd=('INSERT INTO t_utilisateur (utilisateur_username, utilisateur_email, utilisateur_date_creation) ' \
-      'VALUES(%s,%s,%s)')
   cur=db.cursor()
-  cur.execute(cmd, (username, email, date.today().strftime("%Y-%m-%d"),))
+  args = [username, email, date.today().strftime("%Y-%m-%d"), password]
 
-  cmd = ('SELECT utilisateur_id FROM t_utilisateur where utilisateur_username = %s')
+  cur.callproc('Create_User', args)
+  cur.close()
+
   cur = db.cursor()
-  cur.execute(cmd, (username,))
-
-  user_id = cur.fetchone()
-
-  cmd = ('INSERT INTO t_password (password_id_utilisateur, password_password) ' \
-      'VALUES(%s,%s)')
-  cur = db.cursor()
-  cur.execute(cmd,(user_id, password,))
   db.commit()
   return render_template('Home.html')
 
