@@ -155,7 +155,7 @@ CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 /*---------------------------------------------------------------------------------------------------------------------*/
 
-/* -- Creation de la Gachette Add_Password -- */
+/* -- Creation de la Procedure Create_User -- */
 DELIMITER %%
 CREATE PROCEDURE Create_User (IN id SMALLINT,
                                 IN username VARCHAR(20),

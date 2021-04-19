@@ -23,8 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e9718e7-063a-4bc1-b0bd-8af590b2a751" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" afterDir="false" />
     </list>
@@ -105,6 +103,7 @@
       <workItem from="1618785698426" duration="1316000" />
       <workItem from="1618787381031" duration="168000" />
       <workItem from="1618787631130" duration="3236000" />
+      <workItem from="1618795232655" duration="40000" />
     </task>
     <servers />
   </component>
