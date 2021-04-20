@@ -57,7 +57,9 @@ def page_alerts():
 #Route de la page Profile
 @app.route('/Profile')
 def page_profile():
-  return render_template('Profile.html')
+  data = get_user_info()
+
+  return render_template('Profile.html', data=data)
 
 @app.route('/LogOut')
 def logout():
@@ -90,18 +92,49 @@ def login():
   cur.execute(cmd,(username,))
   account = cur.fetchone()
 
-  cmd = 'SELECT p1.password_password FROM t_password p1 WHERE p1.password_id_utilisateur = %s'
-  cur.execute(cmd,(account[0],))
-  hash_password = cur.fetchone()
+  if account :
+    cmd = 'SELECT p1.password_password FROM t_password p1 WHERE p1.password_id_utilisateur = %s'
+    cur.execute(cmd, (account[0],))
+    hash_password = cur.fetchone()
 
-  if account and check_password(password, hash_password[0]):
-    session['loggedin'] = True
-    session['id'] = account[0]
-    session['username'] = account[1]
-    msg = 'Logged in successfully !'
+    if check_password(password, hash_password[0]):
+      session['loggedin'] = True
+      session['id'] = account[0]
+      session['username'] = account[1]
+      msg = 'Logged in successfully !'
+    else:
+      msg = 'Incorrect username / password'
   else:
     msg = 'Incorrect username / password'
   return render_template("home.html", msg=msg)
+
+@app.route("/profile_form", methods=['POST'])
+def savechanges_profile():
+  username = request.form.get('username')
+  password = request.form.get('password')
+  email = request.form.get('email')
+  firstname = request.form.get('firstname')
+  lastname = request.form.get('lastname')
+  phone = request.form.get('phone')
+
+  userId = str(session['id'])
+  cmd = 'SELECT utilisateur_id from t_utilisateur u1 WHERE u1.utilisateur_id = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (userId,))
+  data = cur.fetchone()
+  idUser = data[0]
+
+  cmd = 'UPDATE t_utilisateur SET utilisateur_username= %s, utilisateur_email= %s, utilisateur_phone= %s, utilisateur_prenom= %s, utilisateur_nom= %s WHERE utilisateur_id = %s'
+
+  cur.execute(cmd, (username, email, phone, firstname, lastname, idUser,))
+
+  cmd = 'UPDATE t_password SET password_password= %s WHERE password_id_utilisateur= %s'
+  cur = db.cursor()
+  cur.execute(cmd, (get_hashed_password(password), idUser,))
+  db.commit()
+  data = get_user_info()
+
+  return render_template('Profile.html', data=data)
 
 #Route du sign up
 @app.route("/signup_form", methods=['POST'])
@@ -122,14 +155,21 @@ def signup():
   db.commit()
   return render_template('Home.html')
 
+def get_user_info():
+  userId = str(session['id'])
+  cmd = 'SELECT * from t_utilisateur u1 WHERE u1.utilisateur_id = ' + userId + ''
+  cur = db.cursor()
+  cur.execute(cmd)
+  return cur.fetchone()
+
 def get_hashed_password(plain_text_password):
     # Hash a password for the first time
     #   (Using bcrypt, the salt is saved into the hash itself)
-    return bcrypt.hashpw(plain_text_password, bcrypt.gensalt())
+    return bcrypt.hashpw(plain_text_password.encode('utf-8'), bcrypt.gensalt())
 
 def check_password(plain_text_password, hashed_password):
   # Check hashed password. Using bcrypt, the salt is saved into the hash itself
-  return bcrypt.checkpw(plain_text_password, hashed_password)
+  return bcrypt.checkpw(plain_text_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
 def mise_a_jour():
       return None

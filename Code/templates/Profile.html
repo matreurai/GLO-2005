@@ -86,53 +86,35 @@
           <tbody>
             <tr>
               <th scope="row" colspan="1">Username</th>
-              <td colspan="2" class="text-begin">Username</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
+              <td colspan="2" class="text-begin">{{ data[1] }}</td>
             </tr>
             <tr>
               <th scope="row">Email</th>
-              <td colspan="2" class="text-begin">Email</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
+              <td colspan="2" class="text-begin">{{ data[2] }}</td>
             </tr>
             <tr>
               <th scope="row">Password</th>
               <td colspan="2" class="text-begin">*****************</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
             </tr>
             <tr>
               <th scope="row">First Name</th>
-              <td colspan="2" class="text-begin">First Name</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
+              <td colspan="2" class="text-begin">{{ data[4] }}</td>
             </tr>
             <tr>
               <th scope="row">Last Name</th>
-              <td colspan="2" class="text-begin">Name</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
+              <td colspan="2" class="text-begin">{{ data[5] }}</td>
             </tr>
             <tr>
               <th scope="row">Phone</th>
-              <td colspan="2" class="text-begin">(514)-123-4567</td>
-              <td class="text-end">
-                <a href="#">Modify</a>
-              </td>
+              <td colspan="2" class="text-begin">{{ data[3] }}</td>
             </tr>
             <tr>
               <th scope="row">Account Creation Date</th>
-              <td colspan="2"></td>
-              <td class="text-end">2021-04-12</td>
+              <td colspan="2" class="text-begin">{{ data[6] }}</td>
             </tr>
           </tbody>
         </table>
+        <a id="myBtn" data-bn-type="button" class="btn btn-secondary p-2 px-3 mx-md-2">Modify</a>
       </div>  
     </div>
 
@@ -141,6 +123,62 @@
         <p id="copyrights" class="p-4 text-center mb-0">©2020-2021 Crypt-O-Watch.com. All rights reserved</p>
       </div>
 
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form action="profile_form" method="post">
+      <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th scope="row" colspan="1">Username</th>
+              <td colspan="2" class="text-begin"><input id="username" name="username" type="text" value={{ data[1] }}></td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td colspan="2" class="text-begin"><input id="email" name="email" type="text" value={{ data[2] }}></td>
+            </tr>
+            <tr>
+              <th scope="row">Password</th>
+              <td colspan="2" class="text-begin"><input type="password" id="password" required minlength="8" ng-model="dataItem.password" value="***************" name="password"></td>
+            </tr>
+            <tr>
+              <th scope="row">First Name</th>
+              {% if data[4] == None %}
+              <td colspan="2" class="text-begin"> <input type="text" name="firstname" value=""></td>
+              {% else %}
+              <td colspan="2" class="text-begin"> <input type="text" name="firstname" id="firstname" value={{ data[4] }}></td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th scope="row">Last Name</th>
+              {% if data[5] == None %}
+              <td colspan="2" class="text-begin"> <input type="text" name="lastname" value=""></td>
+              {% else %}
+              <td colspan="2" class="text-begin"> <input type="text" name="lastname" id="lastname" value={{ data[5] }}></td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th scope="row">Phone</th>
+              {% if data[3] == None %}
+              <td colspan="2" class="text-begin"> <input type="text" name="phone" value=""></td>
+              {% else %}
+              <td colspan="2" class="text-begin"> <input type="text" name="phone" id="phone" value={{ data[3] }}></td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th scope="row">Account Creation Date</th>
+              <td colspan="2" class="text-begin">{{ data[6] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      <button id="apply" type="submit" class="btn btn-primary ">Save Changes</button>
+    </form>
+  </div>
+
+</div>
 
 
     <!-- JavaScript -->   
@@ -148,7 +186,34 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    
+
+    <script>
+      // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
   
   </body>
 </html>
