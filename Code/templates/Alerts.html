@@ -51,19 +51,25 @@
             <li class="nav-item">
               <a href="/Contact" class="nav-link">Contact</a>
             </li>
+            {% if session['username'] %}
             <li class="nav-item">
               <a href="/Portfolio" class="nav-link">Portfolio</a>
             </li>
             <li class="nav-item">
               <a href="/Alerts" class="nav-link">My Alerts</a>
             </li>
+            {% endif %}
           </ul>
+          {% if session['username'] %}
           <span class="navbar-text py-0 mb-2 mb-lg-0">
             <a href="/Profile" class="nav-link">My Profile</a>
           </span >
+          {% endif %}
+          {% if session['username'] %}
           <span class="navbar-text py-0 mb-2 mb-lg-0">
-            <button class="nav-link" style="background-color: transparent; border-style: none;">Log Out</button>
-          </span > 
+            <a href="/LogOut" class="nav-link">Log Out</a>
+          </span >
+          {% endif %}
         </div>
       </div>
     </nav>

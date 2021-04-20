@@ -6,16 +6,13 @@ import mysql.connector
 import json
 import http.client
 from flask import Flask ,render_template, request, session
-import MySQLdb
 from datetime import date
-from werkzeug.security import generate_password_hash, check_password_hash
-import hashlib
 import bcrypt
 
 # Init App
 app = Flask(__name__)
 # Init Server
-db = MySQLdb.connect("localhost","root","christopher","glo-2005-projet")
+db = mysql.connector.connect(host="localhost",user="root",password="christopher",db="glo-2005-projet")
 app.secret_key = 'mucen3i2nmif3'
 # Def du cursor
 cur = db.cursor()
@@ -54,12 +51,20 @@ def page_portfolio():
 #Route de la page Alerts
 @app.route('/Alerts')
 def page_alerts():
-  return render_template('Alerts.html')
+  data= ["BTC", "AA"]
+  return render_template('Alerts.html', data=data)
 
 #Route de la page Profile
 @app.route('/Profile')
 def page_profile():
   return render_template('Profile.html')
+
+@app.route('/LogOut')
+def logout():
+  user = session['username']
+  session.pop(user, None)
+  session.clear()
+  return render_template('Home.html')
 
 #Route de la page SignUp
 @app.route('/SignUp')
