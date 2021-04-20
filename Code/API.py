@@ -51,7 +51,9 @@ def page_portfolio():
 #Route de la page Alerts
 @app.route('/Alerts')
 def page_alerts():
-  data= ["BTC", "AA"]
+  data = get_alerts_info()
+  data = ['a','v']
+
   return render_template('Alerts.html', data=data)
 
 #Route de la page Profile
@@ -72,13 +74,6 @@ def logout():
 @app.route('/SignUp')
 def page_signup():
   return render_template('SignUp.html')
-
-@app.route("/adding_alert", methods=['POST'])
-def add_alert():
-  if session['loggedin'] == False:
-    return
-  user_id = session['id']
-  cmd = ''
 
 #Route du login
 @app.route("/login_form", methods=['POST'])
@@ -136,6 +131,22 @@ def savechanges_profile():
 
   return render_template('Profile.html', data=data)
 
+@app.route("/alerts_form", methods=['POST'])
+def apply_alerts():
+  coin = request.form.get('coin')
+  above =request.form.get('above')
+  below = request.form.get('below')
+  validUntil = request.form.get('valid_until')
+  userId = str(session['id'])
+
+  cmd = 'INSERT INTO t_alerte (alerte_user, alerte_ticker, alerte_below_price, alerte_above_price, alerte_end_date) VALUES (%s,%s,%s,%s,%s)'
+  cur = db.cursor()
+  cur.execute(cmd, (userId, coin, below, above, validUntil,))
+  db.commit()
+  data = get_alerts_info()
+
+  return render_template('Alerts.html', data=data)
+
 #Route du sign up
 @app.route("/signup_form", methods=['POST'])
 def signup():
@@ -161,6 +172,13 @@ def get_user_info():
   cur = db.cursor()
   cur.execute(cmd)
   return cur.fetchone()
+
+def get_alerts_info():
+  userId = str(session['id'])
+  cmd = 'SELECT * from t_alerte u1 WHERE u1.alerte_id = ' + userId + ''
+  cur = db.cursor()
+  cur.execute(cmd)
+  return cur.fetchall()
 
 def get_hashed_password(plain_text_password):
     # Hash a password for the first time
