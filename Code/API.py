@@ -12,7 +12,7 @@ import bcrypt
 # Init App
 app = Flask(__name__)
 # Init Server
-db = mysql.connector.connect(host="localhost",user="root",password="christopher",db="glo-2005-projet")
+db = mysql.connector.connect(host="127.0.0.1", user="root", password="password", db="glo-2005-projet", auth_plugin='mysql_native_password')
 app.secret_key = 'mucen3i2nmif3'
 # Def du cursor
 cur = db.cursor()

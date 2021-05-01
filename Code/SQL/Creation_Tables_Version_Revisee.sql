@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `t_portfolio`
     `portfolio_profit_total` DECIMAL(13,4),
     `portfolio_cout_total` DECIMAL(13,4),
     `portfolio_qte_coin_diff` SMALLINT,
-    `portfolio_ratio_%` FLOAT,
+    `portfolio_ratio` FLOAT,
 
     PRIMARY KEY(`portfolio_id`),
     FOREIGN KEY(portfolio_user) REFERENCES `t_utilisateur`(`utilisateur_id`)
@@ -138,12 +138,12 @@ COLLATE utf8mb4_unicode_ci;
 /* -- Creation de la table Titre -- */
 CREATE TABLE IF NOT EXISTS `t_titre`
 (
-    `titre_crypto_id` SMALLINT NOT NULL,
+    `titre_crypto_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `titre_portfolio_id` SMALLINT,
     `titre_qte` INT DEFAULT 1,
     `titre_valeur_courante` DECIMAL(13,4),
     `titre_prix_moyen_paye` DECIMAL(13,4),
-    `titre_ratio_%` FLOAT,
+    `titre_ratio` FLOAT,
 
     PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
     FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),

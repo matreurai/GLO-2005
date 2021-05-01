@@ -980,30 +980,29 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </user>
     <user id="286" parent="1" name="root">
       <Host>localhost</Host>
-      <Plugin>caching_sha2_password</Plugin>
     </user>
-    <table id="287" parent="2" name="t_alerte">
+    <table id="287" parent="4" name="t_alerte">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="288" parent="2" name="t_cryptomonnaie">
+    <table id="288" parent="4" name="t_cryptomonnaie">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="289" parent="2" name="t_password">
+    <table id="289" parent="4" name="t_password">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="290" parent="2" name="t_portfolio">
+    <table id="290" parent="4" name="t_portfolio">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="291" parent="2" name="t_projet">
+    <table id="291" parent="4" name="t_projet">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="292" parent="2" name="t_titre">
+    <table id="292" parent="4" name="t_titre">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="293" parent="2" name="t_utilisateur">
+    <table id="293" parent="4" name="t_utilisateur">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <routine id="294" parent="2" name="Create_User">
+    <routine id="294" parent="4" name="Create_User">
       <SourceTextLength>411</SourceTextLength>
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
@@ -1177,7 +1176,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>6</Position>
       <DataType>smallint|0s</DataType>
     </column>
-    <column id="332" parent="290" name="portfolio_ratio_%">
+    <column id="332" parent="290" name="portfolio_ratio">
       <Position>7</Position>
       <DataType>float|0s</DataType>
     </column>
@@ -1247,6 +1246,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>1</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="347" parent="292" name="titre_portfolio_id">
       <Position>2</Position>
@@ -1266,7 +1266,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>5</Position>
       <DataType>decimal(13,4 digit)|0s</DataType>
     </column>
-    <column id="351" parent="292" name="titre_ratio_%">
+    <column id="351" parent="292" name="titre_ratio">
       <Position>6</Position>
       <DataType>float|0s</DataType>
     </column>
