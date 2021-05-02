@@ -1,0 +1,10 @@
+/* Script pour stocker la data dans la base de donner --*/
+
+
+
+
+BEGIN
+    INSERT INTO `t_projet`(`projet_ticker`, `projet_logo`,
+                           `projet_nom_du_coin`,`projet_description`,
+                           `projet_start_date`,`projet_forage_possible`);
+    VALUES

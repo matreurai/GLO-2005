@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS `t_titre`;
 CREATE TABLE IF NOT EXISTS `t_projet`
 (
     `projet_ticker` VARCHAR(9) NOT NULL,
-    `projet_logo` VARCHAR(50),
+    `projet_logo` VARCHAR(60),
     `projet_nom_du_coin` VARCHAR(20) NOT NULL,
     `projet_description` VARCHAR(300),
     `projet_start_date` DATE,
@@ -31,6 +31,8 @@ ALTER TABLE `t_projet` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
+
+# SELECT * FROM t_projet;
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Cryptomonnaie -- */
@@ -57,6 +59,7 @@ ALTER TABLE `t_cryptomonnaie` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 CREATE INDEX `idx_projet` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
+# SELECT * FROM t_cryptomonnaie;
 /*------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Utilisateur -- */
@@ -124,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `t_portfolio`
     `portfolio_profit_total` DECIMAL(13,4),
     `portfolio_cout_total` DECIMAL(13,4),
     `portfolio_qte_coin_diff` SMALLINT,
-    `portfolio_ratio_%` FLOAT,
+    `portfolio_ratio` FLOAT,
 
     PRIMARY KEY(`portfolio_id`),
     FOREIGN KEY(portfolio_user) REFERENCES `t_utilisateur`(`utilisateur_id`)
@@ -138,12 +141,12 @@ COLLATE utf8mb4_unicode_ci;
 /* -- Creation de la table Titre -- */
 CREATE TABLE IF NOT EXISTS `t_titre`
 (
-    `titre_crypto_id` SMALLINT NOT NULL,
-    `titre_portfolio_id` SMALLINT,
+    `titre_crypto_id` SMALLINT AUTO_INCREMENT NOT NULL,
+    `titre_portfolio_id` SMALLINT NOT NULL,
     `titre_qte` INT DEFAULT 1,
     `titre_valeur_courante` DECIMAL(13,4),
     `titre_prix_moyen_paye` DECIMAL(13,4),
-    `titre_ratio_%` FLOAT,
+    `titre_ratio` FLOAT,
 
     PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
     FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
@@ -178,5 +181,5 @@ CREATE PROCEDURE Create_User (IN id SMALLINT,
     END %%
 DELIMITER ;
 /*---------------------------------------------------------------------------------------------------------------------*/
-CALL Create_User(1,'rjovis0f','rjovis0@toplist.cz','(957) 2905099','Rem','Jovis','2020-12-17', 'PASSWORD123@');
+# CALL Create_User(1,'rjovis0f','rjovis0@toplist.cz','(957) 2905099','Rem','Jovis','2020-12-17', 'PASSWORD123@');
 
