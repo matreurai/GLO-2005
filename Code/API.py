@@ -5,7 +5,7 @@
 import mysql.connector
 import json
 import http.client
-from flask import Flask ,render_template, request, session
+from flask import Flask ,render_template, redirect, url_for, request, session
 from datetime import date
 import bcrypt
 
@@ -52,7 +52,6 @@ def page_portfolio():
 @app.route('/Alerts')
 def page_alerts():
   data = get_alerts_info()
-  data = ['a','v']
 
   return render_template('Alerts.html', data=data)
 
@@ -131,21 +130,28 @@ def savechanges_profile():
 
   return render_template('Profile.html', data=data)
 
+@app.route('/postmethod', methods = ['POST'])
+def get_post_javascript_data():
+    jsdata = request.form
+
+
+    return json.loads(jsdata)[0]
+
 @app.route("/alerts_form", methods=['POST'])
 def apply_alerts():
   coin = request.form.get('coin')
   above =request.form.get('above')
   below = request.form.get('below')
-  validUntil = request.form.get('valid_until')
+  validUntil = request.form.get('datepicker')
   userId = str(session['id'])
 
-  cmd = 'INSERT INTO t_alerte (alerte_user, alerte_ticker, alerte_below_price, alerte_above_price, alerte_end_date) VALUES (%s,%s,%s,%s,%s)'
+  cmd = 'INSERT INTO t_alerte (alerte_user, alerte_below_price, alerte_above_price, alerte_end_date) VALUES (%s,%s,%s,%s)'
   cur = db.cursor()
-  cur.execute(cmd, (userId, coin, below, above, validUntil,))
+  cur.execute(cmd, (userId, below, above, validUntil,))
   db.commit()
   data = get_alerts_info()
 
-  return render_template('Alerts.html', data=data)
+  return redirect(url_for("page_alerts"))
 
 #Route du sign up
 @app.route("/signup_form", methods=['POST'])
@@ -175,7 +181,7 @@ def get_user_info():
 
 def get_alerts_info():
   userId = str(session['id'])
-  cmd = 'SELECT * from t_alerte u1 WHERE u1.alerte_id = ' + userId + ''
+  cmd = 'SELECT * from t_alerte u1 WHERE u1.alerte_user = ' + userId + ''
   cur = db.cursor()
   cur.execute(cmd)
   return cur.fetchall()
