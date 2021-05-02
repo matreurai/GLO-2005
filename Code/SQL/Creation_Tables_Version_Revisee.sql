@@ -24,13 +24,16 @@ CREATE TABLE IF NOT EXISTS `t_projet`
     `projet_forage_possible` BOOLEAN,
 
     PRIMARY KEY(`projet_ticker`),
-    UNIQUE(`projet_ticker`)
+    UNIQUE(`projet_ticker`),
+    UNIQUE (`projet_nom_du_coin`),
+    UNIQUE (`projet_logo`)
 );
 
 ALTER TABLE `t_projet` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
+CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`)
+;
 
 # SELECT * FROM t_projet;
 /*-------------------------------------------------------------------------------------------------------------------------*/
@@ -44,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
     `cryptomonnaie_prix_actuel` DECIMAL(13,4) NOT NULL,
     `cryptomonnaie_prix_haut` DECIMAL(13,4),
     `cryptomonnaie_prix_bas` DECIMAL(13,4),
-    `cryptomonnaie_Valeur_cad` DECIMAL(13,4),
+    `cryptomonnaie_valeur_usd` DECIMAL(13,4),
     `cryptomonnaie_market_cap` BIGINT,
     `cryptomonnaie_max_supply` BIGINT,
     `cryptomonnaie_qte_circulation` BIGINT,
@@ -52,7 +55,9 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
     `cryptomonnaie_logo` VARCHAR(50),
 
     PRIMARY KEY (`cryptomonnaie_id`),
-    FOREIGN KEY (`cryptomonnaie_ticker`) REFERENCES `t_projet`(`projet_ticker`)
+    FOREIGN KEY (`cryptomonnaie_ticker`) REFERENCES `t_projet`(`projet_ticker`),
+    FOREIGN KEY (`cryptomonnaie_nom_du_coin`) REFERENCES `t_projet`(`projet_nom_du_coin`),
+    FOREIGN KEY (`cryptomonnaie_logo`) REFERENCES `t_projet` (`projet_logo`)
 );
 
 ALTER TABLE `t_cryptomonnaie` ENGINE InnoDB
