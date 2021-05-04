@@ -84,7 +84,7 @@
         <form id="manage_alerts_acc_form" method="post" action="">
           <input type="hidden" name="unique_id" value="#">
           <input type="hidden" name="action" value="manage_alerts_acc">
-          <table class="table table-hover">
+          <table id="tbl" class="table table-hover">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -98,12 +98,12 @@
             <tbody>
             {% for item in data %}
               <tr>
-                <th scope="col" colspan="1"></th>
-                <td colspan="" class="text-center">{{ loop.index }}</td>
-                <td colspan="" class="text-center">2.30$</td>
-                <td colspan="" class="text-center">1.30$</td>
-                <td colspan="" class="text-center">2021-08-29</td>
-                <td class="text-end"><a href="#">Delete</a></td>
+                <th scope="col" colspan="1">{{ loop.index }}</th>
+                <td colspan="" class="text-center">{{ item[2] }}</td>
+                <td colspan="" class="text-center">{{ item[3] }}</td>
+                <td colspan="" class="text-center">{{ item[4] }}</td>
+                <td colspan="" class="text-center">{{ item[5] }}</td>
+                <td class="text-end"><a class="deletebtn" href="#">Delete</a></td>
               </tr>
             {% endfor %}
               <tr>
@@ -121,7 +121,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form action="alert_form" method="post">
+    <form action="alerts_form" method="post">
       <table class="table table-hover">
           <tbody>
             <tr>
@@ -152,8 +152,8 @@
             <tr>
               <th scope="row">Valid Until</th>
               <td>
-                <div class="md-form md-outline input-with-post-icon datepicker">
-                <input placeholder="Select date" type="date" id="example" class="form-control">
+                <div id="datepicker" class="md-form md-outline input-with-post-icon datepicker">
+                <input placeholder="Select date" type="date" name="datepicker" class="form-control">
                 </div>
               </td>
             </tr>
@@ -205,10 +205,28 @@
     
     <!-- JavaScript -->   
     <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript">
+         $(".deletebtn").click(function() {
+        var $row = $(this).closest("tr"),       // Finds the closest row <tr>
+        $tds = $row.find("td");             // Finds all children <td> elements
+        array = [];
+        $.each($tds, function() {
+          // Visits every single <td> element
+        array.push($(this).text());    // Prints out the text within the <td>
+        });
+        $.post( "/postmethod", {
+          javascript_data: array
+        });
+        // return true or false, depending on whether you want to allow the `href` property to follow through or not
+    });
+    </script>
     <script>
+
       // Data Picker Initialization
       $('.datepicker').datepicker({inline: true});
     </script>
@@ -240,6 +258,7 @@ window.onclick = function(event) {
 }
     </script>
     <script>
+
       const form = document.querySelector('form');
 
 
