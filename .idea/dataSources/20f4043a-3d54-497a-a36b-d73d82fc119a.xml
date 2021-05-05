@@ -1154,6 +1154,7 @@ alerte_end_date</ColNames>
       <Position>1</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="326" parent="290" name="portfolio_user">
       <Position>2</Position>

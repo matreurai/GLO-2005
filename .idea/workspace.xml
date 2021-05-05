@@ -23,12 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e9718e7-063a-4bc1-b0bd-8af590b2a751" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GIT_DEPOT_GLO-2005.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GIT_DEPOT_GLO-2005.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/glo-2005-projet.86PXeA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/glo-2005-projet.86PXeA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rapport/Rapport.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Rapport/Rapport.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rapport/~$apport.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rapport/~WRL0003.tmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +89,8 @@
       <workItem from="1619115108490" duration="350000" />
       <workItem from="1619702697132" duration="20606000" />
       <workItem from="1620091999951" duration="4163000" />
+      <workItem from="1620151393083" duration="106000" />
+      <workItem from="1620175684357" duration="196000" />
     </task>
     <servers />
   </component>

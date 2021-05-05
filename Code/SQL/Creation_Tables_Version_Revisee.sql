@@ -102,7 +102,6 @@ CREATE TABLE IF NOT EXISTS `t_alerte`
     `alerte_below_price` DECIMAL(13, 4),
     `alerte_above_price` DECIMAL(13, 4),
     `alerte_end_date` DATE,
-    `alerte_index` VARCHAR(125),
 
     PRIMARY KEY (`alerte_id`),
     FOREIGN KEY (`alerte_ticker`) REFERENCES `t_projet`(`projet_ticker`),
@@ -112,13 +111,13 @@ CREATE TABLE IF NOT EXISTS `t_alerte`
 ALTER TABLE `t_alerte` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `alerte_idx` ON `t_alerte` (`alerte_id`, `alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
+CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_id`, `alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Portfolio -- */
 CREATE TABLE IF NOT EXISTS `t_portfolio`
 (
-    `portfolio_id` SMALLINT NOT NULL,
+    `portfolio_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `portfolio_user` SMALLINT NOT NULL,
     `portfolio_balance` DECIMAL(13,4),
     `portfolio_cout_total` DECIMAL(13,4),
@@ -130,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `t_portfolio`
 ALTER TABLE `t_portfolio` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `portfolio_idx_user` ON `t_portfolio` (`portfolio_user`);
+CREATE INDEX `portfolio_idx_user` USING HASH ON `t_portfolio` (`portfolio_user`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Titre -- */
