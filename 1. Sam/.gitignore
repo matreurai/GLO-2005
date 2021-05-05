@@ -128,4 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-.idea
+# SQL tool files
+sqltools_20210412204947_136.log
