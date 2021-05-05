@@ -1112,7 +1112,7 @@ alerte_end_date</ColNames>
       <Position>10</Position>
       <DataType>bigint|0s</DataType>
     </column>
-    <index id="317" parent="288" name="idx_projet">
+    <index id="317" parent="288" name="idx_crypto">
       <ColNames>cryptomonnaie_id</ColNames>
       <Type>btree</Type>
     </index>

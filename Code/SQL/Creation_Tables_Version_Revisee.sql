@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
 ALTER TABLE `t_cryptomonnaie` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `idx_projet` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
+CREATE INDEX `idx_crypto` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
 /*------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Utilisateur -- */
