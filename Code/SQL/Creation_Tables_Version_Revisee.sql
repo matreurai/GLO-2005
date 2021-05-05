@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `t_alerte`
 ALTER TABLE `t_alerte` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_id`, `alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
+CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Portfolio -- */
