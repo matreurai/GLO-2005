@@ -10,6 +10,7 @@ import MySQLdb
 from datetime import date
 from werkzeug.security import generate_password_hash, check_password_hash
 import hashlib
+import bcrypt
 
 # Init App
 app = Flask(__name__)
@@ -65,17 +66,30 @@ def page_profile():
 def page_signup():
   return render_template('SignUp.html')
 
+@app.route("/adding_alert", methods=['POST'])
+def add_alert():
+  if session['loggedin'] == False:
+    return
+  user_id = session['id']
+  cmd = ''
+
 #Route du login
 @app.route("/login_form", methods=['POST'])
 def login():
   username = request.form.get('uname')
-  password = hashlib.md5((request.form.get('psw')).encode('utf-8')).hexdigest()
+  password = request.form.get('psw')
+
   cmd='SELECT * FROM t_utilisateur u1 INNER JOIN t_password p1 on p1.password_id_utilisateur = u1.utilisateur_id WHERE u1.utilisateur_username = %s'
+
   cur=db.cursor()
   cur.execute(cmd,(username,))
   account = cur.fetchone()
 
-  if account:
+  cmd = 'SELECT p1.password_password FROM t_password p1 WHERE p1.password_id_utilisateur = %s'
+  cur.execute(cmd,(account[0],))
+  hash_password = cur.fetchone()
+
+  if account and check_password(password, hash_password[0]):
     session['loggedin'] = True
     session['id'] = account[0]
     session['username'] = account[1]
@@ -88,27 +102,29 @@ def login():
 @app.route("/signup_form", methods=['POST'])
 def signup():
   username = request.form.get('username')
-  password = hashlib.md5((request.form.get('password')).encode('utf-8')).hexdigest()
+  password = request.form.get('password')
   email = request.form.get('email')
 
-  cmd=('INSERT INTO t_utilisateur (utilisateur_username, utilisateur_email, utilisateur_date_creation) ' \
-      'VALUES(%s,%s,%s)')
+  hashedpwd = get_hashed_password(password)
+
   cur=db.cursor()
-  cur.execute(cmd, (username, email, date.today().strftime("%Y-%m-%d"),))
+  args = [username, email, date.today().strftime("%Y-%m-%d"), hashedpwd]
 
-  cmd = ('SELECT utilisateur_id FROM t_utilisateur where utilisateur_username = %s')
+  cur.callproc('Create_User', args)
+  cur.close()
+
   cur = db.cursor()
-  cur.execute(cmd, (username,))
-
-  user_id = cur.fetchone()
-
-  cmd = ('INSERT INTO t_password (password_id_utilisateur, password_password) ' \
-      'VALUES(%s,%s)')
-  cur = db.cursor()
-  cur.execute(cmd,(user_id, password,))
   db.commit()
   return render_template('Home.html')
 
+def get_hashed_password(plain_text_password):
+    # Hash a password for the first time
+    #   (Using bcrypt, the salt is saved into the hash itself)
+    return bcrypt.hashpw(plain_text_password, bcrypt.gensalt())
+
+def check_password(plain_text_password, hashed_password):
+  # Check hashed password. Using bcrypt, the salt is saved into the hash itself
+  return bcrypt.checkpw(plain_text_password, hashed_password)
 
 def mise_a_jour():
       return None
@@ -140,7 +156,7 @@ def hash_allpasswords():
   info = cur.fetchall()
   for i in info:
     password = i[1]
-    hash_pass = hashlib.md5(password.encode('utf-8')).hexdigest()
+    hash_pass = get_hashed_password(password)
     cmd = 'UPDATE t_password SET password_password=\'' + hash_pass + '\' WHERE password_id_utilisateur=\'' + str(
       i[0]) + '\';'
     cur = db.cursor()

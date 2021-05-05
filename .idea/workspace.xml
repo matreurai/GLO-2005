@@ -25,6 +25,7 @@
     <list default="true" id="4e9718e7-063a-4bc1-b0bd-8af590b2a751" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/API.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/API.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/templates/Alerts.html" beforeDir="false" afterPath="$PROJECT_DIR$/Code/templates/Alerts.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,14 +100,7 @@
       <option name="presentableId" value="Default" />
       <updated>1618419552448</updated>
       <workItem from="1618420542900" duration="8582000" />
-<<<<<<< HEAD
-      <workItem from="1618785698426" duration="1316000" />
-      <workItem from="1618787381031" duration="168000" />
-      <workItem from="1618787631130" duration="3236000" />
-      <workItem from="1618795232655" duration="40000" />
-=======
-      <workItem from="1618786255456" duration="3344000" />
->>>>>>> ab09f15d99a5ce6a4fda3932bb7dfe291fd39ca7
+      <workItem from="1618786255456" duration="10961000" />
     </task>
     <servers />
   </component>
@@ -126,6 +120,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GLO_2005$API.coverage" NAME="API Coverage Results" MODIFIED="1618794587853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code" />
+    <SUITE FILE_PATH="coverage/GLO_2005$API.coverage" NAME="API Coverage Results" MODIFIED="1618865415933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Code" />
   </component>
 </project>

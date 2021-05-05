@@ -17,25 +17,20 @@ DROP TABLE IF EXISTS `t_titre`;
 CREATE TABLE IF NOT EXISTS `t_projet`
 (
     `projet_ticker` VARCHAR(9) NOT NULL,
-    `projet_logo` VARCHAR(60),
+    `projet_logo` VARCHAR(50),
     `projet_nom_du_coin` VARCHAR(20) NOT NULL,
     `projet_description` VARCHAR(300),
     `projet_start_date` DATE,
     `projet_forage_possible` BOOLEAN,
 
     PRIMARY KEY(`projet_ticker`),
-    UNIQUE(`projet_ticker`),
-    UNIQUE (`projet_nom_du_coin`),
-    UNIQUE (`projet_logo`)
+    UNIQUE(`projet_ticker`)
 );
 
 ALTER TABLE `t_projet` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`)
-;
-
-# SELECT * FROM t_projet;
+CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Cryptomonnaie -- */
@@ -47,21 +42,21 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
     `cryptomonnaie_prix_actuel` DECIMAL(13,4) NOT NULL,
     `cryptomonnaie_prix_haut` DECIMAL(13,4),
     `cryptomonnaie_prix_bas` DECIMAL(13,4),
+    `cryptomonnaie_Valeur_cad` DECIMAL(13,4),
     `cryptomonnaie_market_cap` BIGINT,
     `cryptomonnaie_max_supply` BIGINT,
     `cryptomonnaie_qte_circulation` BIGINT,
     `cryptomonnaie_volume_24h` BIGINT,
+    `cryptomonnaie_logo` VARCHAR(50),
 
     PRIMARY KEY (`cryptomonnaie_id`),
-    FOREIGN KEY (`cryptomonnaie_ticker`) REFERENCES `t_projet`(`projet_ticker`),
-    FOREIGN KEY (`cryptomonnaie_nom_du_coin`) REFERENCES `t_projet`(`projet_nom_du_coin`)
+    FOREIGN KEY (`cryptomonnaie_ticker`) REFERENCES `t_projet`(`projet_ticker`)
 );
 
 ALTER TABLE `t_cryptomonnaie` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 CREATE INDEX `idx_projet` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
-# SELECT * FROM t_cryptomonnaie;
 /*------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Utilisateur -- */
@@ -129,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `t_portfolio`
     `portfolio_profit_total` DECIMAL(13,4),
     `portfolio_cout_total` DECIMAL(13,4),
     `portfolio_qte_coin_diff` SMALLINT,
-    `portfolio_ratio` FLOAT,
+    `portfolio_ratio_%` FLOAT,
 
     PRIMARY KEY(`portfolio_id`),
     FOREIGN KEY(portfolio_user) REFERENCES `t_utilisateur`(`utilisateur_id`)
@@ -143,12 +138,12 @@ COLLATE utf8mb4_unicode_ci;
 /* -- Creation de la table Titre -- */
 CREATE TABLE IF NOT EXISTS `t_titre`
 (
-    `titre_crypto_id` SMALLINT AUTO_INCREMENT NOT NULL,
-    `titre_portfolio_id` SMALLINT NOT NULL,
+    `titre_crypto_id` SMALLINT NOT NULL,
+    `titre_portfolio_id` SMALLINT,
     `titre_qte` INT DEFAULT 1,
     `titre_valeur_courante` DECIMAL(13,4),
     `titre_prix_moyen_paye` DECIMAL(13,4),
-    `titre_ratio` FLOAT,
+    `titre_ratio_%` FLOAT,
 
     PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
     FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
@@ -162,26 +157,19 @@ COLLATE utf8mb4_unicode_ci;
 
 /* -- Creation de la Procedure Create_User -- */
 DELIMITER %%
-CREATE PROCEDURE Create_User (IN id SMALLINT,
-                                IN username VARCHAR(20),
+CREATE PROCEDURE Create_User (  IN username VARCHAR(20),
                                 IN email VARCHAR(40),
-                                IN phone VARCHAR(20),
-                                IN prenom VARCHAR(30),
-                                IN nom VARCHAR(40),
                                 IN date_creation DATE,
                                 IN password VARCHAR(128))
     BEGIN
-        INSERT INTO `t_utilisateur` (utilisateur_id, utilisateur_username, utilisateur_email, utilisateur_phone, utilisateur_prenom, utilisateur_nom, utilisateur_date_creation)
-        VALUES                  (id,
-                                username,
+        INSERT INTO `t_utilisateur` (utilisateur_username, utilisateur_email, utilisateur_date_creation)
+        VALUES                  (username,
                                 email,
-                                phone,
-                                prenom,
-                                nom,
                                 date_creation);
-        INSERT INTO `t_password` (password_id_utilisateur, password_password) VALUES (id, password);
+        SELECT @id := LAST_INSERT_ID() FROM `t_utilisateur`;
+        INSERT INTO `t_password` (password_id_utilisateur, password_password) VALUES (@id, password);
     END %%
 DELIMITER ;
 /*---------------------------------------------------------------------------------------------------------------------*/
-# CALL Create_User(1,'rjovis0f','rjovis0@toplist.cz','(957) 2905099','Rem','Jovis','2020-12-17', 'PASSWORD123@');
+CALL Create_User('rjovis0f','rjovis0@toplist.cz','2020-12-17', 'PASSWORD123@');
 
