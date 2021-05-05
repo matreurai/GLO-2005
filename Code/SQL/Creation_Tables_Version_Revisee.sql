@@ -129,7 +129,6 @@ CREATE TABLE IF NOT EXISTS `t_portfolio`
 ALTER TABLE `t_portfolio` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `portfolio_idx_user` USING HASH ON `t_portfolio` (`portfolio_user`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Titre -- */
@@ -148,6 +147,7 @@ CREATE TABLE IF NOT EXISTS `t_titre`
 ALTER TABLE `t_titre` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
+CREATE INDEX `titre_idx` USING HASH ON `t_titre` (`titre_crypto_id`, `titre_prix_moyen_paye`, `titre_qte`);
 /*---------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la Procedure Create_User -- */
