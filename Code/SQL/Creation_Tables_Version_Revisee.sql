@@ -117,7 +117,7 @@ CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_id`, `alerte_user`, 
 /* -- Creation de la table Portfolio -- */
 CREATE TABLE IF NOT EXISTS `t_portfolio`
 (
-    `portfolio_id` SMALLINT NOT NULL AUTO_INCREMENT,
+    `portfolio_id` SMALLINT NOT NULL,
     `portfolio_user` SMALLINT NOT NULL,
     `portfolio_balance` DECIMAL(13,4),
     `portfolio_cout_total` DECIMAL(13,4),
