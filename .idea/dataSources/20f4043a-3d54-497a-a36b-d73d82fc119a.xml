@@ -976,166 +976,72 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <table id="285" parent="3" name="t_cryptomonnaie">
+    <table id="285" parent="3" name="t_projet">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="286" parent="3" name="t_projet">
-      <Collation>utf8mb4_unicode_ci</Collation>
-    </table>
-    <column id="287" parent="285" name="cryptomonnaie_id">
-      <Position>1</Position>
-      <DataType>smallint|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="288" parent="285" name="cryptomonnaie_ticker">
-      <Position>2</Position>
-      <DataType>varchar(9)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-    </column>
-    <column id="289" parent="285" name="cryptomonnaie_nom_du_coin">
-      <Position>3</Position>
-      <DataType>varchar(20)|0s</DataType>
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-    </column>
-    <column id="290" parent="285" name="cryptomonnaie_prix_actuel">
-      <Position>4</Position>
-      <DataType>decimal(13,4 digit)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="291" parent="285" name="cryptomonnaie_prix_haut">
-      <Position>5</Position>
-      <DataType>decimal(13,4 digit)|0s</DataType>
-    </column>
-    <column id="292" parent="285" name="cryptomonnaie_prix_bas">
-      <Position>6</Position>
-      <DataType>decimal(13,4 digit)|0s</DataType>
-    </column>
-    <column id="293" parent="285" name="cryptomonnaie_valeur_usd">
-      <Position>7</Position>
-      <DataType>decimal(13,4 digit)|0s</DataType>
-    </column>
-    <column id="294" parent="285" name="cryptomonnaie_market_cap">
-      <Position>8</Position>
-      <DataType>bigint|0s</DataType>
-    </column>
-    <column id="295" parent="285" name="cryptomonnaie_max_supply">
-      <Position>9</Position>
-      <DataType>bigint|0s</DataType>
-    </column>
-    <column id="296" parent="285" name="cryptomonnaie_qte_circulation">
-      <Position>10</Position>
-      <DataType>bigint|0s</DataType>
-    </column>
-    <column id="297" parent="285" name="cryptomonnaie_volume_24h">
-      <Position>11</Position>
-      <DataType>bigint|0s</DataType>
-    </column>
-    <column id="298" parent="285" name="cryptomonnaie_logo">
-      <Position>12</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-    </column>
-    <index id="299" parent="285" name="idx_projet">
-      <ColNames>cryptomonnaie_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="300" parent="285" name="cryptomonnaie_ticker">
-      <ColNames>cryptomonnaie_ticker</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="301" parent="285" name="cryptomonnaie_nom_du_coin">
-      <ColNames>cryptomonnaie_nom_du_coin</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="302" parent="285" name="cryptomonnaie_logo">
-      <ColNames>cryptomonnaie_logo</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="303" parent="285" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>cryptomonnaie_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="304" parent="285" name="t_cryptomonnaie_ibfk_1">
-      <ColNames>cryptomonnaie_ticker</ColNames>
-      <RefTableName>t_projet</RefTableName>
-      <RefColNames>projet_ticker</RefColNames>
-    </foreign-key>
-    <foreign-key id="305" parent="285" name="t_cryptomonnaie_ibfk_2">
-      <ColNames>cryptomonnaie_nom_du_coin</ColNames>
-      <RefTableName>t_projet</RefTableName>
-      <RefColNames>projet_nom_du_coin</RefColNames>
-    </foreign-key>
-    <foreign-key id="306" parent="285" name="t_cryptomonnaie_ibfk_3">
-      <ColNames>cryptomonnaie_logo</ColNames>
-      <RefTableName>t_projet</RefTableName>
-      <RefColNames>projet_logo</RefColNames>
-    </foreign-key>
-    <column id="307" parent="286" name="projet_ticker">
+    <column id="286" parent="285" name="projet_ticker">
       <Position>1</Position>
       <DataType>varchar(9)|0s</DataType>
       <NotNull>1</NotNull>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="308" parent="286" name="projet_logo">
+    <column id="287" parent="285" name="projet_logo">
       <Position>2</Position>
       <DataType>varchar(60)|0s</DataType>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="309" parent="286" name="projet_nom_du_coin">
+    <column id="288" parent="285" name="projet_nom_du_coin">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="310" parent="286" name="projet_description">
+    <column id="289" parent="285" name="projet_description">
       <Position>4</Position>
       <DataType>varchar(300)|0s</DataType>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="311" parent="286" name="projet_start_date">
+    <column id="290" parent="285" name="projet_start_date">
       <Position>5</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="312" parent="286" name="projet_forage_possible">
+    <column id="291" parent="285" name="projet_forage_possible">
       <Position>6</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <index id="313" parent="286" name="projet_ticker">
+    <index id="292" parent="285" name="projet_ticker">
       <ColNames>projet_ticker</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="314" parent="286" name="projet_logo">
+    <index id="293" parent="285" name="projet_logo">
       <ColNames>projet_logo</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="315" parent="286" name="projet_nom_du_coin">
+    <index id="294" parent="285" name="projet_nom_du_coin">
       <ColNames>projet_nom_du_coin</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="316" parent="286" name="idx_projet">
+    <index id="295" parent="285" name="idx_projet">
       <ColNames>projet_ticker</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="317" parent="286" name="PRIMARY">
+    <key id="296" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>projet_ticker</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="318" parent="286" name="projet_ticker">
+    <key id="297" parent="285" name="projet_ticker">
       <ColNames>projet_ticker</ColNames>
       <UnderlyingIndexName>projet_ticker</UnderlyingIndexName>
     </key>
-    <key id="319" parent="286" name="projet_logo">
+    <key id="298" parent="285" name="projet_logo">
       <ColNames>projet_logo</ColNames>
       <UnderlyingIndexName>projet_logo</UnderlyingIndexName>
     </key>
-    <key id="320" parent="286" name="projet_nom_du_coin">
+    <key id="299" parent="285" name="projet_nom_du_coin">
       <ColNames>projet_nom_du_coin</ColNames>
       <UnderlyingIndexName>projet_nom_du_coin</UnderlyingIndexName>
     </key>

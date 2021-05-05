@@ -21,13 +21,15 @@ conn.request("GET", "/v1/cryptocurrency/listings/latest?limit=20", payload, head
 res = conn.getresponse()
 data = res.read()
 respond = data.decode("utf-8")
+
 dict_data = json.loads(respond)['data']
+dict_quote = [v['quote'] for v in dict_data if v['quote']]
+dict_usd = [v['USD'] for v in dict_quote if v['USD']]
+
 symbols = [v['symbol'] for v in dict_data if v['symbol']]
 names = [v['name'] for v in dict_data if v['name']]
 dates_added = [v['date_added'] for v in dict_data if v['date_added']]
-# print(symbol, name, date_added)
+price = [v['price'] for v in dict_usd if v['price']]
 
+print (price)
 
-def data():
-    symbol, name, date_added = symbols, names, dates_added
-    return symbol, name, date_added

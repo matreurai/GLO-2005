@@ -47,17 +47,14 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
     `cryptomonnaie_prix_actuel` DECIMAL(13,4) NOT NULL,
     `cryptomonnaie_prix_haut` DECIMAL(13,4),
     `cryptomonnaie_prix_bas` DECIMAL(13,4),
-    `cryptomonnaie_valeur_usd` DECIMAL(13,4),
     `cryptomonnaie_market_cap` BIGINT,
     `cryptomonnaie_max_supply` BIGINT,
     `cryptomonnaie_qte_circulation` BIGINT,
     `cryptomonnaie_volume_24h` BIGINT,
-    `cryptomonnaie_logo` VARCHAR(50),
 
     PRIMARY KEY (`cryptomonnaie_id`),
     FOREIGN KEY (`cryptomonnaie_ticker`) REFERENCES `t_projet`(`projet_ticker`),
-    FOREIGN KEY (`cryptomonnaie_nom_du_coin`) REFERENCES `t_projet`(`projet_nom_du_coin`),
-    FOREIGN KEY (`cryptomonnaie_logo`) REFERENCES `t_projet` (`projet_logo`)
+    FOREIGN KEY (`cryptomonnaie_nom_du_coin`) REFERENCES `t_projet`(`projet_nom_du_coin`)
 );
 
 ALTER TABLE `t_cryptomonnaie` ENGINE InnoDB
