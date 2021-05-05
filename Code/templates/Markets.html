@@ -50,13 +50,33 @@
             <li class="nav-item">
               <a href="/Contact" class="nav-link">Contact</a>
             </li>
+            {% if session['username'] %}
+            <li class="nav-item">
+              <a href="/Portfolio" class="nav-link">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a href="/Alerts" class="nav-link">My Alerts</a>
+            </li>
+            {% endif %}
           </ul>
+          {% if session['username'] %}
+          <span class="navbar-text py-0 mb-2 mb-lg-0">
+            <a href="/Profile" class="nav-link">My Profile</a>
+          </span >
+          {% endif %}
+          {% if not session['username'] %}
           <span class="navbar-text py-0 mb-2 mb-lg-0">
             <a href="/SignUp" class="nav-link">Sign Up</a>
           </span >
           <span class="navbar-text py-0 mb-2 mb-lg-0">
             <button class="nav-link" style="background-color: transparent; border-style: none;" onclick="document.getElementById('id01').style.display='block'">Sign In</button>
           </span >
+          {% endif %}
+          {% if session['username'] %}
+          <span class="navbar-text py-0 mb-2 mb-lg-0">
+            <a href="/LogOut" class="nav-link">Log Out</a>
+          </span >
+          {% endif %}
         </div>
       </div>
     </nav>
@@ -387,9 +407,14 @@
       <div id="engage_bas" class="text-center p-4">
         <h2 class="p-4">Be Your Own Bank</h2>
         <div class="d-grid gap-2 d-md-block">
+        {% if not session['username'] %}
           <a id="menu_bas_join_now_button" href="/SignUp" data-bn-type="button" class="btn btn-secondary p-2 px-3 mx-md-2">Join Now</a>
           <a id="menu_bas_sign_in_button" data-bn-type="button" class="btn btn-outline-secondary p-2 px-4 mx-md-2" onclick="document.getElementById('id01').style.display='block'">Sign In</a>
-        </div>  
+          {% endif %}
+          {% if session['username'] %}
+            <a href="/LogOut" data-bn-type="button" class="btn btn-secondary p-2 px-3 mx-md-2">Log Out</a>
+          {% endif %}
+        </div>
       </div>
 
       <!-- Menu du bas | Menu-->
@@ -404,6 +429,11 @@
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
               <div class="accordion-body"><a href="/About">About</a></div>
               <div class="accordion-body"><a href="/Markets">Markets</a></div>
+              {% if session['username'] %}
+               <div class="accordion-body"><a href="/Portfolio">Portfolio</a></div>
+               <div class="accordion-body"><a href="/Alerts">My Alerts</a></div>
+               <div class="accordion-body"><a href="/Profile">Profile</a></div>
+              {% endif %}
             </div>
             <h2 class="accordion-header" id="flush-headingTwo">
               <button id="menu_accordeon2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -470,6 +500,6 @@
           }
       }
     </script>
-   
+
   </body>
 </html>

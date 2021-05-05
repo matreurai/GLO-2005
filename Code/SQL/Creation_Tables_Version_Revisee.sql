@@ -42,12 +42,10 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
     `cryptomonnaie_prix_actuel` DECIMAL(13,4) NOT NULL,
     `cryptomonnaie_prix_haut` DECIMAL(13,4),
     `cryptomonnaie_prix_bas` DECIMAL(13,4),
-    `cryptomonnaie_Valeur_cad` DECIMAL(13,4),
     `cryptomonnaie_market_cap` BIGINT,
     `cryptomonnaie_max_supply` BIGINT,
     `cryptomonnaie_qte_circulation` BIGINT,
     `cryptomonnaie_volume_24h` BIGINT,
-    `cryptomonnaie_logo` VARCHAR(50),
 
     PRIMARY KEY (`cryptomonnaie_id`),
     FOREIGN KEY (`cryptomonnaie_ticker`) REFERENCES `t_projet`(`projet_ticker`)
@@ -56,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
 ALTER TABLE `t_cryptomonnaie` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `idx_projet` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
+CREATE INDEX `idx_crypto` ON `t_cryptomonnaie`(`cryptomonnaie_id`);
 /*------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Utilisateur -- */
@@ -106,25 +104,23 @@ CREATE TABLE IF NOT EXISTS `t_alerte`
     `alerte_end_date` DATE,
 
     PRIMARY KEY (`alerte_id`),
-    FOREIGN KEY (`alerte_ticker`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_ticker`),
+    FOREIGN KEY (`alerte_ticker`) REFERENCES `t_projet`(`projet_ticker`),
     FOREIGN KEY (`alerte_user`) REFERENCES `t_utilisateur`(`utilisateur_id`)
 );
 
 ALTER TABLE `t_alerte` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
+CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_id`, `alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Portfolio -- */
 CREATE TABLE IF NOT EXISTS `t_portfolio`
 (
-    `portfolio_id` SMALLINT NOT NULL,
+    `portfolio_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `portfolio_user` SMALLINT NOT NULL,
     `portfolio_balance` DECIMAL(13,4),
-    `portfolio_profit_total` DECIMAL(13,4),
     `portfolio_cout_total` DECIMAL(13,4),
-    `portfolio_qte_coin_diff` SMALLINT,
-    `portfolio_ratio_%` FLOAT,
 
     PRIMARY KEY(`portfolio_id`),
     FOREIGN KEY(portfolio_user) REFERENCES `t_utilisateur`(`utilisateur_id`)
@@ -141,9 +137,7 @@ CREATE TABLE IF NOT EXISTS `t_titre`
     `titre_crypto_id` SMALLINT NOT NULL,
     `titre_portfolio_id` SMALLINT,
     `titre_qte` INT DEFAULT 1,
-    `titre_valeur_courante` DECIMAL(13,4),
     `titre_prix_moyen_paye` DECIMAL(13,4),
-    `titre_ratio_%` FLOAT,
 
     PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
     FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
@@ -153,6 +147,7 @@ CREATE TABLE IF NOT EXISTS `t_titre`
 ALTER TABLE `t_titre` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
+CREATE INDEX `titre_idx` USING HASH ON `t_titre` (`titre_crypto_id`, `titre_prix_moyen_paye`, `titre_qte`);
 /*---------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la Procedure Create_User -- */
