@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
     `cryptomonnaie_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `cryptomonnaie_ticker` VARCHAR(9) NOT NULL,
     `cryptomonnaie_nom_du_coin` VARCHAR(20),
-    `cryptomonnaie_prix_actuel` DECIMAL(13,4) NOT NULL,
     `cryptomonnaie_prix_haut` DECIMAL(13,4),
     `cryptomonnaie_prix_bas` DECIMAL(13,4),
     `cryptomonnaie_market_cap` BIGINT,
