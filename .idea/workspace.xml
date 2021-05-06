@@ -23,7 +23,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e9718e7-063a-4bc1-b0bd-8af590b2a751" name="Default Changelist" comment="Modification git ignore">
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/python.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/python.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/pythonProject2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/API.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/Code Extra.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/Crypto.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/DICT_Projet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/Database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/Excel_to_DB.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/Live_Data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/binance_key.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/excel_to_python.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/respond_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/t_crypto_import.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/t_projet.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/t_projet_import.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BD_API/time_stamp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/API/API.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/API/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/API/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/API/binance_key.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/API/connect_SQL.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/API/time_stamp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Rapport/~$apport.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Rapport/~WRL2920.tmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/glo-2005-projet.86PXeA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/glo-2005-projet.86PXeA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/sakila.oXLGyQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/tp-programmation.mxiYgQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20f4043a-3d54-497a-a36b-d73d82fc119a/storage_v2/_src_/schema/world.khvBBg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +81,9 @@
       </map>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Jarvis" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -53,10 +96,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Code/API.py" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -98,6 +143,21 @@
       <workItem from="1620268984210" duration="142000" />
       <workItem from="1620310832256" duration="2165000" />
     </task>
+    <task id="LOCAL-00001" summary="Modification git ignore">
+      <created>1620322026278</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620322026278</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Modification git ignore">
+      <created>1620322068810</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1620322068810</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,7 +174,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Jarvis" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>

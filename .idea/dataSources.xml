@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+<<<<<<< HEAD
     <data-source source="LOCAL" name="glo-2005-projet@localhost" uuid="20f4043a-3d54-497a-a36b-d73d82fc119a">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
@@ -10,6 +11,14 @@
       <driver-properties>
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
+=======
+    <data-source source="LOCAL" name="@localhost" uuid="bc92d803-3183-4860-abf4-fa351a9aea0d">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+>>>>>>> 8a468e77898052cd227569d88131f8a93db9ec8c
     </data-source>
   </component>
 </project>

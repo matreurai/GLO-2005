@@ -1,1 +1,20 @@
+<<<<<<< HEAD
 /venv/
+=======
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+/Projet/
+/venv/
+/.idea/dataSources/bc92d803-3183-4860-abf4-fa351a9aea0d/storage_v2/_src_/schema/performance_schema.kIw0nw.meta
+/.idea/dataSources/bc92d803-3183-4860-abf4-fa351a9aea0d.xml
+/.idea/dataSources.local.xml
+/.idea/dataSources/bc92d803-3183-4860-abf4-fa351a9aea0d/storage_v2/_src_/schema/information_schema.FNRwLQ.meta
+/.idea/dataSources/bc92d803-3183-4860-abf4-fa351a9aea0d/storage_v2/_src_/schema/mysql.osA4Bg.meta
+/.idea/dataSources/bc92d803-3183-4860-abf4-fa351a9aea0d/storage_v2/_src_/schema/sys.zb4BAA.meta
+>>>>>>> 8a468e77898052cd227569d88131f8a93db9ec8c
