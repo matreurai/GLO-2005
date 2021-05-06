@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `t_projet`
 (
     `projet_ticker` VARCHAR(9) NOT NULL,
     `projet_logo` VARCHAR(50),
-    `projet_nom_du_coin` VARCHAR(20) NOT NULL,
+    `projet_nom_du_coin` VARCHAR(50) NOT NULL,
     `projet_description` VARCHAR(300),
     `projet_start_date` DATE,
     `projet_forage_possible` BOOLEAN,
