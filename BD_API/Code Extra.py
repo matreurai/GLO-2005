@@ -218,3 +218,6 @@ def binance_ticker():
 #         cursor.close()
 #         db.close()
 #         print("MySQL connection is closed")
+
+# print(projet_start_date)
+# price = [v['price'] for v in dict_usd if v['price']]

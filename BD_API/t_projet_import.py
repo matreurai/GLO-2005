@@ -1,9 +1,7 @@
-import mysql.connector
-import pymysql
 import http.client
 import json
-import xlrd
 import pandas as pd
+import xlrd
 from sqlalchemy import create_engine
 
 # Traitement de la donner de Coinmarket
@@ -32,8 +30,6 @@ projet_nom_du_coin = [v['name'] for v in dict_data if v['name']]
 projet_start_date = [v['date_added'] for v in dict_data if v['date_added']]
 
 print (projet_ticker,projet_nom_du_coin,projet_start_date)
-# print(projet_start_date)
-# price = [v['price'] for v in dict_usd if v['price']]
 
 #importation donner du fichier excel dans un dictionnaire
 
@@ -76,7 +72,7 @@ dbConnection = sqlEngine.connect()
 
 try:
 
-    frame = t_project_frame.to_sql(list_t_projet, dbConnection, if_exists='append',index=False);
+    frame = t_project_frame.to_sql(list_t_projet, dbConnection, if_exists='append',index=False)
 
 except ValueError as vx:
 
@@ -88,7 +84,7 @@ except Exception as ex:
 
 else:
 
-    print("Table %s created successfully."%t_projet);
+    print("Table %s created successfully."%t_projet)
 
 finally:
 
