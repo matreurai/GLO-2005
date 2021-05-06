@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Tags Meta Requis -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Polices de texte -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Roboto, Goldman -->
+    <link href="https://fonts.googleapis.com/css2?family=Aladin&family=Goldman&family=Gugi&family=Michroma&family=Oswald:wght@200&family=Roboto&display=swap" rel="stylesheet"> 
+
+
+
+    <!-- Inclusion Bootstrap CSS et des Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+    <!-- Inclusion Fichier CSS Custom-->
+    <link rel="stylesheet" href="../static/Home.css">
+
+    <title>Crypt-O-Watch | Your Crypto Wallet</title>
+    <link rel="icon" href="../static/logo.PNG" type="image/icon type">
+  </head>
+  
+  <body>
+    <!-- Barre de Navigation -->
+    <section>
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0 fixed-top">
+      <div class="container-fluid">
+        <a href="/Home" class="navbar-brand" id="Logo">
+          <img src="../static/logo.PNG" alt="" width="30" height="30" class="d-inline-block align-text-top mt-1">
+          Crypt-0-Watch
+        </a>
+        <button id="nabbar-toggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-lebel="Toggle Navigation" aria-controls="navbarText">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse me-auto" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a href="/Markets" class="nav-link">Markets</a>
+            </li>
+            <li class="nav-item">
+              <a href="/About" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="/Contact" class="nav-link">Contact</a>
+            </li>
+            {% if session['username'] %}
+            <li class="nav-item">
+              <a href="/Portfolio" class="nav-link">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a href="/Alerts" class="nav-link">My Alerts</a>
+            </li>
+            {% endif %}
+          </ul>
+          {% if session['username'] %}
+          <span class="navbar-text py-0 mb-2 mb-lg-0">
+            <a href="/Profile" class="nav-link">My Profile</a>
+          </span >
+          {% endif %}
+          {% if not session['username'] %}
+          <span class="navbar-text py-0 mb-2 mb-lg-0">
+            <a href="/SignUp" class="nav-link">Sign Up</a>
+          </span >
+          <span class="navbar-text py-0 mb-2 mb-lg-0">
+            <button class="nav-link" style="background-color: transparent; border-style: none;" onclick="document.getElementById('id01').style.display='block'">Sign In</button>
+          </span >
+          {% endif %}
+          {% if session['username'] %}
+          <span class="navbar-text py-0 mb-2 mb-lg-0">
+            <a href="/LogOut" class="nav-link">Log Out</a>
+          </span >
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    </section>
+
+    <!-- Défilement d'images Caroussel -->
+    <section class="container-fluid px-0" class="d-block">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" class="d-block">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" class="d-block">
+          <div class="carousel-item active">
+            <img class="img-fluid" src="../static/home_slider_1.jpg" class="d-block" alt="...">
+            <div id="joinnow1" class="carousel-caption d-none d-md-block d-lg-col">
+              <h3 id="Text1">Watch Crypto Live</h3>
+              <p class="lead" id="Text2">Register Now to Add Cryptocurrency to Your Watchlist</p>
+              {% if not session['username'] %}
+              <a href="/SignUp"><button id="joinnow1button"  type="button" class="btn btn-secondary">Join Now</button></a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="img-fluid" src="../static/home_slider_2.jpg" class="d-block" alt="...">
+            <div id="joinnow2" class="carousel-caption d-none d-md-block d-lg-col">
+              <h3 id="Text1">Watch Crypto Live</h3>
+              <p class="lead" id="Text2">Register Now to Add Cryptocurrency to Your Watchlist</p>
+              {% if not session['username'] %}
+              <a href="/SignUp"><button id="joinnow2button" type="button" class="btn btn-secondary ">Join Now</button></a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="img-fluid" src="../static/home_slider_3.jpg" class="d-block" alt="...">
+            <div id="joinnow3" class="carousel-caption d-none d-md-block d-lg-col">
+              <h3 id="Text1">Watch Crypto Live</h3>
+              <p class="lead" id="Text2">Register Now to Add Cryptocurrency to Your Watchlist</p>
+              {% if not session['username'] %}
+              <a href="/SignUp"><button id="joinnow3button" type="button" class="btn btn-secondary">Join Now</button></a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Publicités et les 3 images -->
+    <div class="container">
+      <div class="row d-flex justify-content-center pt-3 g-0 px-0">
+        <div class="col-3 text-center shadow-lg m-2">
+          <img class="img-fluid" src="../static/300px2.png">
+        </div>
+        <div class="col-3 text-center shadow-lg m-2">
+          <img class="img-fluid" src="../static/300px.png">
+        </div>
+        <div class="col-3 text-center shadow-lg m-2">
+            <img class="img-fluid" src="../static/300px3.png">
+        </div>
+      </div>
+      <div class="text-center">
+      <form action="https://cryptonews.com/" method="get" target="_blank" class="py-0 my-0">
+        <button id="publicite1" type="submit" class="btn btn-link py-0 my-0" style="font-size: 1em;">
+          <i class="bi bi-megaphone" style="font-size: 1.5rem;"></i>
+           - Crypto News | Today's Latest Cryptocurrency News -
+        </button>
+      </form>
+      </div>
+    </div>
+
+    <!-- Tableau des cryptocurrency -->
+    <div class="d-flex row justify-content-center m-2">
+      <section class="d-flex bd-highlight shadow-lg mb-5 mt-4 mx-2 px-0 col-md-8 justify-content-center">
+          <div class="container-fluid justify-content-center px-0">
+            <div>
+            <table id="currency-table" class="table m-0 table-hover table-dark table-striped justify-content-center shadow-lg">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Last Price</th>
+                  <th scope="col">24h Change</th>
+                  <th scope="col" class="d-none d-md-table-cell">24H Volume</th>
+                  <th scope="col" class="d-none d-lg-table-cell">Market Cap</th>
+                  <th scope="col" class="d-none d-xl-table-cell">Infos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Bitcoin</td>
+                  <td>$55,190.69</td>
+                  <td>-2.22%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Etherum</td>
+                  <td>$1,683.60</td>
+                  <td>-1.42%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Cardano</td>
+                  <td>$1.18</td>
+                  <td>-0.05%</td>
+                  <td class="d-none d-md-table-cell"></td>  
+                  <td class="d-none d-lg-table-cell"></td>  
+                  <td class="d-none d-xl-table-cell"></td>  
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Bitcoin</td>
+                  <td>$55,190.69</td>
+                  <td>-2.22%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Etherum</td>
+                  <td>$1,683.60</td>
+                  <td>-1.42%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>Cardano</td>
+                  <td>$1.18</td>
+                  <td>-0.05%</td>
+                  <td class="d-none d-md-table-cell"></td>  
+                  <td class="d-none d-lg-table-cell"></td>  
+                  <td class="d-none d-xl-table-cell"></td>  
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>Bitcoin</td>
+                  <td>$55,190.69</td>
+                  <td>-2.22%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>Etherum</td>
+                  <td>$1,683.60</td>
+                  <td>-1.42%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">9</th>
+                  <td>Cardano</td>
+                  <td>$1.18</td>
+                  <td>-0.05%</td>
+                  <td class="d-none d-md-table-cell"></td>  
+                  <td class="d-none d-lg-table-cell"></td>  
+                  <td class="d-none d-xl-table-cell"></td>  
+                </tr>
+                <tr>
+                  <th scope="row">10</th>
+                  <td>Bitcoin</td>
+                  <td>$55,190.69</td>
+                  <td>-2.22%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">11</th>
+                  <td>Etherum</td>
+                  <td>$1,683.60</td>
+                  <td>-1.42%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">12</th>
+                  <td>Cardano</td>
+                  <td>$1.18</td>
+                  <td>-0.05%</td>
+                  <td class="d-none d-md-table-cell"></td>  
+                  <td class="d-none d-lg-table-cell"></td>  
+                  <td class="d-none d-xl-table-cell"></td>  
+                </tr>
+                <tr>
+                  <th scope="row">13</th>
+                  <td>Bitcoin</td>
+                  <td>$55,190.69</td>
+                  <td>-2.22%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">14</th>
+                  <td>Etherum</td>
+                  <td>$1,683.60</td>
+                  <td>-1.42%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">15</th>
+                  <td>Cardano</td>
+                  <td>$1.18</td>
+                  <td>-0.05%</td>
+                  <td class="d-none d-md-table-cell"></td>  
+                  <td class="d-none d-lg-table-cell"></td>  
+                  <td class="d-none d-xl-table-cell"></td>  
+                </tr>
+                <tr>
+                  <th scope="row">16</th>
+                  <td>Bitcoin</td>
+                  <td>$55,190.69</td>
+                  <td>-2.22%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">17</th>
+                  <td>Etherum</td>
+                  <td>$1,683.60</td>
+                  <td>-1.42%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">18</th>
+                  <td>Cardano</td>
+                  <td>$1.18</td>
+                  <td>-0.05%</td>
+                  <td class="d-none d-md-table-cell"></td>  
+                  <td class="d-none d-lg-table-cell"></td>  
+                  <td class="d-none d-xl-table-cell"></td>  
+                </tr>
+                <tr>
+                  <th scope="row">19</th>
+                  <td>Etherum</td>
+                  <td>$1,683.60</td>
+                  <td>-1.42%</td>
+                  <td class="d-none d-md-table-cell"></td>
+                  <td class="d-none d-lg-table-cell"></td>
+                  <td class="d-none d-xl-table-cell"></td>
+                </tr>
+                <tr>
+                  <th scope="row">20</th>
+                  <td>Cardano</td>
+                  <td>$1.18</td>
+                  <td>-0.05%</td>
+                  <td class="d-none d-md-table-cell"></td>  
+                  <td class="d-none d-lg-table-cell"></td>  
+                  <td class="d-none d-xl-table-cell"></td>  
+                </tr>
+                <tr>
+                  <td colspan="18" align="middle">
+                    <a href="/Markets">
+                      <button id="viewmore" type="button" class="btn btn-link">View more Markets ></button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+      </section>
+    </div>  
+
+    <!-- La Citation sous le tableau -->
+    <div class="row">
+      <p id="HomeQuoteDown" class="display-5 text-center-left">
+        Watch Your Profits Grow.
+      </p>
+    </div>
+
+    <!-- Menu du bas | Call -->
+    <div class="footer">
+      <div id="engage_bas" class="text-center p-4">
+        <h2 class="p-4">Be Your Own Bank</h2>
+        <div class="d-grid gap-2 d-md-block">
+          {% if not session['username'] %}
+          <a id="menu_bas_join_now_button" href="/SignUp" data-bn-type="button" class="btn btn-secondary p-2 px-3 mx-md-2">Join Now</a>
+          <a id="menu_bas_sign_in_button" data-bn-type="button" class="btn btn-outline-secondary p-2 px-4 mx-md-2" onclick="document.getElementById('id01').style.display='block'">Sign In</a>
+          {% endif %}
+          {% if session['username'] %}
+            <a href="/LogOut" data-bn-type="button" class="btn btn-secondary p-2 px-3 mx-md-2">Log Out</a>
+          {% endif %}
+        </div>  
+      </div>
+
+      <!-- Menu du bas | Menu-->
+      <footer class="d-grid gap-2 d-md-block">
+        <div class="accordion accordion-flush" id="accordionFlush">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button id="menu_accordeon1" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Menu
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
+              <div class="accordion-body"><a href="/About">About</a></div>
+              <div class="accordion-body"><a href="/Markets">Markets</a></div>
+              {% if session['username'] %}
+               <div class="accordion-body"><a href="/Portfolio">Portfolio</a></div>
+               <div class="accordion-body"><a href="/Alerts">My Alerts</a></div>
+               <div class="accordion-body"><a href="/Profile">Profile</a></div>
+              {% endif %}
+            </div>
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button id="menu_accordeon2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Contact
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlush">
+              <div class="accordion-body"><a href="/Contact">Samuel Aubert</a></div>
+              <div class="accordion-body"><a href="/Contact">Christopher Godin</a></div>
+              <div class="accordion-body"><a href="/Contact">David Bolduc-Riopel</a></div>
+            </div>
+          </div>
+        </div>  
+      </footer>
+      <div class="footer">
+        <p id="copyrights" class="p-4 text-center">©2020-2021 Crypt-O-Watch.com. All rights reserved</p>
+      </div>
+    </div>
+
+    <!-- Login Page (Modal) -->
+    <div id="id01" class="modal">    
+      <form id="popupSignIn" class="modal-content " action="login_form" method="post">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="../static/logo1F1F1F.png" alt="Avatar" class="avatar" style="height:10em; width:10em;" >
+        </div>
+
+        <div id="container_login_info" class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required minlength="4" maxlength="20">
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required minlength="8" maxlength="20">
+            
+          <button id="button_login" type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember" style="background-color: #3d3d3d; border-color: #e9c46a;" class="form-check-input"> Remember me
+          </label>
+        </div>
+
+        <div id="container_login_info_bottom" class="container" style="background-color: #3d3d3d">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#" style="text-decoration: underline; color: #e9c46a;">password?</a></span>
+        </div>
+      </form>
+    </div>
+
+    <!-- JavaScript -->
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    
+    <!-- Fonction de la NavBar qui permet de la changer de couleur lorsque l'utilisateur scroll down -->
+    <script>
+      $(function () {
+        $(document).scroll(function(){
+          var $nav = $("#mainNavbar");
+          $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+        });
+      });
+    </script>
+    
+    <!-- Fonction permettant de fermer la fenetre login en cliquant en dehors du cadre -->
+    <script>
+      // Interaction avec element HTML pour le Modal
+      var modal = document.getElementById('id01');
+      
+      // Evenement specifique - Quand l'utilisateur clique en dehors de la fenetre, fermer la fenetre
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+    </script>
+  </body>
+</html>
