@@ -22,8 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e9718e7-063a-4bc1-b0bd-8af590b2a751" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="4e9718e7-063a-4bc1-b0bd-8af590b2a751" name="Default Changelist" comment="Merge et modification fichier JArvis">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/add56bdb-67cf-4f6f-aa37-bf5ead2d200d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/add56bdb-67cf-4f6f-aa37-bf5ead2d200d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" afterDir="false" />
     </list>
@@ -138,7 +138,8 @@
       <workItem from="1620268984210" duration="142000" />
       <workItem from="1620310832256" duration="2822000" />
       <workItem from="1620326653909" duration="29000" />
-      <workItem from="1620342278778" duration="35000" />
+      <workItem from="1620342278778" duration="113000" />
+      <workItem from="1620342502873" duration="450000" />
     </task>
     <task id="LOCAL-00001" summary="Modification git ignore">
       <created>1620322026278</created>
