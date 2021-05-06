@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal">
-    <data-source name="glo-2005-projet@localhost" uuid="20f4043a-3d54-497a-a36b-d73d82fc119a">
+  <component name="dataSourceStorageLocal" created-in="PY-211.7142.13">
+    <data-source name="@localhost" uuid="add56bdb-67cf-4f6f-aa37-bf5ead2d200d">
       <database-info product="MySQL" version="8.0.23" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.21 (Revision: 33f65445a1bcc544eb0120491926484da168f199)" dbms="MYSQL" exact-version="8.0.23" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -12,7 +12,7 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
-            <name qname="GLO-2005-Projet" />
+            <name qname="@" />
             <name qname="glo-2005-projet" />
           </node>
         </introspection-scope>

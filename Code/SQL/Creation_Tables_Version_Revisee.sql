@@ -91,7 +91,6 @@ CREATE TABLE IF NOT EXISTS `t_password`
 ALTER TABLE `t_password` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `idx_password_id` USING HASH ON `t_password`(`password_id_utilisateur`);
 /*----------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Alerte -- */
@@ -112,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `t_alerte`
 ALTER TABLE `t_alerte` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
+CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_id`, `alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Portfolio -- */
@@ -140,6 +139,7 @@ CREATE TABLE IF NOT EXISTS `t_titre`
     `titre_qte` INT DEFAULT 1,
     `titre_prix_moyen_paye` DECIMAL(13,4),
 
+    PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
     FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
     FOREIGN KEY(`titre_portfolio_id`) REFERENCES `t_portfolio`(`portfolio_id`)
 );
