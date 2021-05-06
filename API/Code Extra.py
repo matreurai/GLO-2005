@@ -197,3 +197,24 @@ def binance_ticker():
 # price = [v['price'] for v in dict_usd if v['price']]
 #
 # print(price)
+
+# try:
+#     db = mysql.connector.connect(host="localhost", user="root", password="eAXt)cdncT%Wv5}RVb!_,f]S",
+#                                  db="GLO-2005-Projet")
+#     cursor = db.cursor()
+#     # placeholders = ', '.join(['%s'] * len(dict_t_proj))
+#     # columns = ', '.join(dict_t_proj.keys())
+#     mySql_insert_query = 'INSERT INTO t_projet (projet_ticker, projet_logo, projet_nom_du_coin, ' \
+#                          'projet_description,projet_start_date, projet_forage_possible) VALUES (%s,%s,%s,%s,%s,%s)'
+#     cursor.execute(mySql_insert_query, t_projet)
+#     db.commit()
+#     print("Record inserted successfully into Laptop table")
+#
+# except mysql.connector.Error as error:
+#     print("Failed to insert into MySQL table {}".format(error))
+#
+# finally:
+#     if db.is_connected():
+#         cursor.close()
+#         db.close()
+#         print("MySQL connection is closed")
