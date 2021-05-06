@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4e9718e7-063a-4bc1-b0bd-8af590b2a751" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rapport/Rapport.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Rapport/Rapport.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Code/SQL/Creation_Tables_Version_Revisee.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +94,8 @@
       <workItem from="1620250698201" duration="1603000" />
       <workItem from="1620260265798" duration="1063000" />
       <workItem from="1620268984210" duration="142000" />
-      <workItem from="1620310832256" duration="2165000" />
+      <workItem from="1620310832256" duration="2822000" />
+      <workItem from="1620326653909" duration="29000" />
     </task>
     <servers />
   </component>
