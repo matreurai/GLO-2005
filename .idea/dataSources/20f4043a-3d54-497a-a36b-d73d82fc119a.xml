@@ -1234,7 +1234,6 @@ alerte_end_date</ColNames>
     <column id="342" parent="292" name="titre_portfolio_id">
       <Position>2</Position>
       <DataType>smallint|0s</DataType>
-      <NotNull>1</NotNull>
     </column>
     <column id="343" parent="292" name="titre_qte">
       <Position>3</Position>
@@ -1255,105 +1254,99 @@ titre_qte</ColNames>
       <ColNames>titre_portfolio_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="347" parent="292" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>titre_crypto_id
-titre_portfolio_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="348" parent="292" name="t_titre_ibfk_1">
+    <foreign-key id="347" parent="292" name="t_titre_ibfk_1">
       <ColNames>titre_crypto_id</ColNames>
       <RefTableName>t_cryptomonnaie</RefTableName>
       <RefColNames>cryptomonnaie_id</RefColNames>
     </foreign-key>
-    <foreign-key id="349" parent="292" name="t_titre_ibfk_2">
+    <foreign-key id="348" parent="292" name="t_titre_ibfk_2">
       <ColNames>titre_portfolio_id</ColNames>
       <RefTableName>t_portfolio</RefTableName>
       <RefColNames>portfolio_id</RefColNames>
     </foreign-key>
-    <column id="350" parent="293" name="utilisateur_id">
+    <column id="349" parent="293" name="utilisateur_id">
       <Position>1</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="351" parent="293" name="utilisateur_username">
+    <column id="350" parent="293" name="utilisateur_username">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="352" parent="293" name="utilisateur_email">
+    <column id="351" parent="293" name="utilisateur_email">
       <Position>3</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="353" parent="293" name="utilisateur_phone">
+    <column id="352" parent="293" name="utilisateur_phone">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="354" parent="293" name="utilisateur_prenom">
+    <column id="353" parent="293" name="utilisateur_prenom">
       <Position>5</Position>
       <DataType>varchar(30)|0s</DataType>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="355" parent="293" name="utilisateur_nom">
+    <column id="354" parent="293" name="utilisateur_nom">
       <Position>6</Position>
       <DataType>varchar(40)|0s</DataType>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <column id="356" parent="293" name="utilisateur_date_creation">
+    <column id="355" parent="293" name="utilisateur_date_creation">
       <Position>7</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="357" parent="293" name="utilisateur_username">
+    <index id="356" parent="293" name="utilisateur_username">
       <ColNames>utilisateur_username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="358" parent="293" name="utilisateur_email">
+    <index id="357" parent="293" name="utilisateur_email">
       <ColNames>utilisateur_email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="359" parent="293" name="utilisateur_phone">
+    <index id="358" parent="293" name="utilisateur_phone">
       <ColNames>utilisateur_phone</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="360" parent="293" name="PRIMARY">
+    <key id="359" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>utilisateur_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="361" parent="293" name="utilisateur_username">
+    <key id="360" parent="293" name="utilisateur_username">
       <ColNames>utilisateur_username</ColNames>
       <UnderlyingIndexName>utilisateur_username</UnderlyingIndexName>
     </key>
-    <key id="362" parent="293" name="utilisateur_email">
+    <key id="361" parent="293" name="utilisateur_email">
       <ColNames>utilisateur_email</ColNames>
       <UnderlyingIndexName>utilisateur_email</UnderlyingIndexName>
     </key>
-    <key id="363" parent="293" name="utilisateur_phone">
+    <key id="362" parent="293" name="utilisateur_phone">
       <ColNames>utilisateur_phone</ColNames>
       <UnderlyingIndexName>utilisateur_phone</UnderlyingIndexName>
     </key>
-    <argument id="364" parent="294" name="username">
+    <argument id="363" parent="294" name="username">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
     </argument>
-    <argument id="365" parent="294" name="email">
+    <argument id="364" parent="294" name="email">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
     </argument>
-    <argument id="366" parent="294" name="date_creation">
+    <argument id="365" parent="294" name="date_creation">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </argument>
-    <argument id="367" parent="294" name="password">
+    <argument id="366" parent="294" name="password">
       <Position>4</Position>
       <DataType>varchar(128)|0s</DataType>
     </argument>
