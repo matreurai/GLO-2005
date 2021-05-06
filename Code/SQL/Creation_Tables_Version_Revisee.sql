@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `t_password`
 ALTER TABLE `t_password` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
+CREATE INDEX `idx_password_id` USING HASH ON `t_password`(`password_id_utilisateur`);
 /*----------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Alerte -- */

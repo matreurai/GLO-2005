@@ -1136,7 +1136,7 @@ alerte_end_date</ColNames>
       <NotNull>1</NotNull>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </column>
-    <index id="322" parent="289" name="password_id_utilisateur">
+    <index id="322" parent="289" name="idx_password_id">
       <ColNames>password_id_utilisateur</ColNames>
       <Type>btree</Type>
     </index>
