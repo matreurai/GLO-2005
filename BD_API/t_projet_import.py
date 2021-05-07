@@ -29,6 +29,7 @@ from sqlalchemy import create_engine
 #         db.close()
 #         print("MySQL connection is closed")
 
+
 # Traitement de la donner de Coinmarket
 # Connection a coinmarket
 conn = http.client.HTTPSConnection("pro-api.coinmarketcap.com")
