@@ -37,10 +37,10 @@ CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
 /* -- Creation de la table Cryptomonnaie -- */
 CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
 (
-    `cryptomonnaie_id` SMALLINT NOT NULL AUTO_INCREMENT,
+    `cryptomonnaie_id` SMALLINT NOT NULL,
     `cryptomonnaie_ticker` VARCHAR(9) NOT NULL,
-    `cryptomonnaie_prix_haut` DECIMAL(13,4),
-    `cryptomonnaie_prix_bas` DECIMAL(13,4),
+    `cryptomonnaie_prix_haut` DECIMAL(13,10),
+    `cryptomonnaie_prix_bas` DECIMAL(13,10),
     `cryptomonnaie_market_cap` BIGINT,
     `cryptomonnaie_qte_circulation` BIGINT,
     `cryptomonnaie_volume_24h` BIGINT,
@@ -152,8 +152,7 @@ DELIMITER %%
 CREATE PROCEDURE Create_User (  IN username VARCHAR(20),
                                 IN email VARCHAR(40),
                                 IN date_creation DATE,
-                                IN password VARCHAR(128),
-                                OUT idUser VARCHAR(5))
+                                IN password VARCHAR(128))
     BEGIN
         INSERT INTO `t_utilisateur` (utilisateur_username, utilisateur_email, utilisateur_date_creation)
         VALUES                  (username,
@@ -161,13 +160,8 @@ CREATE PROCEDURE Create_User (  IN username VARCHAR(20),
                                 date_creation);
         SELECT @id := LAST_INSERT_ID() FROM `t_utilisateur`;
         INSERT INTO `t_password` (password_id_utilisateur, password_password) VALUES (@id, password);
-
-        INSERT INTO `t_portfolio` (portfolio_user)
-        VALUES                  (@id);
-        SET idUser = @id;
     END %%
-
 DELIMITER ;
 /*---------------------------------------------------------------------------------------------------------------------*/
-/*CALL Create_User('rjovis0f','rjovis0@toplist.cz','2020-12-17', 'PASSWORD123@', @idUser);
+CALL Create_User('rjovis0f','rjovis0@toplist.cz','2020-12-17', 'PASSWORD123@');
 
