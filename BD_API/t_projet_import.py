@@ -1,10 +1,33 @@
 import mysql.connector
-import pymysql
 import http.client
 import json
-import xlrd
 import pandas as pd
+import xlrd
 from sqlalchemy import create_engine
+
+# try:
+#     db = mysql.connector.connect(host="localhost", user="root", password="eAXt)cdncT%Wv5}RVb!_,f]S",
+#                                  db="GLO-2005-Projet")
+#     cursor = db.cursor()
+#     mySql_insert_query = 'CREATE TABLE IF NOT EXISTS `t_projet` (`projet_ticker` VARCHAR(9) NOT NULL,' \
+#                          '`projet_logo` VARCHAR(50),`projet_nom_du_coin` VARCHAR(50) NOT NULL,' \
+#                          '`projet_description` VARCHAR(300),`projet_start_date` DATE,' \
+#                          '`projet_forage_possible` BOOLEAN, PRIMARY KEY(`projet_ticker`), UNIQUE(`projet_ticker`)); ' \
+#                          'ALTER TABLE `t_projet` ENGINE InnoDB, CHARACTER SET utf8mb4, COLLATE utf8mb4_unicode_ci;' \
+#                          'CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);'
+#
+#     cursor.execute(mySql_insert_query)
+#     db.commit()
+#     print("Record inserted successfully into Laptop table")
+#
+# except mysql.connector.Error as error:
+#     print("Failed to insert into MySQL table {}".format(error))
+#
+#     finally:
+#     if db.is_connected():
+#         cursor.close()
+#         db.close()
+#         print("MySQL connection is closed")
 
 # Traitement de la donner de Coinmarket
 # Connection a coinmarket
@@ -20,20 +43,18 @@ res = conn.getresponse()
 data = res.read()
 respond = data.decode("utf-8")
 
+
 # Creation des dictionnaires.
 dict_data = json.loads(respond)['data']
 dict_quote = [v['quote'] for v in dict_data if v['quote']]
 dict_usd = [v['USD'] for v in dict_quote if v['USD']]
 # Projet ticker coin
 projet_ticker = [v['symbol'] for v in dict_data if v['symbol']]
+
 # Nom des coins ggv
 projet_nom_du_coin = [v['name'] for v in dict_data if v['name']]
 # Projet start date
 projet_start_date = [v['date_added'] for v in dict_data if v['date_added']]
-
-print (projet_ticker,projet_nom_du_coin,projet_start_date)
-# print(projet_start_date)
-# price = [v['price'] for v in dict_usd if v['price']]
 
 #importation donner du fichier excel dans un dictionnaire
 
@@ -76,7 +97,7 @@ dbConnection = sqlEngine.connect()
 
 try:
 
-    frame = t_project_frame.to_sql(list_t_projet, dbConnection, if_exists='append',index=False);
+    frame = t_project_frame.to_sql(list_t_projet, dbConnection, if_exists='append',index=False)
 
 except ValueError as vx:
 
@@ -88,7 +109,7 @@ except Exception as ex:
 
 else:
 
-    print("Table %s created successfully."%t_projet);
+    print("Table %s created successfully."%t_projet)
 
 finally:
 

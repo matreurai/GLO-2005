@@ -218,3 +218,92 @@ def binance_ticker():
 #         cursor.close()
 #         db.close()
 #         print("MySQL connection is closed")
+
+# print(projet_start_date)
+# price = [v['price'] for v in dict_usd if v['price']]
+
+
+#def nom_ticker():
+
+
+#print(type(ticker()))
+
+# conn = http.client.HTTPSConnection("api.binance.com")
+# payload = ''
+# headers = {
+#     'Content-Type': 'application/json'
+# }
+# conn.request("GET", "/api/v3/exchangeInfo", payload, headers)
+# res = conn.getresponse()
+# data = res.read()
+# transfor = data.decode("utf-8")
+# exchange_dictionary = loads(transfor)
+# print(type(exchange_dictionary['symbols']))
+
+#
+# client = Client("", "")
+#
+#
+# def get_paires(client):
+#     exchange_info = client.get_exchange_info()['symbols']
+#
+#     liste_paires_binance = [v['symbol'] for v in exchange_info if
+#                             v['symbol'].endswith('USD') and v['status'] == 'TRADING']
+#
+#     return liste_paires_binance
+#
+#
+# print(get_paires(client))
+
+markets = ['ETHBTC', 'LTCBTC', 'BNBBTC', 'NEOBTC', 'EOSETH', 'SNTETH', 'BNTETH', 'BNBETH', 'GASBTC', 'QTUMETH',
+           'LRCBTC', 'LRCETH', 'OMGBTC', 'OMGETH', 'ZRXBTC', 'ZRXETH', 'KNCBTC', 'KNCETH', 'FUNBTC', 'FUNETH',
+           'SNMBTC', 'NEOETH', 'XVGBTC', 'XVGETH', 'MTLBTC', 'MTLETH', 'EOSBTC', 'SNTBTC', 'ETCETH', 'ETCBTC',
+           'ZECBTC', 'ZECETH', 'BNTBTC', 'BTGBTC', 'TRXBTC', 'TRXETH', 'ARKBTC', 'XRPBTC', 'XRPETH', 'ENJBTC',
+           'ENJETH', 'BNBUSDT', 'KMDBTC', 'KMDETH', 'XMRBTC', 'XMRETH', 'BATBTC', 'BATETH', 'BATBNB', 'NEOUSDT',
+           'NEOBNB', 'BTSBTC', 'LSKBTC', 'LSKETH', 'BCDBTC', 'ADABTC', 'ADAETH', 'PPTBTC', 'XLMBTC', 'XLMETH', 'XLMBNB',
+           'LTCETH', 'LTCUSDT', 'LTCBNB', 'ICXBTC', 'ICXETH', 'ICXBNB', 'ELFBTC', 'ELFETH', 'RLCBTC', 'RLCETH',
+           'ZILBTC', 'ZILETH', 'ZILBNB', 'ONTBTC', 'ONTETH', 'ONTBNB', 'XEMBTC', 'XEMETH', 'WANBTC', 'WANETH',
+           'WANBNB', 'SYSBTC', 'ADAUSDT', 'ADABNB', 'XRPUSDT', 'REPBTC', 'REPETH', 'BTCUSDT', 'ETHUSDT', 'ZENBTC',
+           'ZENETH', 'ZENBNB', 'EOSUSDT', 'EOSBNB', 'CVCBTC', 'CVCETH', 'XRPBNB', 'XLMUSDT', 'AGIBTC', 'ENJBNB',
+           'ONTUSDT', 'TRXBNB', 'TRXUSDT', 'ETCUSDT', 'ETCBNB', 'ICXUSDT', 'HOTETH', 'NAVETH', 'VETBTC', 'VETETH',
+           'VETUSDT', 'PAXUSDT', 'RVNBTC', 'RVNBNB', 'DCRBTC', 'WTCBNB', 'WTCBTC', 'BQXETH', 'XRPPAX', 'RENBTC',
+           'IOTABNB', 'XRPTUSD', 'EOSTUSD', 'WABIBNB', 'QTUMBTC', 'IOTAETH', 'XRPUSDC', 'EOSUSDC', 'ADATUSD',
+           'TRXTUSD', 'TRXXRP', 'LTCTUSD', 'LTCPAX', 'LTCUSDC', 'TRXPAX', 'TRXUSDC', 'BTTBNB', 'BTTUSDT', 'BTTTUSD',
+           'BTTUSDC', 'ONGBTC', 'ONGUSDT', 'HOTBNB', 'HOTUSDT', 'ZILUSDT', 'ZRXUSDT', 'FETBNB', 'FETBTC', 'FETUSDT',
+           'BATUSDT', 'XMRBNB', 'XMRUSDT', 'ZECBNB', 'ZECUSDT', 'ZECUSDC', 'CELRBNB', 'CELRBTC', 'CELRUSDT', 'ADAUSDC',
+           'NEOUSDC', 'OMGUSDT', 'ENJUSDT', 'BATUSDC', 'AIONETH', 'ONEBNB', 'ONEBTC', 'FTMBNB', 'FTMBTC', 'FTMUSDT',
+           'WINBNB', 'WINUSDT', 'WINUSDC', 'MTLUSDT', 'WANUSDT', 'FUNUSDT', 'CVCUSDT', 'BTTTRX', 'WINTRX', 'CHZBNB',
+           'CHZBTC', 'CHZUSDT', 'WAVESBNB', 'YOYOBTC', 'XTZBNB', 'XTZBTC', 'XTZUSDT', 'RENUSDT', 'RVNUSDT', 'NKNBTC',
+           'NKNUSDT', 'XRPBUSD', 'LINKETH', 'LTCBUSD', 'ETCBUSD', 'STXBNB', 'STXBTC', 'STXUSDT', 'SNGLSBTC', 'TRXBUSD',
+           'EOSBUSD', 'RLCUSDT', 'XLMBUSD', 'ADABUSD', 'BCHBNB', 'BCHBTC', 'BCHUSDT', 'BCHUSDC', 'BCHTUSD', 'BCHPAX',
+           'BCHBUSD', 'BQXBTC', 'DASHETH', 'XRPRUB', 'BLZBNB', 'VETBNB', 'FTTBNB', 'FTTBTC', 'FTTUSDT', 'IOTABTC',
+           'THETABNB', 'VIBETH', 'XRPTRY', 'LINKBTC', 'POWRETH', 'SCBNB', 'XRPEUR', 'OGNBNB', 'OGNBTC', 'OGNUSDT',
+           'WRXBNB', 'WRXBTC', 'WRXUSDT', 'ICXBUSD', 'BTSUSDT', 'LSKUSDT', 'BNTUSDT', 'BNTBUSD', 'NEOBUSD', 'XTZBUSD',
+           'BATBUSD', 'ENJBUSD', 'ONTBUSD', 'RVNBUSD', 'BTTBUSD', 'XMRBUSD', 'ZECBUSD', 'SOLBNB', 'SOLBTC', 'SOLUSDT',
+           'SOLBUSD', 'MDABTC', 'MFTBNB', 'MTHBTC', 'DNTBTC', 'WRXBUSD', 'ZILBUSD', 'KNCBUSD', 'KNCUSDT', 'DREPBTC',
+           'LRCBUSD', 'LRCUSDT', 'ASTBTC', 'CDTETH', 'XRPGBP', 'MITHBNB', 'DGBBNB', 'DGBBTC', 'DGBBUSD', 'DASHBTC',
+           'OAXBTC', 'GXSETH', 'BNBPAX', 'ZENUSDT', 'SXPBTC', 'SXPBNB', 'SXPBUSD', 'SNXBTC', 'SNXBNB', 'SNXBUSD',
+           'SNXUSDT', 'QSPETH', 'MANAETH', 'ADAUPUSDT', 'ADADOWNUSDT', 'DGBUSDT', 'SXPUSDT', 'MKRBNB', 'MKRBTC',
+           'MKRUSDT', 'MKRBUSD', 'ZRXBUSD', 'DCRUSDT', 'EVXBTC', 'ADXETH', 'BNBTUSD', 'BNBUSDC', 'XTZUPUSDT',
+           'XTZDOWNUSDT', 'KAVABNB', 'KAVABTC', 'KAVAUSDT', 'XRPAUD', 'IOSTBNB', 'BALBTC', 'BALBUSD', 'YFIBNB',
+           'YFIBTC', 'YFIBUSD', 'YFIUSDT', 'BALUSDT', 'KMDUSDT', 'REQBTC', 'WAVESETH', 'DASHBNB', 'JSTBNB', 'JSTBTC',
+           'JSTBUSD', 'JSTUSDT', 'SRMBNB', 'SRMBTC', 'SRMBUSD', 'SRMUSDT', 'ANTBNB', 'ANTBTC', 'ANTBUSD', 'ANTUSDT',
+           'CRVBNB', 'CRVBTC', 'CRVBUSD', 'CRVUSDT', 'NMRBNB', 'NMRBTC', 'NMRBUSD', 'NMRUSDT', 'DOTBNB', 'DOTBTC',
+           'DOTBUSD', 'DOTUSDT', 'RSRBNB', 'RSRBTC', 'RSRBUSD', 'RSRUSDT', 'BTCPAX', 'ETHPAX', 'PAXGBNB', 'DOTBIDR',
+           'SXPAUD', 'YFIIBNB', 'YFIIBTC', 'YFIIBUSD', 'YFIIUSDT', 'KSMBNB', 'KSMBTC', 'KSMBUSD', 'KSMUSDT', 'UMABTC',
+           'UMAUSDT', 'EOSUPUSDT', 'EOSDOWNUSDT', 'TRXUPUSDT', 'TRXDOWNUSDT', 'XRPUPUSDT', 'XRPDOWNUSDT', 'DOTUPUSDT',
+           'DOTDOWNUSDT', 'WINGBNB', 'WINGBTC', 'WINGBUSD', 'WINGUSDT', 'LTCUPUSDT', 'LTCDOWNUSDT', 'SXPEUR', 'UNIBNB',
+           'UNIBTC', 'UNIBUSD', 'UNIUSDT', 'OXTBTC', 'OXTUSDT', 'AVABNB', 'AVABTC', 'AVABUSD', 'AVAXBNB', 'HNTBTC',
+           'HNTUSDT', 'SXPBIDR', 'UNIUPUSDT', 'UNIDOWNUSDT', 'SXPTRY', 'UTKBTC', 'UTKUSDT', 'XVSBNB', 'XVSBTC',
+           'XVSBUSD', 'XVSUSDT', 'VIBBTC', 'SXPUPUSDT', 'SXPDOWNUSDT', 'SXPGBP', 'FILBNB', 'FILBTC', 'FILBUSD',
+           'FILUSDT', 'FILUPUSDT', 'FILDOWNUSDT', 'YFIUPUSDT', 'YFIDOWNUSDT', 'INJBNB', 'INJBTC', 'INJBUSD', 'INJUSDT',
+           'ONEUSDT', 'BCHUPUSDT', 'BCHDOWNUSDT', 'OSTETH', 'DOTEUR', 'MATICBNB', 'LTCEUR', 'RENBTCBTC', 'RENBTCETH',
+           'ADAEUR', 'BCHABUSD', 'AVAXBTC', 'AVAXBUSD', 'SYSBUSD', 'XEMUSDT', 'XRPBRL', 'SKLBTC', 'SKLBUSD', 'SKLUSDT',
+           'BCHEUR', 'YFIEUR', 'ZILBIDR', 'GLMBTC', 'GLMETH', 'XLMUPUSDT', 'XLMDOWNUSDT', 'LTCRUB', 'TRXTRY', 'XLMEUR',
+           'GRTBTC', 'GRTETH', 'GRTUSDT', 'CELOBTC', 'CELOUSDT', 'CHZTRY', 'XLMTRY', 'GRTEUR', 'POWRBTC', 'STORJBTC',
+           'RCNBTC', 'EOSEUR', 'LTCBRL', 'PAXGBTC', 'DOCKBTC', 'CKBBTC', 'CKBBUSD', 'NULSBTC', 'DOTTRY', 'GRTBUSD',
+           'OMGBUSD', 'DOTGBP', 'ADATRY', 'ADABRL', 'ADAGBP', 'DOTBRL', 'ADAAUD', 'HOTTRY', 'AVAXUSDT', 'BTTTRY',
+           'CHZBRL', 'UNIEUR', 'CHZBUSD', 'CHZEUR', 'CHZGBP', 'ADARUB', 'ENJBRL', 'ENJEUR', 'NEOTRY', 'CFXBTC',
+           'CFXBUSD', 'CFXUSDT', 'ENJGBP', 'EOSTRY', 'LTCGBP', 'RVNTRY', 'XVGBUSD', 'BTTBRL', 'BTTEUR', 'HOTEUR',
+           'WINEUR', 'BTGBUSD', 'BTGUSDT', 'HOTBUSD', 'ATOMBNB', 'FRONTETH', 'VETBUSD', 'VETEUR', 'WINBRL', 'HOTBRL',
+           'WRXEUR', 'TRXAUD', 'TRXEUR', 'VETGBP']
