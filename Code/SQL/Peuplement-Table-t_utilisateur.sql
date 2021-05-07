@@ -1,7 +1,7 @@
 /* -- Peuplement de la table t_utilisateur -- */
 USE `glo-2005-projet`;
 
-/* --Peuplement de la table Statistique-- */
+/* --Peuplement de la table Utilisateur-- */
 INSERT INTO `t_utilisateur`(utilisateur_id, utilisateur_username, utilisateur_email, utilisateur_phone, utilisateur_prenom, utilisateur_nom, utilisateur_date_creation) VALUES
 (1,'rjovis0f','rjovis0@toplist.cz','(957) 2905099','Rem','Jovis','2020-12-17'),
 (2,'gcluse1','gcluse1@soup.io','(217) 8594449','Gussy','Cluse','2020-09-16'),
