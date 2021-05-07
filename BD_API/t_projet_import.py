@@ -69,7 +69,7 @@ t_projet = {"projet_ticker": projet_ticker, "projet_logo": p_logo, "projet_nom_d
 list_t_projet = 't_projet'
 t_project_frame = pd.DataFrame(data=t_projet)
 
-sqlEngine = create_engine('mysql+pymysql://root:eAXt)cdncT%Wv5}RVb!_,f]S@localhost/GLO-2005-Projet',
+sqlEngine = create_engine('mysql+pymysql://root:christopher@localhost/GLO-2005-Projet',
 pool_pre_ping=3200)
 
 dbConnection = sqlEngine.connect()

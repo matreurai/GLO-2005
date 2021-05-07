@@ -1,22 +1,22 @@
-pip install aiohttp
-pip install async-timeout
-pip install binance.py
-pip install Flask
-pip install Flask-Cors
-pip install Flask-Ext
-pip install Flask-MySQL
-pip install Flask-RESTful
-pip install incremental
-pip install mysql-connector-python
-pip install PyMySQL
-pip install python-binance
-pip install pandas
-pip install regex
-pip install Twisted
-pip install unicorn-binance-rest-api
-pip install unicorn-binance-websocket-api
-pip install sqlalchemy
-pip install websocket-client
-pip install websockets
-pip install xlrd==1.2.0
-pip install --upgrade pip
+py -m pip install aiohttp
+py -m pip install async-timeout
+py -m pip install binance.py
+py -m pip install Flask
+py -m pip install Flask-Cors
+py -m pip install Flask-Ext
+py -m pip install Flask-MySQL
+py -m pip install Flask-RESTful
+py -m pip install incremental
+py -m pip install mysql-connector-python
+py -m pip install PyMySQL
+py -m pip install python-binance
+py -m pip install pandas
+py -m pip install regex
+py -m pip install Twisted
+py -m pip install unicorn-binance-rest-api
+py -m pip install unicorn-binance-websocket-api
+py -m pip install sqlalchemy
+py -m pip install websocket-client
+py -m pip install websockets
+py -m pip install xlrd==1.2.0
+py -m pip install --upgrade pip

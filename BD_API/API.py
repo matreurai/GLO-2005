@@ -10,7 +10,7 @@ from flask import Flask
 # Init App
 app = Flask(__name__)
 # Init Server
-db = pymysql.connect(host="localhost", user="root", password="eAXt)cdncT%Wv5}RVb!_,f]S", db="GLO-2005-Projet")
+db = pymysql.connect(host="localhost", user="root", password="christopher", db="GLO-2005-Projet")
 
 # Def du cursor
 cur = db.cursor()

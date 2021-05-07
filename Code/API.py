@@ -2,24 +2,38 @@
 # Test API Binance
 # David Bolduc
 #-------------------------------
+import flask_mail
 import mysql.connector
 import json
 import http.client
 from flask import Flask ,render_template, redirect, url_for, request, session
-from datetime import date
+from datetime import datetime
 import bcrypt
+from decimal import Decimal
+from flask_mail import Mail
+import threading
+import time
 
 # Init App
 app = Flask(__name__)
+
+alerts = []
+hasModifiedAlert = False
+
+
+
+#mail= Mail(app)
 # Init Server
-db = mysql.connector.connect(host="127.0.0.1", user="root", password="password", db="glo-2005-projet", auth_plugin='mysql_native_password')
+db = mysql.connector.connect(host="127.0.0.1", user="root", password="christopher", db="glo-2005-projet", auth_plugin='mysql_native_password')
 app.secret_key = 'mucen3i2nmif3'
 # Def du cursor
 cur = db.cursor()
 
+
 #Route de la page home
 @app.route('/')
 def main():
+  #send_email2()
   return render_template('Home.html')
 # time stamp
 
@@ -46,12 +60,48 @@ def page_markets():
 #Route de la page Portfolio
 @app.route('/Portfolio')
 def page_portfolio():
-  return render_template('Portfolio.html')
+  # FAIRE DICTIONNAIRE QUI COMPREND LES CRYPTO ET LEUR ID
+  data = get_all_crypto()
+  #data.append(get_portfolio_info())
+
+  titreInfo = get_titre_info()
+  titre_info_formatter = []
+
+  paid_price_total = 0
+  balance = 0
+  if titreInfo:
+    for i in titreInfo:
+      ticker = get_crypto_ticker(i[0])[0]
+      quantity = i[2]
+      paid_price = round(i[3], 4)
+      paid_price_total += round(paid_price * quantity, 4)
+      #####
+      ##### current_price = api...
+      #####
+      # A CHANGER 2142 POUR CURRENTPRICE
+      profits_loss = round((quantity * 129) - (quantity * paid_price), 4)
+      ratio = round(((quantity * 129) / (quantity * paid_price)), 4)
+      balance += round(129 * quantity, 4)
+      itemTitre = [ticker, 129, quantity, paid_price, profits_loss, ratio]
+      titre_info_formatter.append(itemTitre)
+
+  cmd = 'UPDATE t_portfolio SET portfolio_balance = %s, portfolio_cout_total = %s  WHERE portfolio_id = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (balance, paid_price_total, session['portfolioId'], ))
+  db.commit()
+
+
+  data.append(titre_info_formatter)
+  data.append(balance)
+
+  return render_template('Portfolio.html', data=data)
 
 #Route de la page Alerts
 @app.route('/Alerts')
 def page_alerts():
-  data = get_alerts_info()
+  data = get_all_crypto()
+
+  data.append(get_alerts_info())
 
   return render_template('Alerts.html', data=data)
 
@@ -130,26 +180,87 @@ def savechanges_profile():
 
   return render_template('Profile.html', data=data)
 
-@app.route('/postmethod', methods = ['POST'])
-def get_post_javascript_data():
-    jsdata = request.form
+@app.route('/deletetitre', methods = ['POST'])
+def deletetitre():
+    info = request.form.getlist("javascript_data[]")
+    portfolioId = int(session['portfolioId'])
+    qte = int(info[2])
+    prix = float(info[3][:-1])
+    coin = info[0]
+
+    result = get_crypto_id(coin)
+
+    cmd = 'DELETE from t_titre u1 WHERE u1.titre_crypto_id LIKE %s AND u1.titre_portfolio_id LIKE %s AND u1.titre_qte LIKE %s  AND abs(u1.titre_prix_moyen_paye - %s) < 0.001'
+    cur = db.cursor()
+    cur.execute(cmd, (result[0], portfolioId, qte, prix,))
+    db.commit()
+    return redirect(url_for("page_portfolio"))
 
 
-    return json.loads(jsdata)[0]
+@app.route('/deletealert', methods = ['POST'])
+def deletealert():
+    info = request.form.getlist("javascript_data[]")
+    userId = str(session['id'])
+    ticker = info[0]
+    below = info[1]
+    above = info[2]
+    endDate = datetime.strptime(info[3], '%Y-%m-%d').date()
+
+    # rajouter AND u1.alerte_ticker LIKE %s quand la db sera rempli
+    cmd = 'DELETE from t_alerte u1 WHERE u1.alerte_user = %s AND u1.alerte_below_price = CAST(%s AS DECIMAL) ' \
+          'AND u1.alerte_above_price = CAST(%s AS DECIMAL) AND u1.alerte_end_date = %s'
+    cur = db.cursor()
+    cur.execute(cmd, (userId, below, above, endDate,))
+    db.commit()
+    global hasModifiedAlert
+    hasModifiedAlert = True
+    return redirect(url_for("page_alerts"))
+
+
+@app.route("/portfolio_form", methods=['POST'])
+def apply_portfolio():
+  coin = request.form.get('coin')
+  paidprice = float(request.form.get('paidprice'))
+  quantity = float(request.form.get('quantity'))
+  userId = str(session['id'])
+
+  cmd = 'SELECT u1.portfolio_id FROM t_portfolio u1 WHERE u1.portfolio_user = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (userId,))
+  portfolio_id = cur.fetchone()
+
+  crypto_id = get_crypto_id(coin)
+
+  cmd = 'INSERT INTO t_titre (titre_crypto_id, titre_portfolio_id, titre_qte, titre_prix_moyen_paye) VALUES (%s,%s,%s,%s)'
+  cur = db.cursor()
+  cur.execute(cmd, (crypto_id[0], portfolio_id[0], quantity, paidprice,))
+  db.commit()
+
+  return redirect(url_for("page_portfolio"))
 
 @app.route("/alerts_form", methods=['POST'])
 def apply_alerts():
   coin = request.form.get('coin')
-  above =request.form.get('above')
-  below = request.form.get('below')
-  validUntil = request.form.get('datepicker')
+  above = float(request.form.get('above'))
+  below = float(request.form.get('below'))
+  validUntil = datetime.strptime(request.form.get('datepicker'), '%Y-%m-%d').date()
   userId = str(session['id'])
 
-  cmd = 'INSERT INTO t_alerte (alerte_user, alerte_below_price, alerte_above_price, alerte_end_date) VALUES (%s,%s,%s,%s)'
+  crypto_id = get_crypto_id(coin)
+
+  cmd = 'SELECT * FROM t_alerte u1 WHERE u1.alerte_user = %s AND u1.alerte_below_price = CAST(%s AS DECIMAL) ' \
+          'AND u1.alerte_above_price = CAST(%s AS DECIMAL) AND u1.alerte_end_date = %s AND u1.alerte_ticker = %s '
   cur = db.cursor()
-  cur.execute(cmd, (userId, below, above, validUntil,))
-  db.commit()
-  data = get_alerts_info()
+  cur.execute(cmd, (userId, below, above, validUntil, crypto_id[0],))
+  existingAlert = cur.fetchone()
+
+  if existingAlert == None:
+    cmd = 'INSERT INTO t_alerte (alerte_user, alerte_below_price, alerte_above_price, alerte_end_date, alerte_ticker) VALUES (%s,%s,%s,%s,%s)'
+    cur = db.cursor()
+    cur.execute(cmd, (userId, below, above, validUntil, coin,))
+    db.commit()
+    global hasModifiedAlert
+    hasModifiedAlert = True
 
   return redirect(url_for("page_alerts"))
 
@@ -160,16 +271,35 @@ def signup():
   password = request.form.get('password')
   email = request.form.get('email')
 
+  cmd = 'SELECT u1.utilisateur_username FROM t_utilisateur u1 WHERE u1.utilisateur_username = %s OR u1.utilisateur_email = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (username, email,))
+  userExist = cur.fetchone()
+
+  if userExist is not None:
+    return render_template('Home.html')
+
   hashedpwd = get_hashed_password(password)
 
-  cur=db.cursor()
-  args = [username, email, date.today().strftime("%Y-%m-%d"), hashedpwd]
+  idUser = ""
 
-  cur.callproc('Create_User', args)
+  cur=db.cursor()
+  args = [username, email, datetime.today().strftime("%Y-%m-%d"), hashedpwd, idUser]
+
+  user = cur.callproc('Create_User', args)
+
+  cmd = 'SELECT u1.portfolio_id FROM t_portfolio u1 WHERE u1.portfolio_user = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (user[4],))
+  portfolioId = cur.fetchone()
+
+  session['portfolioId'] = portfolioId[0]
+
   cur.close()
 
-  cur = db.cursor()
   db.commit()
+
+
   return render_template('Home.html')
 
 def get_user_info():
@@ -179,12 +309,50 @@ def get_user_info():
   cur.execute(cmd)
   return cur.fetchone()
 
+def get_portfolio_info():
+  userId = str(session['id'])
+  cmd = 'SELECT * from t_portfolio u1 WHERE u1.portfolio_user = ' + userId + ''
+  cur = db.cursor()
+  cur.execute(cmd)
+  result = cur.fetchall()
+  session['portfolioId'] = result[0][0]
+  return result
+
+def get_titre_info():
+  portfolioId = str(session['portfolioId'])
+  cmd = 'SELECT * from t_titre u1 WHERE u1.titre_portfolio_id = ' + portfolioId + ''
+  cur = db.cursor()
+  cur.execute(cmd)
+  result = cur.fetchall()
+  #Rajouter la logique des profits, balance, etc...
+  #result.append()
+
+  return result
+
+def get_all_crypto():
+  cmd = 'SELECT u1.cryptomonnaie_ticker from t_cryptomonnaie u1'
+  cur = db.cursor()
+  cur.execute(cmd)
+  return cur.fetchall()
+
 def get_alerts_info():
   userId = str(session['id'])
   cmd = 'SELECT * from t_alerte u1 WHERE u1.alerte_user = ' + userId + ''
   cur = db.cursor()
   cur.execute(cmd)
   return cur.fetchall()
+
+def get_crypto_ticker(coin_id):
+  cmd = 'SELECT cryptomonnaie_ticker from t_cryptomonnaie u1 WHERE u1.cryptomonnaie_id = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (coin_id,))
+  return cur.fetchone()
+
+def get_crypto_id(coin):
+  cmd = 'SELECT cryptomonnaie_id from t_cryptomonnaie u1 WHERE u1.cryptomonnaie_ticker = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (coin,))
+  return cur.fetchone()
 
 def get_hashed_password(plain_text_password):
     # Hash a password for the first time
@@ -195,11 +363,60 @@ def check_password(plain_text_password, hashed_password):
   # Check hashed password. Using bcrypt, the salt is saved into the hash itself
   return bcrypt.checkpw(plain_text_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
+
+def send_email(type, price):
+  SERVER = "smtp.live.com"
+  FROM = "cryptowatch@hotmail.com"
+
+  cmd = 'SELECT utilisateur_email from t_utilisateur u1 WHERE u1.utilisateur_username = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (session['username'],))
+  userMail = cur.fetchone()
+
+  TO = [userMail[0]]  # must be a list
+
+  SUBJECT = "Crypt-O-Watch | Alert - {coin} is now {below ou above} {price}!"
+  TEXT = "Crypt-O-Watch Watch out! {coin} is now {below ou above} {price}! Thanks! Be Your Own Bank"
+
+  # Prepare actual message
+  message = """From: %s\r\nTo: %s\r\nSubject: %s\r\n\
+
+  %s
+  """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
+
+  # Send the mail
+  import smtplib
+  server = smtplib.SMTP(SERVER, 587)
+  server.starttls()
+  server.login(FROM, "Sam1David2Christopher3")
+  server.sendmail(FROM, TO, message)
+  server.quit()
+
 def mise_a_jour():
       return None
 
+#Thread pour
+def checker_thread():
+  while True:
+    global hasModifiedAlert
+    if hasModifiedAlert:
+      hasModifiedAlert = False
+      cmd = 'SELECT * FROM t_alerte u1 WHERE u1.alerte_user = %s'
+      cur = db.cursor()
+      cur.execute(cmd, (session['username'],))
+      global alerts
+      alerts = cur.fetchall()
+
+    #print("a")
+    #checker()
+    #time.sleep(1)
+
+
 if __name__ == '__main__':
-      app.run(debug=True)
+  #hasModifiedAlert = False
+  x = threading.Thread(target=checker_thread)#, kwargs={'hasModifiedAlert':hasModifiedAlert})
+  x.start()
+  app.run(debug=True)
 
 def exchange_dict ():
   conn = http.client.HTTPSConnection("api.binance.com")
