@@ -1,3 +1,11 @@
+GLO - 2005.
+docx
+Projet
+GLO - 2005.
+pdf
+Projet
+réel.pdf
+test.py
 #-------------------------------
 # Test API Binance
 # David Bolduc
@@ -13,10 +21,6 @@ from decimal import Decimal
 from flask_mail import Mail
 from threading import Timer
 from BD_API.t_projet_import import *
-#import sys
-#sys.path.append(r'C:\Users\godin\Desktop\GLO-2005\BD_API')
-#from DICT_Projet import *
-#import file
 
 # Init App
 app = Flask(__name__)
