@@ -5,9 +5,6 @@ import pandas as pd
 import xlrd
 from sqlalchemy import create_engine
 
-
-
-
 # Traitement de la donner de Coinmarket
 # Connection a coinmarket
 conn = http.client.HTTPSConnection("pro-api.coinmarketcap.com")
