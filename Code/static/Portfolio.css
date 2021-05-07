@@ -46,12 +46,12 @@ body {
 	background-color: #1f1f1f;
 	color: #e9c46a;
 }
-#add_alert {
+#add_coin {
 	background-color: #e9c46a;
 	border-color: #1f1f1f;
 	color: #1f1f1f;
 }
-#add_alert:hover {
+#add_coin:hover {
 	background-color: #e2b33c;
 }
 /* ------------------------------------------ */

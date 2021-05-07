@@ -11,8 +11,12 @@ from datetime import datetime
 import bcrypt
 from decimal import Decimal
 from flask_mail import Mail
-import threading
-import time
+from threading import Timer
+from BD_API.t_projet_import import *
+#import sys
+#sys.path.append(r'C:\Users\godin\Desktop\GLO-2005\BD_API')
+#from DICT_Projet import *
+#import file
 
 # Init App
 app = Flask(__name__)
@@ -21,21 +25,33 @@ alerts = []
 hasModifiedAlert = False
 
 
-
 #mail= Mail(app)
 # Init Server
 db = mysql.connector.connect(host="127.0.0.1", user="root", password="christopher", db="glo-2005-projet", auth_plugin='mysql_native_password')
 app.secret_key = 'mucen3i2nmif3'
-# Def du cursor
 cur = db.cursor()
 
+
+def update_data(interval):
+  Timer(interval, update_data, [interval]).start()
+  global hasModifiedAlert
+  global alerts
+
+  a = t_projet_live()
+
+  if hasModifiedAlert == True:
+    hasModifiedAlert = False
+    alerts = select_all_alerts()
+
+  if alerts:
+    check_alerts(alerts)
 
 #Route de la page home
 @app.route('/')
 def main():
-  #send_email2()
+  fetch_alerts()
+  update_data(10)
   return render_template('Home.html')
-# time stamp
 
 #Route de la page home
 @app.route('/Home')
@@ -60,9 +76,8 @@ def page_markets():
 #Route de la page Portfolio
 @app.route('/Portfolio')
 def page_portfolio():
-  # FAIRE DICTIONNAIRE QUI COMPREND LES CRYPTO ET LEUR ID
   data = get_all_crypto()
-  #data.append(get_portfolio_info())
+  get_portfolio_info()
 
   titreInfo = get_titre_info()
   titre_info_formatter = []
@@ -131,7 +146,6 @@ def login():
   password = request.form.get('psw')
 
   cmd='SELECT * FROM t_utilisateur u1 INNER JOIN t_password p1 on p1.password_id_utilisateur = u1.utilisateur_id WHERE u1.utilisateur_username = %s'
-
   cur=db.cursor()
   cur.execute(cmd,(username,))
   account = cur.fetchone()
@@ -364,6 +378,44 @@ def check_password(plain_text_password, hashed_password):
   return bcrypt.checkpw(plain_text_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
 
+def check_alerts(alerts):
+  for item in alerts:
+    alerteId = item[0]
+    UserId = item[1]
+    ticker = item[2]
+    below = item[3]
+    above = item[4]
+    endDate = item[5]
+    today = datetime.date(datetime.today())
+
+    if endDate < today:
+      delete_alert(alerteId)
+
+    #Logique du below et above avec le ticker
+    #if current price < below:
+    # send email
+
+
+def fetch_alerts():
+  global alerts
+  alerts = select_all_alerts()
+
+
+def delete_alert(alerteId):
+  cmd = 'DELETE from t_alerte u1 WHERE u1.alerte_id = %s'
+  cur = db.cursor()
+  cur.execute(cmd, (alerteId,))
+  db.commit()
+  global hasModifiedAlert
+  hasModifiedAlert = True
+
+
+def select_all_alerts():
+  cmd = 'SELECT * FROM t_alerte u1'
+  cur = db.cursor()
+  cur.execute(cmd)
+  return cur.fetchall()
+
 def send_email(type, price):
   SERVER = "smtp.live.com"
   FROM = "cryptowatch@hotmail.com"
@@ -395,28 +447,10 @@ def send_email(type, price):
 def mise_a_jour():
       return None
 
-#Thread pour
-def checker_thread():
-  while True:
-    global hasModifiedAlert
-    if hasModifiedAlert:
-      hasModifiedAlert = False
-      cmd = 'SELECT * FROM t_alerte u1 WHERE u1.alerte_user = %s'
-      cur = db.cursor()
-      cur.execute(cmd, (session['username'],))
-      global alerts
-      alerts = cur.fetchall()
-
-    #print("a")
-    #checker()
-    #time.sleep(1)
-
 
 if __name__ == '__main__':
-  #hasModifiedAlert = False
-  x = threading.Thread(target=checker_thread)#, kwargs={'hasModifiedAlert':hasModifiedAlert})
-  x.start()
   app.run(debug=True)
+
 
 def exchange_dict ():
   conn = http.client.HTTPSConnection("api.binance.com")
