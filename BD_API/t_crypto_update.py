@@ -6,9 +6,9 @@ import pymysql
 from BD_API.t_projet_import import projet_ticker
 
 
-markets_values = []
+markets_values_update = []
 
-markets = ['ETHBTC', 'LTCBTC', 'BNBBTC', 'NEOBTC', 'EOSETH', 'SNTETH', 'BNTETH', 'BNBETH', 'GASBTC', 'QTUMETH',
+markets_update = ['ETHBTC', 'LTCBTC', 'BNBBTC', 'NEOBTC', 'EOSETH', 'SNTETH', 'BNTETH', 'BNBETH', 'GASBTC', 'QTUMETH',
            'LRCBTC', 'LRCETH', 'OMGBTC', 'OMGETH', 'ZRXBTC', 'ZRXETH', 'KNCBTC', 'KNCETH', 'FUNBTC', 'FUNETH',
            'SNMBTC', 'NEOETH', 'XVGBTC', 'XVGETH', 'MTLBTC', 'MTLETH', 'EOSBTC', 'SNTBTC', 'ETCETH', 'ETCBTC',
            'ZECBTC', 'ZECETH', 'BNTBTC', 'BTGBTC', 'TRXBTC', 'TRXETH', 'ARKBTC', 'XRPBTC', 'XRPETH', 'ENJBTC',
@@ -29,23 +29,23 @@ markets = ['ETHBTC', 'LTCBTC', 'BNBBTC', 'NEOBTC', 'EOSETH', 'SNTETH', 'BNTETH',
            'CHZBTC', 'CHZUSDT', 'WAVESBNB', 'YOYOBTC', 'XTZBNB', 'XTZBTC', 'XTZUSDT', 'RENUSDT', 'RVNUSDT', 'NKNBTC',
            'NKNUSDT', 'XRPBUSD', 'LINKETH', 'LTCBUSD', 'ETCBUSD', 'STXBNB', 'STXBTC', 'STXUSDT', 'SNGLSBTC', 'TRXBUSD']
 
-for a in markets:
+for a in markets_update:
     conn = http.client.HTTPSConnection("api.binance.com")
     payload = ''
     headers = {
         'Content-Type': 'application/json'
     }
     conn.request("GET", "/api/v3/ticker/24hr?symbol={}".format(a), payload, headers)
-    res = conn.getresponse()
-    data = res.read()
-    deecode = data.decode("utf-8")
-    dict_data = json.loads(deecode)
-    markets_values.append(dict_data)
+    res_update = conn.getresponse()
+    data_update = res_update.read()
+    deecode_update = data_update.decode("utf-8")
+    dict_data_update = json.loads(deecode_update)
+    markets_values_update.append(dict_data_update)
 
-    crypto_ticker = [v['symbol'] for v in markets_values if v['symbol']]
-    crypto_p_haut = [v['highPrice'] for v in markets_values if v['highPrice']]
-    crypto_p_bas = [v['lowPrice'] for v in markets_values if v['lowPrice']]
-    crypto_volume = [v['volume'] for v in markets_values if v['volume']]
+    crypto_ticker_update = [v['symbol'] for v in markets_values_update if v['symbol']]
+    crypto_p_haut_update = [v['highPrice'] for v in markets_values_update if v['highPrice']]
+    crypto_p_bas_update = [v['lowPrice'] for v in markets_values_update if v['lowPrice']]
+    crypto_volume_update = [v['volume'] for v in markets_values_update if v['volume']]
 
 # Traitement de la donner de Coinmarket
 # Connection a coinmarket
@@ -62,44 +62,45 @@ data = res.read()
 respond = data.decode("utf-8")
 
 # Creation des dictionnaires.
-dict_data = json.loads(respond)['data']
-dict_quote = [v['quote'] for v in dict_data if v['quote']]
-dict_usd = [v['USD'] for v in dict_quote if v['USD']]
+dict_data_update = json.loads(respond)['data']
+dict_quote_update = [v['quote'] for v in dict_data_update if v['quote']]
+dict_usd_update = [v['USD'] for v in dict_quote_update if v['USD']]
 
 # Projet ticker coin
-crypto_market_cap = [v['market_cap'] for v in dict_usd if v['market_cap']]
+crypto_market_cap_update = [v['market_cap'] for v in dict_usd_update if v['market_cap']]
 # Crypto 24h
-crypto_volume_24h = [v['volume_24h'] for v in dict_usd if v['volume_24h']]
+crypto_volume_24h_update = [v['volume_24h'] for v in dict_usd_update if v['volume_24h']]
 #
-crypto_circulating_sup = [v['circulating_supply'] for v in dict_data if v['circulating_supply']]
+crypto_circulating_sup_update = [v['circulating_supply'] for v in dict_data_update if v['circulating_supply']]
 
 # Price
 # price = [v['price'] for v in dict_usd if v['price']]
-def crypto_id():
+def crypto_id_update():
     incremente = []
     a = -1
-    for b in markets:
+    for b in markets_update:
         a = a + 1
         incremente.append(a)
     return incremente
 
-t_cryptomonnaie = {'cryptomonnaie_id': crypto_id() ,'cryptomonnaie_ticker':projet_ticker,
-                   'cryptomonnaie_prix_haut': crypto_p_haut, 'cryptomonnaie_prix_bas': crypto_p_bas,
-                   'cryptomonnaie_market_cap': crypto_market_cap,
-                   'cryptomonnaie_qte_circulation': crypto_circulating_sup,
-                   'cryptomonnaie_volume_24h': crypto_volume_24h}
-def insert_t_cryptomonnaie():
+t_cryptomonnaie_update = {'cryptomonnaie_prix_haut': crypto_p_haut_update,'cryptomonnaie_prix_bas': crypto_p_bas_update,
+                          'cryptomonnaie_market_cap': crypto_market_cap_update,
+                          'cryptomonnaie_qte_circulation': crypto_circulating_sup_update,
+                          'cryptomonnaie_volume_24h': crypto_volume_24h_update}
 
-    list_t_crypto = 't_cryptomonnaie'
-    t_crypto_frame = pd.DataFrame(data=t_cryptomonnaie)
+def insert_t_cryptomonnaie_update():
 
-    sqlEngine = create_engine('mysql+pymysql://root:eAXt)cdncT%Wv5}RVb!_,f]S@localhost/GLO-2005-Projet', pool_recycle=3600)
+    list_t_crypto_update = 't_cryptomonnaie'
+    t_crypto_frame_update = pd.DataFrame(data=t_cryptomonnaie_update)
 
-    dbConnection = sqlEngine.connect()
+    sqlEngine_update = create_engine('mysql+pymysql://root:eAXt)cdncT%Wv5}RVb!_,f]S@localhost/GLO-2005-Projet',
+                              pool_recycle=3600)
+
+    dbConnection_update = sqlEngine_update.connect()
 
     try:
 
-        t_crypto_frame.to_sql(list_t_crypto, dbConnection, if_exists='append', index=False)
+        t_crypto_frame_update.to_sql(list_t_crypto_update, dbConnection_update, if_exists='update', index=False)
 
     except ValueError as vx:
 
@@ -111,8 +112,10 @@ def insert_t_cryptomonnaie():
 
     else:
 
-        return("Table {} was filled successfully.".format(list_t_crypto))
+        return("Table {} was filled successfully.".format(list_t_crypto_update))
 
     finally:
 
-        dbConnection.close()
+        dbConnection_update.close()
+
+print(insert_t_cryptomonnaie_update())

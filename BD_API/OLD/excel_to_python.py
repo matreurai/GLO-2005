@@ -2,7 +2,7 @@
 
 import xlrd
 
-excel_projet = xlrd.open_workbook('Crypto.xlsx')
+excel_projet = xlrd.open_workbook('../Crypto.xlsx')
 
 excel_t_proj_sheet = excel_projet.sheet_names()
 

@@ -1,5 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
+from t_projet_import import *
+from t_crypto_import import *
 
 
 def creation_t_projet():
@@ -19,7 +21,22 @@ def creation_t_projet():
 
     create_index_t_projet = (" CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`) ")
 
-    db = mysql.connector.connect(user='root', password='eAXt)cdncT%Wv5}RVb!_,f]S')
+    TABLES['t_cryptomonnaie'] = (
+        "CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`("
+        "`cryptomonnaie_id` SMALLINT NOT NULL,"
+        "`cryptomonnaie_ticker` VARCHAR(9) NOT NULL,"
+        "`cryptomonnaie_prix_haut` DECIMAL(20,10),"
+        "`cryptomonnaie_prix_bas` DECIMAL(20,10),"
+        "`cryptomonnaie_market_cap` BIGINT,"
+        "`cryptomonnaie_qte_circulation` BIGINT,"
+        "`cryptomonnaie_volume_24h` BIGINT,"
+        "PRIMARY KEY (`cryptomonnaie_id`),"
+        "FOREIGN KEY (`cryptomonnaie_ticker`) "
+        "   REFERENCES `t_projet`(`projet_ticker`) ON DELETE CASCADE"
+        ")ENGINE InnoDB")
+
+    create_index_t_crypto = ("CREATE INDEX `idx_crypto` ON `t_cryptomonnaie`(`cryptomonnaie_id`) ")
+    db = mysql.connector.connect(host='localhost', user='root', password='eAXt)cdncT%Wv5}RVb!_,f]S')
     cur = db.cursor()
 
     def create_database(cur):
@@ -46,7 +63,11 @@ def creation_t_projet():
         table_description = TABLES[table_name]
         try:
             print("Creating table {}: ".format(table_name), end='')
-            cur.execute(table_description,create_index_t_projet)
+            cur.execute(table_description)
+            if table_name == 't_projet':
+                cur.execute(create_index_t_projet)
+            if table_name == 't_cryptomonnaie':
+                cur.execute(create_index_t_crypto)
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
                 print("already exists.")
@@ -55,7 +76,10 @@ def creation_t_projet():
         else:
             print("OK")
 
-        cur.close()
-        db.close()
+    cur.close()
+    db.close()
+
 
 print(creation_t_projet())
+print(insert_t_projet())
+print(insert_t_cryptomonnaie())

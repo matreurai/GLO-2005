@@ -10,6 +10,7 @@ Gestion des dictionnaires pour affichages live.
 7. projet_forage_possible
 """
 from t_projet_import import *
+from t_crypto_import import *
 
 
 def t_projet_live():
@@ -18,10 +19,9 @@ def t_projet_live():
     t_projet_nom_du_coin = projet_nom_du_coin
     t_projet_description = p_description
     t_projet_start_date = projet_start_date
-    t_projet_max_supply = None
-    t_projet_forage_possible = None
+    t_projet_forage_possible = p_forage
     return t_projet_ticker, t_projet_logo, t_projet_nom_du_coin, t_projet_description, t_projet_start_date, \
-           t_projet_max_supply, t_projet_forage_possible
+           t_projet_forage_possible
 
 
 """
@@ -37,12 +37,12 @@ def t_projet_live():
 
 
 def t_crypto_live():
-    t_cryptomonnaie_id = None
-    t_cryptomonnaie_ticker = None
-    t_cryptomonnaie_prix_haut = None
-    t_cryptomonnaie_prix_bas = None
-    t_cryptomonnaie_market_cap = None
-    t_cryptomonnaie_qte_circulation = None
-    t_cryptomonnaie_volume_24h = None
+    t_cryptomonnaie_id = crypto_id()
+    t_cryptomonnaie_ticker = projet_ticker
+    t_cryptomonnaie_prix_haut = crypto_p_haut
+    t_cryptomonnaie_prix_bas = crypto_p_bas
+    t_cryptomonnaie_market_cap = crypto_market_cap
+    t_cryptomonnaie_qte_circulation = crypto_circulating_sup
+    t_cryptomonnaie_volume_24h = crypto_volume_24h
     return t_cryptomonnaie_id, t_cryptomonnaie_ticker, t_cryptomonnaie_prix_haut, t_cryptomonnaie_prix_bas, \
            t_cryptomonnaie_market_cap, t_cryptomonnaie_qte_circulation, t_cryptomonnaie_volume_24h
