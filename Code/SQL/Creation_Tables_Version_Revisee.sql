@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `t_titre`
 (
     `titre_crypto_id` SMALLINT NOT NULL,
     `titre_portfolio_id` SMALLINT,
-    `titre_qte` INT DEFAULT 1,
+    `titre_qte` DECIMAL(20,8) DEFAULT 1.0,
     `titre_prix_moyen_paye` DECIMAL(13,4),
 
     FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
@@ -151,7 +151,8 @@ DELIMITER %%
 CREATE PROCEDURE Create_User (  IN username VARCHAR(20),
                                 IN email VARCHAR(40),
                                 IN date_creation DATE,
-                                IN password VARCHAR(128))
+                                IN password VARCHAR(128),
+                                OUT idUser VARCHAR(5))
     BEGIN
         INSERT INTO `t_utilisateur` (utilisateur_username, utilisateur_email, utilisateur_date_creation)
         VALUES                  (username,
@@ -159,8 +160,12 @@ CREATE PROCEDURE Create_User (  IN username VARCHAR(20),
                                 date_creation);
         SELECT @id := LAST_INSERT_ID() FROM `t_utilisateur`;
         INSERT INTO `t_password` (password_id_utilisateur, password_password) VALUES (@id, password);
+
+        INSERT INTO `t_portfolio` (portfolio_user)
+        VALUES                  (@id);
+        SET idUser = @id;
     END %%
+
 DELIMITER ;
 /*---------------------------------------------------------------------------------------------------------------------*/
-CALL Create_User('rjovis0f','rjovis0@toplist.cz','2020-12-17', 'PASSWORD123@');
-
+/*CALL Create_User('rjovis0f','rjovis0@toplist.cz','2020-12-17', 'PASSWORD123@', @idUser);
