@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS `t_projet`
     `projet_nom_du_coin` VARCHAR(50) NOT NULL,
     `projet_description` VARCHAR(300),
     `projet_start_date` DATE,
-    `projet_max_supply` BIGINT,
     `projet_forage_possible` BOOLEAN,
 
     PRIMARY KEY(`projet_ticker`),
@@ -37,10 +36,10 @@ CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
 /* -- Creation de la table Cryptomonnaie -- */
 CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
 (
-    `cryptomonnaie_id` SMALLINT NOT NULL,
+    `cryptomonnaie_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `cryptomonnaie_ticker` VARCHAR(9) NOT NULL,
-    `cryptomonnaie_prix_haut` DECIMAL(13,10),
-    `cryptomonnaie_prix_bas` DECIMAL(13,10),
+    `cryptomonnaie_prix_haut` DECIMAL(20,20),
+    `cryptomonnaie_prix_bas` DECIMAL(20,20),
     `cryptomonnaie_market_cap` BIGINT,
     `cryptomonnaie_qte_circulation` BIGINT,
     `cryptomonnaie_volume_24h` BIGINT,
