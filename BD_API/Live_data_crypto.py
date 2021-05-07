@@ -33,24 +33,17 @@ def print_stream_data_from_stream_buffer(binance_websocket_api_manager):
 worker_thread = threading.Thread(target=print_stream_data_from_stream_buffer, args=(binance_websocket_api_manager,))
 worker_thread.start()
 
-print("\r\n========================================== Starting aggTrade ==========================================\r\n")
-# start
-
-markets = ['xrpbearbusd', 'zeceth', 'cndbtc', 'dashbtc', 'atompax', 'perlbtc', 'ardreth', 'zecbnb', 'bchabctusd',
-           'usdsbusdt', 'winbnb', 'xzcxrp', 'bchusdc', 'wavesbnb', 'kavausdt', 'btsusdt', 'chzbnb', 'tusdbnb',
-           'xtzbusd', 'bcptusdc', 'dogebnb', 'eosbearusdt', 'ambbnb', 'wrxbnb', 'poabtc', 'wanbtc', 'ardrbtc', 'icnbtc',
-           'bchabcbusd', 'ltcbnb', 'pivxeth', 'skybtc', 'tntbtc', 'poebtc', 'steembtc', 'icxusdt', 'tfuelbtc', 'chzbtc',
-           'vibeth', 'winusdc', 'gtobtc', 'linkusdc', 'batbusd', 'rdnbtc', 'dataeth', 'bttpax', 'zrxbnb', 'vibbtc',
-           'neobnb', 'cosbtc', 'powreth', 'rlcusdt', 'hbarbnb', 'wabieth', 'bqxeth', 'aionbtc', 'aeeth', 'mthbtc',
-           'wrxbtc', 'pptbtc', 'nknbtc', 'zecusdt', 'stormeth', 'qtumusdt']
-
-aggtrade_stream_id = binance_websocket_api_manager.create_stream(["aggTrade"], markets)
-time.sleep(7)
-# stop
-binance_websocket_api_manager.stop_stream(aggtrade_stream_id)
-time.sleep(2)
-print("\r\n=========================================== Stopped aggTrade ==========================================\r\n")
+markets = ['ETHBTC', 'LTCBTC', 'BNBBTC', 'NEOBTC', 'EOSETH']
+# print("\r\n========================================== Starting aggTrade ==========================================\r\n")
+# # start
 #
+# aggtrade_stream_id = binance_websocket_api_manager.create_stream(["aggTrade"], markets)
+# time.sleep(7)
+# # stop
+# binance_websocket_api_manager.stop_stream(aggtrade_stream_id)
+# time.sleep(2)
+# print("\r\n=========================================== Stopped aggTrade ==========================================\r\n")
+# #
 # print("\r\n====================================== Starting trade and kline_1m ====================================\r\n")
 # trade_stream_id = binance_websocket_api_manager.create_stream(["trade"], markets)
 # kline_1m_stream_id = binance_websocket_api_manager.create_stream("kline_1m", markets)
@@ -60,19 +53,19 @@ print("\r\n=========================================== Stopped aggTrade ========
 # time.sleep(2)
 # print("\r\n====================================== Stopped trade and kline_1m =====================================\r\n")
 
-print("\r\n======================================== Starting ticker ==============================================\r\n")
-ticker_bnbbtc_stream_id = binance_websocket_api_manager.create_stream(["ticker"], markets)
-time.sleep(7)
-binance_websocket_api_manager.stop_stream(ticker_bnbbtc_stream_id)
-time.sleep(2)
-print("\r\n======================================== Stopped ticker ===============================================\r\n")
-
-print("\r\n========================================== Starting miniticker ========================================\r\n")
-miniticker_stream_id = binance_websocket_api_manager.create_stream(["miniTicker"], markets)
-time.sleep(7)
-binance_websocket_api_manager.stop_stream(miniticker_stream_id)
-time.sleep(2)
-print("\r\n========================================= Stopped miniticker  =========================================\r\n")
+# print("\r\n======================================== Starting ticker ==============================================\r\n")
+# ticker_bnbbtc_stream_id = binance_websocket_api_manager.create_stream(["ticker"], markets)
+# time.sleep(7)
+# binance_websocket_api_manager.stop_stream(ticker_bnbbtc_stream_id)
+# time.sleep(2)
+# print("\r\n======================================== Stopped ticker ===============================================\r\n")
+#
+# print("\r\n========================================== Starting miniticker ========================================\r\n")
+# miniticker_stream_id = binance_websocket_api_manager.create_stream(["miniTicker"], markets)
+# time.sleep(7)
+# binance_websocket_api_manager.stop_stream(miniticker_stream_id)
+# time.sleep(2)
+# print("\r\n========================================= Stopped miniticker  =========================================\r\n")
 #
 # print("\r\n========================================== Starting kline_5m ==========================================\r\n")
 # kline_5m_stream_id = binance_websocket_api_manager.create_stream(["kline_5m"], markets)
@@ -95,11 +88,12 @@ print("\r\n========================================= Stopped miniticker  =======
 # time.sleep(2)
 # print("\r\n============================================ Stopped depth  ===========================================\r\n")
 #
-# print("\r\n========================================== Starting !miniticker ========================================\r\n")
-# miniticker_stream_id = binance_websocket_api_manager.create_stream(["arr"], ["!miniTicker"])
-# time.sleep(7)
-# binance_websocket_api_manager.stop_stream(miniticker_stream_id)
-# time.sleep(2)
+print("\r\n========================================== Starting !miniticker ========================================\r\n")
+miniticker_stream_id = binance_websocket_api_manager.create_stream(["arr"], ["!miniTicker"])\
+
+time.sleep(7)
+binance_websocket_api_manager.stop_stream(miniticker_stream_id)
+time.sleep(2)
 # print("\r\n========================================= Stopped !miniticker  =========================================\r\n")
 #
 # print("\r\n========================================== Starting ticker all ========================================\r\n")

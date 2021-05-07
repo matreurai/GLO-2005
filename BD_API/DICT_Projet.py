@@ -37,7 +37,9 @@ def comp_dict_binance_coin_market():
     for a in binance_ticker():
         for b in projet_ticker:
             if a == b:
-                dict_binance.append(a)
-                break
-
+                for c in liste_ticker:
+                    if a in c and c not in dict_binance:
+                        dict_binance.append(c)
+                        break
     return dict_binance
+print(comp_dict_binance_coin_market())

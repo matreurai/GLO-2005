@@ -10,3 +10,4 @@ def key_secret(self):
     binance_secret = set(XfhicqXTykXoW3AyiBRh3NRWeZlmpU6Ku5yFB4Va0IHOJNiSgRZY8zuBfHMFiNfF = float)
     return binance_secret
 
+

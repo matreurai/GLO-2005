@@ -1,14 +1,32 @@
-import mysql.connector
-import pymysql
 import http.client
 import json
-import xlrd
 import pandas as pd
 from sqlalchemy import create_engine
-from time_stamp import *
+import pymysql
+from t_projet_import import projet_ticker
 
 
+markets_values = []
 
+markets = ['ETHBTC', 'LTCBTC', 'BNBBTC', 'NEOBTC', 'EOSETH']
+
+for a in markets:
+    conn = http.client.HTTPSConnection("api.binance.com")
+    payload = ''
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    conn.request("GET", "/api/v3/ticker/24hr?symbol={}".format(a), payload, headers)
+    res = conn.getresponse()
+    data = res.read()
+    deecode = data.decode("utf-8")
+    dict_data = json.loads(deecode)
+    markets_values.append(dict_data)
+
+    crypto_ticker = [v['symbol'] for v in markets_values if v['symbol']]
+    crypto_p_haut = [v['highPrice'] for v in markets_values if v['highPrice']]
+    crypto_p_bas = [v['lowPrice'] for v in markets_values if v['lowPrice']]
+    crypto_volume = [v['volume'] for v in markets_values if v['volume']]
 
 # Traitement de la donner de Coinmarket
 # Connection a coinmarket
@@ -28,71 +46,46 @@ respond = data.decode("utf-8")
 dict_data = json.loads(respond)['data']
 dict_quote = [v['quote'] for v in dict_data if v['quote']]
 dict_usd = [v['USD'] for v in dict_quote if v['USD']]
-#Projet ticker coin
-projet_ticker = [v['symbol'] for v in dict_data if v['symbol']]
-# Nom des coins
-# projet_nom_du_coin = [v['name'] for v in dict_data if v['name']]
-# # Projet start date
-# projet_start_date = [v['date_added'] for v in dict_data if v['date_added']]
-# # print(projet_start_date)
-# # price = [v['price'] for v in dict_usd if v['price']]
+
+# Projet ticker coin
+crypto_market_cap = [v['market_cap'] for v in dict_usd if v['market_cap']]
+# Crypto 24h
+crypto_volume_24h = [v['volume_24h'] for v in dict_usd if v['volume_24h']]
 #
-# # importation donner du fichier excel dans un dictionnaire
-#
-# excel_projet = xlrd.open_workbook('Crypto.xlsx')
-#
-# excel_t_proj_sheet = excel_projet.sheet_names()
-#
-# p_logo = []
-# p_description = []
-# p_forage = []
-# p_start =[]
-#
-# for v in range(0, len(excel_t_proj_sheet)):
-#     t_proj = excel_projet.sheet_by_index(v)
-#
-#     for x in range(1, t_proj.nrows):
-#
-#         projet_logo = t_proj.cell(x, 1).value
-#         p_logo.append(projet_logo)
-#
-#         projet_description = t_proj.cell(x, 3).value
-#         p_description.append(projet_description)
-#
-#         projet_start_date = t_proj.cell(x, 4).value
-#         p_start.append(projet_start_date)
-#
-#         projet_forage_possible = t_proj.cell(x, 5).value
-#         p_forage.append(projet_forage_possible)
-#
-#
-#
-# t_cryptomonnaie = {'cryptomonnaie_id','cryptomonnaie_ticker','cryptomonnaie_nom_du_coin','cryptomonnaie_prix_actuel',
-#                    'cryptomonnaie_prix_haut','cryptomonnaie_prix_bas','cryptomonnaie_Valeur_cad'}
-#
-# list_t_projet = 't_projet'
-# t_project_frame = pd.DataFrame(data=t_projet)
-#
-# sqlEngine = create_engine('mysql+pymysql://root:eAXt)cdncT%Wv5}RVb!_,f]S@localhost/GLO-2005-Projet', pool_recycle=3600)
-#
-# dbConnection = sqlEngine.connect()
-#
-# try:
-#
-#     frame = t_project_frame.to_sql(list_t_projet, dbConnection, if_exists='append',index=False);
-#
-# except ValueError as vx:
-#
-#     print(vx)
-#
-# except Exception as ex:
-#
-#     print(ex)
-#
-# else:
-#
-#     print("Table %s created successfully."%t_table);
-#
-# finally:
-#
-#     dbConnection.close()
+crypto_circulating_sup = [v['circulating_supply'] for v in dict_data if v['circulating_supply']]
+
+# Price
+# price = [v['price'] for v in dict_usd if v['price']]
+a = 0
+t_cryptomonnaie = {'cryptomonnaie_id':++a ,'cryptomonnaie_ticker':projet_ticker,
+                   'cryptomonnaie_prix_haut': crypto_p_haut, 'cryptomonnaie_prix_bas': crypto_p_bas,
+                   'cryptomonnaie_market_cap': crypto_market_cap,
+                   'cryptomonnaie_qte_circulation': crypto_circulating_sup,
+                   'cryptomonnaie_volume_24h': crypto_volume_24h}
+
+list_t_crypto = 't_cryptomonnaie'
+t_crypto_frame = pd.DataFrame(data=t_cryptomonnaie)
+
+sqlEngine = create_engine('mysql+pymysql://root:eAXt)cdncT%Wv5}RVb!_,f]S@localhost/GLO-2005-Projet', pool_recycle=3600)
+
+dbConnection = sqlEngine.connect()
+
+try:
+
+    t_crypto_frame.to_sql(list_t_crypto, dbConnection, if_exists='append', index=False)
+
+except ValueError as vx:
+
+    print(vx)
+
+except Exception as ex:
+
+    print(ex)
+
+else:
+
+    print("Table %s created successfully." % t_cryptomonnaie)
+
+finally:
+
+    dbConnection.close()

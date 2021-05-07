@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `t_projet`
     `projet_nom_du_coin` VARCHAR(50) NOT NULL,
     `projet_description` VARCHAR(300),
     `projet_start_date` DATE,
+    `projet_max_supply` BIGINT,
     `projet_forage_possible` BOOLEAN,
 
     PRIMARY KEY(`projet_ticker`),
@@ -36,10 +37,10 @@ CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
 /* -- Creation de la table Cryptomonnaie -- */
 CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
 (
-    `cryptomonnaie_id` SMALLINT NOT NULL AUTO_INCREMENT,
+    `cryptomonnaie_id` SMALLINT NOT NULL,
     `cryptomonnaie_ticker` VARCHAR(9) NOT NULL,
-    `cryptomonnaie_prix_haut` DECIMAL(13,4),
-    `cryptomonnaie_prix_bas` DECIMAL(13,4),
+    `cryptomonnaie_prix_haut` DECIMAL(13,10),
+    `cryptomonnaie_prix_bas` DECIMAL(13,10),
     `cryptomonnaie_market_cap` BIGINT,
     `cryptomonnaie_qte_circulation` BIGINT,
     `cryptomonnaie_volume_24h` BIGINT,
@@ -108,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `t_alerte`
 ALTER TABLE `t_alerte` ENGINE InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
-CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_id`, `alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
+CREATE INDEX `alerte_idx` USING HASH ON `t_alerte` (`alerte_user`, `alerte_ticker`, `alerte_below_price`, `alerte_above_price`, `alerte_end_date`);
 /*-------------------------------------------------------------------------------------------------------------------------*/
 
 /* -- Creation de la table Portfolio -- */
@@ -136,7 +137,6 @@ CREATE TABLE IF NOT EXISTS `t_titre`
     `titre_qte` INT DEFAULT 1,
     `titre_prix_moyen_paye` DECIMAL(13,4),
 
-    PRIMARY KEY(`titre_crypto_id`, `titre_portfolio_id`),
     FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
     FOREIGN KEY(`titre_portfolio_id`) REFERENCES `t_portfolio`(`portfolio_id`)
 );
