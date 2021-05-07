@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `t_titre`
 (
     `titre_crypto_id` SMALLINT NOT NULL,
     `titre_portfolio_id` SMALLINT,
-    `titre_qte` INT DEFAULT 1,
+    `titre_qte` DECIMAL(20,8) DEFAULT 1.0,
     `titre_prix_moyen_paye` DECIMAL(13,4),
 
     FOREIGN KEY(`titre_crypto_id`) REFERENCES `t_cryptomonnaie`(`cryptomonnaie_id`),
