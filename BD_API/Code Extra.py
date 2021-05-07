@@ -221,3 +221,36 @@ def binance_ticker():
 
 # print(projet_start_date)
 # price = [v['price'] for v in dict_usd if v['price']]
+
+
+#def nom_ticker():
+
+
+#print(type(ticker()))
+
+# conn = http.client.HTTPSConnection("api.binance.com")
+# payload = ''
+# headers = {
+#     'Content-Type': 'application/json'
+# }
+# conn.request("GET", "/api/v3/exchangeInfo", payload, headers)
+# res = conn.getresponse()
+# data = res.read()
+# transfor = data.decode("utf-8")
+# exchange_dictionary = loads(transfor)
+# print(type(exchange_dictionary['symbols']))
+
+#
+# client = Client("", "")
+#
+#
+# def get_paires(client):
+#     exchange_info = client.get_exchange_info()['symbols']
+#
+#     liste_paires_binance = [v['symbol'] for v in exchange_info if
+#                             v['symbol'].endswith('USD') and v['status'] == 'TRADING']
+#
+#     return liste_paires_binance
+#
+#
+# print(get_paires(client))

@@ -5,6 +5,7 @@
 
 import os
 from binance.client import Client
+from t_crypto_import import projet_ticker
 
 # import requests
 os.environ['API_KEY'] = 'wSMlsBTwjkZbByuXLiL3IsgSEHIlE57HC5qHg0HTJ7zdtcYumwNu34GigRxO1OCI'
@@ -19,40 +20,24 @@ client = Client(api_key, api_secret)
 
 # --- Entite projet
 
-def ticker():
-    exchange_info = client.get_exchange_info()['symbols']
-    liste_ticker = [v['symbol'] for v in exchange_info if
-                    v['symbol'] and v['status'] == 'TRADING']
-    return liste_ticker
-
-#def nom_ticker():
+exchange_info = client.get_exchange_info()['symbols']
+liste_ticker = [v['symbol'] for v in exchange_info if
+                v['symbol'] and v['status'] == 'TRADING']
 
 
-print(type(ticker()))
+def binance_ticker():
+    small_ticker = []
+    for a in liste_ticker:
+        x = a[0:3]
+        small_ticker.append(x)
+    return small_ticker
 
-# conn = http.client.HTTPSConnection("api.binance.com")
-# payload = ''
-# headers = {
-#     'Content-Type': 'application/json'
-# }
-# conn.request("GET", "/api/v3/exchangeInfo", payload, headers)
-# res = conn.getresponse()
-# data = res.read()
-# transfor = data.decode("utf-8")
-# exchange_dictionary = loads(transfor)
-# print(type(exchange_dictionary['symbols']))
+def comp_dict_binance_coin_market():
+    dict_binance = []
+    for a in binance_ticker():
+        for b in projet_ticker:
+            if a == b:
+                dict_binance.append(a)
+                break
 
-#
-# client = Client("", "")
-#
-#
-# def get_paires(client):
-#     exchange_info = client.get_exchange_info()['symbols']
-#
-#     liste_paires_binance = [v['symbol'] for v in exchange_info if
-#                             v['symbol'].endswith('USD') and v['status'] == 'TRADING']
-#
-#     return liste_paires_binance
-#
-#
-# print(get_paires(client))
+    return dict_binance
