@@ -36,6 +36,7 @@ def creation_t_projet():
         ")ENGINE InnoDB")
 
     create_index_t_crypto = ("CREATE INDEX `idx_crypto` ON `t_cryptomonnaie`(`cryptomonnaie_id`) ")
+
     db = mysql.connector.connect(host='localhost', user='root', password='eAXt)cdncT%Wv5}RVb!_,f]S')
     cur = db.cursor()
 
