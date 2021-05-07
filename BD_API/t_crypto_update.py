@@ -3,7 +3,7 @@ import json
 import pandas as pd
 from sqlalchemy import create_engine
 import pymysql
-from BD_API.t_projet_import import projet_ticker
+from t_projet_import import projet_ticker
 
 
 markets_values_update = []
@@ -88,34 +88,8 @@ t_cryptomonnaie_update = {'cryptomonnaie_prix_haut': crypto_p_haut_update,'crypt
                           'cryptomonnaie_qte_circulation': crypto_circulating_sup_update,
                           'cryptomonnaie_volume_24h': crypto_volume_24h_update}
 
-def insert_t_cryptomonnaie_update():
-
-    list_t_crypto_update = 't_cryptomonnaie'
-    t_crypto_frame_update = pd.DataFrame(data=t_cryptomonnaie_update)
-
-    sqlEngine_update = create_engine('mysql+pymysql://root:eAXt)cdncT%Wv5}RVb!_,f]S@localhost/GLO-2005-Projet',
-                              pool_recycle=3600)
-
-    dbConnection_update = sqlEngine_update.connect()
-
-    try:
-
-        t_crypto_frame_update.to_sql(list_t_crypto_update, dbConnection_update, if_exists='update', index=False)
-
-    except ValueError as vx:
-
-        print(vx)
-
-    except Exception as ex:
-
-        print(ex)
-
-    else:
-
-        return("Table {} was filled successfully.".format(list_t_crypto_update))
-
-    finally:
-
-        dbConnection_update.close()
-
-print(insert_t_cryptomonnaie_update())
+ try:
+    db = mysql.connector.connect(host="localhost", user="root", password="eAXt)cdncT%Wv5}RVb!_,f]S",
+                                 db="GLO-2005-Projet")
+    cursor = db.cursor()
+    crypto_prix_haut_upd = 'UPDATE t_cryptomonnaie SET cryptomonnaie_prix_haut = crypto_p_haut_update'
