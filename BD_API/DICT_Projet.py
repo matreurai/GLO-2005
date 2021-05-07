@@ -1,45 +1,48 @@
-# -------------------------------
-# Test API Binance
-# David Bolduc
-# -------------------------------
-
-import os
-from binance.client import Client
-from t_crypto_import import projet_ticker
-
-# import requests
-os.environ['API_KEY'] = 'wSMlsBTwjkZbByuXLiL3IsgSEHIlE57HC5qHg0HTJ7zdtcYumwNu34GigRxO1OCI'
-os.environ['API_SECRET'] = 'XfhicqXTykXoW3AyiBRh3NRWeZlmpU6Ku5yFB4Va0IHOJNiSgRZY8zuBfHMFiNfF'
-
-# init
-api_key = os.getenv('API_KEY')
-api_secret = os.getenv('API_SECRET')
-
-client = Client(api_key, api_secret)
+"""
+Gestion des dictionnaires pour affichages live.
+--- t_projet
+1. projet_ticker
+2. projet_logo
+3. projet_nom_du_coin
+4. projet_description
+5. projet_start_date
+6. projet_max_supply
+7. projet_forage_possible
+"""
+from t_projet_import import *
 
 
-# --- Entite projet
+def t_projet_live():
+    t_projet_ticker = projet_nom_du_coin
+    t_projet_logo = p_logo
+    t_projet_nom_du_coin = projet_nom_du_coin
+    t_projet_description = p_description
+    t_projet_start_date = projet_start_date
+    t_projet_max_supply = None
+    t_projet_forage_possible = None
+    return t_projet_ticker, t_projet_logo, t_projet_nom_du_coin, t_projet_description, t_projet_start_date, \
+           t_projet_max_supply, t_projet_forage_possible
 
-exchange_info = client.get_exchange_info()['symbols']
-liste_ticker = [v['symbol'] for v in exchange_info if
-                v['symbol'] and v['status'] == 'TRADING']
+
+"""
+--- Cryptomonnaie
+1. cryptomonnaie_id
+2. cryptomonnaie_ticker
+3. cryptomonnaie_prix_haut
+4. cryptomonnaie_prix_bas
+5. cryptomonnaie_market_cap
+6. cryptomonnaie_qte_circulation
+7. cryptomonnaie_volume_24h
+"""
 
 
-def binance_ticker():
-    small_ticker = []
-    for a in liste_ticker:
-        x = a[0:3]
-        small_ticker.append(x)
-    return small_ticker
-
-def comp_dict_binance_coin_market():
-    dict_binance = []
-    for a in binance_ticker():
-        for b in projet_ticker:
-            if a == b:
-                for c in liste_ticker:
-                    if a in c and c not in dict_binance:
-                        dict_binance.append(c)
-                        break
-    return dict_binance
-print(comp_dict_binance_coin_market())
+def t_crypto_live():
+    t_cryptomonnaie_id = None
+    t_cryptomonnaie_ticker = None
+    t_cryptomonnaie_prix_haut = None
+    t_cryptomonnaie_prix_bas = None
+    t_cryptomonnaie_market_cap = None
+    t_cryptomonnaie_qte_circulation = None
+    t_cryptomonnaie_volume_24h = None
+    return t_cryptomonnaie_id, t_cryptomonnaie_ticker, t_cryptomonnaie_prix_haut, t_cryptomonnaie_prix_bas, \
+           t_cryptomonnaie_market_cap, t_cryptomonnaie_qte_circulation, t_cryptomonnaie_volume_24h

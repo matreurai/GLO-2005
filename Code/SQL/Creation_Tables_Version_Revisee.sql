@@ -37,7 +37,7 @@ CREATE INDEX `idx_projet` ON `t_projet`(`projet_ticker`);
 /* -- Creation de la table Cryptomonnaie -- */
 CREATE TABLE IF NOT EXISTS `t_cryptomonnaie`
 (
-    `cryptomonnaie_id` SMALLINT NOT NULL,
+    `cryptomonnaie_id` SMALLINT NOT NULL AUTO_INCREMENT,
     `cryptomonnaie_ticker` VARCHAR(9) NOT NULL,
     `cryptomonnaie_prix_haut` DECIMAL(13,10),
     `cryptomonnaie_prix_bas` DECIMAL(13,10),
